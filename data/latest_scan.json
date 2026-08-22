@@ -5,7 +5,9 @@
       "name": "gatekeeper-manager-role",
       "namespace": "gatekeeper-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:15:56+00:00",
       "rules": [
         {
           "resources": [
@@ -43,7 +45,9 @@
       "name": "kubeadm:bootstrap-signer-clusterinfo",
       "namespace": "kube-public",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:15+00:00",
       "rules": [
         {
           "resources": [
@@ -63,7 +67,9 @@
       "name": "system:controller:bootstrap-signer",
       "namespace": "kube-public",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -110,7 +116,9 @@
       "name": "extension-apiserver-authentication-reader",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -132,7 +140,9 @@
       "name": "kube-proxy",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:16+00:00",
       "rules": [
         {
           "resources": [
@@ -152,7 +162,9 @@
       "name": "kubeadm:kubelet-config",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -172,7 +184,9 @@
       "name": "kubeadm:nodes-kubeadm-config",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -192,7 +206,9 @@
       "name": "system::leader-locking-kube-controller-manager",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -231,7 +247,9 @@
       "name": "system::leader-locking-kube-scheduler",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -270,7 +288,9 @@
       "name": "system:controller:bootstrap-signer",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -292,7 +312,9 @@
       "name": "system:controller:cloud-provider",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -315,7 +337,9 @@
       "name": "system:controller:token-cleaner",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "rules": [
         {
           "resources": [
@@ -351,8 +375,10 @@
       "type": "RBAC-Role",
       "name": "kyverno:admission-controller",
       "namespace": "kyverno",
-      "owner": "unknown",
+      "owner": "helm-release:kyverno",
+      "owner_source": "helm-release-name",
       "managed": "false",
+      "created_at": "2026-08-22T07:17:38+00:00",
       "rules": [
         {
           "resources": [
@@ -422,8 +448,10 @@
       "type": "RBAC-Role",
       "name": "kyverno:background-controller",
       "namespace": "kyverno",
-      "owner": "unknown",
+      "owner": "helm-release:kyverno",
+      "owner_source": "helm-release-name",
       "managed": "false",
+      "created_at": "2026-08-22T07:17:38+00:00",
       "rules": [
         {
           "resources": [
@@ -482,8 +510,10 @@
       "type": "RBAC-Role",
       "name": "kyverno:cleanup-controller",
       "namespace": "kyverno",
-      "owner": "unknown",
+      "owner": "helm-release:kyverno",
+      "owner_source": "helm-release-name",
       "managed": "false",
+      "created_at": "2026-08-22T07:17:38+00:00",
       "rules": [
         {
           "resources": [
@@ -579,8 +609,10 @@
       "type": "RBAC-Role",
       "name": "kyverno:reports-controller",
       "namespace": "kyverno",
-      "owner": "unknown",
+      "owner": "helm-release:kyverno",
+      "owner_source": "helm-release-name",
       "managed": "false",
+      "created_at": "2026-08-22T07:17:38+00:00",
       "rules": [
         {
           "resources": [
@@ -640,7 +672,9 @@
       "name": "local-path-provisioner-role",
       "namespace": "local-path-storage",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
       "managed": "false",
+      "created_at": "2026-08-22T07:14:18+00:00",
       "rules": [
         {
           "resources": [
@@ -666,7 +700,9 @@
       "name": "backend-full-access",
       "namespace": "team-backend",
       "owner": "backend-team",
+      "owner_source": "explicit-label",
       "managed": "true",
+      "created_at": "2026-08-22T07:26:54+00:00",
       "rules": [
         {
           "resources": [
@@ -686,7 +722,9 @@
       "name": "pod-reader",
       "namespace": "team-backend",
       "owner": "security-team",
+      "owner_source": "explicit-label",
       "managed": "true",
+      "created_at": "2026-08-22T07:26:54+00:00",
       "rules": [
         {
           "resources": [
@@ -707,7 +745,9 @@
       "name": "trigger-data-jobs",
       "namespace": "team-data",
       "owner": "backend-team",
+      "owner_source": "explicit-label",
       "managed": "true",
+      "created_at": "2026-08-22T09:00:28+00:00",
       "rules": [
         {
           "resources": [
@@ -731,6 +771,8 @@
       "name": "gatekeeper-manager-rolebinding",
       "namespace": "gatekeeper-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:15:56+00:00",
       "role_ref": "gatekeeper-manager-role",
       "subjects": [
         {
@@ -745,6 +787,8 @@
       "name": "kubeadm:bootstrap-signer-clusterinfo",
       "namespace": "kube-public",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:15+00:00",
       "role_ref": "kubeadm:bootstrap-signer-clusterinfo",
       "subjects": [
         {
@@ -759,6 +803,8 @@
       "name": "system:controller:bootstrap-signer",
       "namespace": "kube-public",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "system:controller:bootstrap-signer",
       "subjects": [
         {
@@ -773,6 +819,8 @@
       "name": "kube-proxy",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:16+00:00",
       "role_ref": "kube-proxy",
       "subjects": [
         {
@@ -787,6 +835,8 @@
       "name": "kubeadm:kubelet-config",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "kubeadm:kubelet-config",
       "subjects": [
         {
@@ -806,6 +856,8 @@
       "name": "kubeadm:nodes-kubeadm-config",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "kubeadm:nodes-kubeadm-config",
       "subjects": [
         {
@@ -825,6 +877,8 @@
       "name": "system::extension-apiserver-authentication-reader",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "extension-apiserver-authentication-reader",
       "subjects": [
         {
@@ -844,6 +898,8 @@
       "name": "system::leader-locking-kube-controller-manager",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "system::leader-locking-kube-controller-manager",
       "subjects": [
         {
@@ -868,6 +924,8 @@
       "name": "system::leader-locking-kube-scheduler",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "system::leader-locking-kube-scheduler",
       "subjects": [
         {
@@ -887,6 +945,8 @@
       "name": "system:controller:bootstrap-signer",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "system:controller:bootstrap-signer",
       "subjects": [
         {
@@ -901,6 +961,8 @@
       "name": "system:controller:cloud-provider",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "system:controller:cloud-provider",
       "subjects": [
         {
@@ -915,6 +977,8 @@
       "name": "system:controller:token-cleaner",
       "namespace": "kube-system",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:14+00:00",
       "role_ref": "system:controller:token-cleaner",
       "subjects": [
         {
@@ -928,7 +992,9 @@
       "type": "RBAC-RoleBinding",
       "name": "kyverno:admission-controller",
       "namespace": "kyverno",
-      "owner": "unknown",
+      "owner": "helm-release:kyverno",
+      "owner_source": "helm-release-name",
+      "created_at": "2026-08-22T07:17:38+00:00",
       "role_ref": "kyverno:admission-controller",
       "subjects": [
         {
@@ -942,7 +1008,9 @@
       "type": "RBAC-RoleBinding",
       "name": "kyverno:background-controller",
       "namespace": "kyverno",
-      "owner": "unknown",
+      "owner": "helm-release:kyverno",
+      "owner_source": "helm-release-name",
+      "created_at": "2026-08-22T07:17:38+00:00",
       "role_ref": "kyverno:background-controller",
       "subjects": [
         {
@@ -956,7 +1024,9 @@
       "type": "RBAC-RoleBinding",
       "name": "kyverno:cleanup-controller",
       "namespace": "kyverno",
-      "owner": "unknown",
+      "owner": "helm-release:kyverno",
+      "owner_source": "helm-release-name",
+      "created_at": "2026-08-22T07:17:38+00:00",
       "role_ref": "kyverno:cleanup-controller",
       "subjects": [
         {
@@ -970,7 +1040,9 @@
       "type": "RBAC-RoleBinding",
       "name": "kyverno:reports-controller",
       "namespace": "kyverno",
-      "owner": "unknown",
+      "owner": "helm-release:kyverno",
+      "owner_source": "helm-release-name",
+      "created_at": "2026-08-22T07:17:38+00:00",
       "role_ref": "kyverno:reports-controller",
       "subjects": [
         {
@@ -985,6 +1057,8 @@
       "name": "local-path-provisioner-bind",
       "namespace": "local-path-storage",
       "owner": "unknown",
+      "owner_source": "no-attribution-source",
+      "created_at": "2026-08-22T07:14:18+00:00",
       "role_ref": "local-path-provisioner-role",
       "subjects": [
         {
@@ -999,6 +1073,8 @@
       "name": "backend-full-access-binding",
       "namespace": "team-backend",
       "owner": "backend-team",
+      "owner_source": "explicit-label",
+      "created_at": "2026-08-22T07:26:54+00:00",
       "role_ref": "backend-full-access",
       "subjects": [
         {
@@ -1013,6 +1089,8 @@
       "name": "pod-reader-binding",
       "namespace": "team-backend",
       "owner": "security-team",
+      "owner_source": "explicit-label",
+      "created_at": "2026-08-22T07:26:54+00:00",
       "role_ref": "pod-reader",
       "subjects": [
         {
@@ -1027,6 +1105,8 @@
       "name": "trigger-data-jobs-binding",
       "namespace": "team-data",
       "owner": "backend-team",
+      "owner_source": "explicit-label",
+      "created_at": "2026-08-22T09:00:28+00:00",
       "role_ref": "trigger-data-jobs",
       "subjects": [
         {
@@ -1042,13 +1122,26 @@
       "type": "Gatekeeper-K8sAllowedRepos",
       "name": "allowed-image-repos",
       "owner": "security-team",
+      "owner_source": "explicit-label",
       "managed": "true",
+      "created_at": "2026-08-22T08:34:49Z",
       "match_namespaces": [
         "team-security"
       ],
       "allowed_repos": [
         "mycompany.com/"
       ]
+    }
+  ],
+  "network_policies": [
+    {
+      "type": "NetworkPolicy",
+      "name": "default-deny-ingress",
+      "namespace": "team-data",
+      "owner": "data-team",
+      "owner_source": "explicit-label",
+      "created_at": "2026-08-22T09:00:21+00:00",
+      "is_default_deny": true
     }
   ]
 }
