@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: trigger-data-jobs-binding
+  namespace: team-data
+  labels:
+    owner-team: backend-team
+    cape-policy/managed: "true"
+subjects:
+- kind: ServiceAccount
+  name: backend-app-sa
+  namespace: team-backend
+roleRef:
+  kind: Role
+  name: trigger-data-jobs
+  apiGroup: rbac.authorization.k8s.io

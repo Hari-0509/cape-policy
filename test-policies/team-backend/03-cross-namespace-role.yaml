@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: trigger-data-jobs
+  namespace: team-data
+  labels:
+    owner-team: backend-team
+    cape-policy/managed: "true"
+rules:
+- apiGroups: ["batch"]
+  resources: ["jobs"]
+  verbs: ["create", "get", "list"]

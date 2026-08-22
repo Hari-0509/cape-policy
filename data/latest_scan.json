@@ -701,6 +701,28 @@
           ]
         }
       ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "trigger-data-jobs",
+      "namespace": "team-data",
+      "owner": "backend-team",
+      "managed": "true",
+      "rules": [
+        {
+          "resources": [
+            "jobs"
+          ],
+          "verbs": [
+            "create",
+            "get",
+            "list"
+          ],
+          "apiGroups": [
+            "batch"
+          ]
+        }
+      ]
     }
   ],
   "rbac_bindings": [
@@ -992,6 +1014,20 @@
       "namespace": "team-backend",
       "owner": "security-team",
       "role_ref": "pod-reader",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "backend-app-sa",
+          "namespace": "team-backend"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "trigger-data-jobs-binding",
+      "namespace": "team-data",
+      "owner": "backend-team",
+      "role_ref": "trigger-data-jobs",
       "subjects": [
         {
           "kind": "ServiceAccount",
