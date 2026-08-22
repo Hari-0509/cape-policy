@@ -1,0 +1,1018 @@
+{
+  "rbac_roles": [
+    {
+      "type": "RBAC-Role",
+      "name": "gatekeeper-manager-role",
+      "namespace": "gatekeeper-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "events"
+          ],
+          "verbs": [
+            "create",
+            "patch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "secrets"
+          ],
+          "verbs": [
+            "create",
+            "delete",
+            "get",
+            "list",
+            "patch",
+            "update",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "kubeadm:bootstrap-signer-clusterinfo",
+      "namespace": "kube-public",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "system:controller:bootstrap-signer",
+      "namespace": "kube-public",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "update"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "events"
+          ],
+          "verbs": [
+            "create",
+            "patch",
+            "update"
+          ],
+          "apiGroups": [
+            "",
+            "events.k8s.io"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "extension-apiserver-authentication-reader",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "kube-proxy",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "kubeadm:kubelet-config",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "kubeadm:nodes-kubeadm-config",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "system::leader-locking-kube-controller-manager",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "create",
+            "get",
+            "list",
+            "update",
+            "watch"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "leasecandidates"
+          ],
+          "verbs": [
+            "create",
+            "get",
+            "list",
+            "update",
+            "watch"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "system::leader-locking-kube-scheduler",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "create",
+            "get",
+            "list",
+            "update",
+            "watch"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "leasecandidates"
+          ],
+          "verbs": [
+            "create",
+            "get",
+            "list",
+            "update",
+            "watch"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "system:controller:bootstrap-signer",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "secrets"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "system:controller:cloud-provider",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "create",
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "system:controller:token-cleaner",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "secrets"
+          ],
+          "verbs": [
+            "delete",
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "events"
+          ],
+          "verbs": [
+            "create",
+            "patch",
+            "update"
+          ],
+          "apiGroups": [
+            "",
+            "events.k8s.io"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "kyverno:admission-controller",
+      "namespace": "kyverno",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "secrets",
+            "serviceaccounts"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch",
+            "patch",
+            "create",
+            "update",
+            "delete"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "create",
+            "delete",
+            "get",
+            "patch",
+            "update"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "deployments",
+            "deployments/scale"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch",
+            "patch",
+            "update"
+          ],
+          "apiGroups": [
+            "apps"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "kyverno:background-controller",
+      "namespace": "kyverno",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "create"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "delete",
+            "get",
+            "patch",
+            "update"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "secrets"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "kyverno:cleanup-controller",
+      "namespace": "kyverno",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "secrets"
+          ],
+          "verbs": [
+            "create"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "secrets"
+          ],
+          "verbs": [
+            "delete",
+            "get",
+            "list",
+            "update",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "create"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "delete",
+            "get",
+            "patch",
+            "update"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "endpointslices"
+          ],
+          "verbs": [
+            "list"
+          ],
+          "apiGroups": [
+            "discovery.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "deployments"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            "apps"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "kyverno:reports-controller",
+      "namespace": "kyverno",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "configmaps"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "secrets"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        },
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "create"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        },
+        {
+          "resources": [
+            "leases"
+          ],
+          "verbs": [
+            "delete",
+            "get",
+            "patch",
+            "update"
+          ],
+          "apiGroups": [
+            "coordination.k8s.io"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "local-path-provisioner-role",
+      "namespace": "local-path-storage",
+      "owner": "unknown",
+      "managed": "false",
+      "rules": [
+        {
+          "resources": [
+            "pods"
+          ],
+          "verbs": [
+            "get",
+            "list",
+            "watch",
+            "create",
+            "patch",
+            "update",
+            "delete"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "backend-full-access",
+      "namespace": "team-backend",
+      "owner": "backend-team",
+      "managed": "true",
+      "rules": [
+        {
+          "resources": [
+            "pods"
+          ],
+          "verbs": [
+            "*"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "pod-reader",
+      "namespace": "team-backend",
+      "owner": "security-team",
+      "managed": "true",
+      "rules": [
+        {
+          "resources": [
+            "pods"
+          ],
+          "verbs": [
+            "get",
+            "list"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "rbac_bindings": [
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "gatekeeper-manager-rolebinding",
+      "namespace": "gatekeeper-system",
+      "owner": "unknown",
+      "role_ref": "gatekeeper-manager-role",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "gatekeeper-admin",
+          "namespace": "gatekeeper-system"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "kubeadm:bootstrap-signer-clusterinfo",
+      "namespace": "kube-public",
+      "owner": "unknown",
+      "role_ref": "kubeadm:bootstrap-signer-clusterinfo",
+      "subjects": [
+        {
+          "kind": "User",
+          "name": "system:anonymous",
+          "namespace": null
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "system:controller:bootstrap-signer",
+      "namespace": "kube-public",
+      "owner": "unknown",
+      "role_ref": "system:controller:bootstrap-signer",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "bootstrap-signer",
+          "namespace": "kube-system"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "kube-proxy",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "kube-proxy",
+      "subjects": [
+        {
+          "kind": "Group",
+          "name": "system:bootstrappers:kubeadm:default-node-token",
+          "namespace": null
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "kubeadm:kubelet-config",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "kubeadm:kubelet-config",
+      "subjects": [
+        {
+          "kind": "Group",
+          "name": "system:nodes",
+          "namespace": null
+        },
+        {
+          "kind": "Group",
+          "name": "system:bootstrappers:kubeadm:default-node-token",
+          "namespace": null
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "kubeadm:nodes-kubeadm-config",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "kubeadm:nodes-kubeadm-config",
+      "subjects": [
+        {
+          "kind": "Group",
+          "name": "system:bootstrappers:kubeadm:default-node-token",
+          "namespace": null
+        },
+        {
+          "kind": "Group",
+          "name": "system:nodes",
+          "namespace": null
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "system::extension-apiserver-authentication-reader",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "extension-apiserver-authentication-reader",
+      "subjects": [
+        {
+          "kind": "User",
+          "name": "system:kube-controller-manager",
+          "namespace": null
+        },
+        {
+          "kind": "User",
+          "name": "system:kube-scheduler",
+          "namespace": null
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "system::leader-locking-kube-controller-manager",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "system::leader-locking-kube-controller-manager",
+      "subjects": [
+        {
+          "kind": "User",
+          "name": "system:kube-controller-manager",
+          "namespace": null
+        },
+        {
+          "kind": "ServiceAccount",
+          "name": "kube-controller-manager",
+          "namespace": "kube-system"
+        },
+        {
+          "kind": "ServiceAccount",
+          "name": "leader-election-controller",
+          "namespace": "kube-system"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "system::leader-locking-kube-scheduler",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "system::leader-locking-kube-scheduler",
+      "subjects": [
+        {
+          "kind": "User",
+          "name": "system:kube-scheduler",
+          "namespace": null
+        },
+        {
+          "kind": "ServiceAccount",
+          "name": "kube-scheduler",
+          "namespace": "kube-system"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "system:controller:bootstrap-signer",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "system:controller:bootstrap-signer",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "bootstrap-signer",
+          "namespace": "kube-system"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "system:controller:cloud-provider",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "system:controller:cloud-provider",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "cloud-provider",
+          "namespace": "kube-system"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "system:controller:token-cleaner",
+      "namespace": "kube-system",
+      "owner": "unknown",
+      "role_ref": "system:controller:token-cleaner",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "token-cleaner",
+          "namespace": "kube-system"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "kyverno:admission-controller",
+      "namespace": "kyverno",
+      "owner": "unknown",
+      "role_ref": "kyverno:admission-controller",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "kyverno-admission-controller",
+          "namespace": "kyverno"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "kyverno:background-controller",
+      "namespace": "kyverno",
+      "owner": "unknown",
+      "role_ref": "kyverno:background-controller",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "kyverno-background-controller",
+          "namespace": "kyverno"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "kyverno:cleanup-controller",
+      "namespace": "kyverno",
+      "owner": "unknown",
+      "role_ref": "kyverno:cleanup-controller",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "kyverno-cleanup-controller",
+          "namespace": "kyverno"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "kyverno:reports-controller",
+      "namespace": "kyverno",
+      "owner": "unknown",
+      "role_ref": "kyverno:reports-controller",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "kyverno-reports-controller",
+          "namespace": "kyverno"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "local-path-provisioner-bind",
+      "namespace": "local-path-storage",
+      "owner": "unknown",
+      "role_ref": "local-path-provisioner-role",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "local-path-provisioner-service-account",
+          "namespace": "local-path-storage"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "backend-full-access-binding",
+      "namespace": "team-backend",
+      "owner": "backend-team",
+      "role_ref": "backend-full-access",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "backend-app-sa",
+          "namespace": "team-backend"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "pod-reader-binding",
+      "namespace": "team-backend",
+      "owner": "security-team",
+      "role_ref": "pod-reader",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "backend-app-sa",
+          "namespace": "team-backend"
+        }
+      ]
+    }
+  ],
+  "gatekeeper_constraints": [
+    {
+      "type": "Gatekeeper-K8sAllowedRepos",
+      "name": "allowed-image-repos",
+      "owner": "security-team",
+      "managed": "true",
+      "match_namespaces": [
+        "team-security"
+      ],
+      "allowed_repos": [
+        "mycompany.com/"
+      ]
+    }
+  ]
+}
