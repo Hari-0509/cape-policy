@@ -1,0 +1,14 @@
+Total decision points: 85
+
+Decision points touched by multiple teams: 2
+
+--- team-backend:pods:get ---
+Teams involved: ['backend-team', 'security-team']
+  {'engine': 'RBAC', 'role_name': 'backend-full-access', 'binding_name': 'backend-full-access-binding', 'owner': 'backend-team', 'subject': 'backend-app-sa', 'verb': 'get', 'resource': 'pods', 'is_wildcard_grant': True}
+  {'engine': 'RBAC', 'role_name': 'pod-reader', 'binding_name': 'pod-reader-binding', 'owner': 'security-team', 'subject': 'backend-app-sa', 'verb': 'get', 'resource': 'pods', 'is_wildcard_grant': False}
+
+--- team-backend:pods:list ---
+Teams involved: ['backend-team', 'security-team']
+  {'engine': 'RBAC', 'role_name': 'backend-full-access', 'binding_name': 'backend-full-access-binding', 'owner': 'backend-team', 'subject': 'backend-app-sa', 'verb': 'list', 'resource': 'pods', 'is_wildcard_grant': True}
+  {'engine': 'RBAC', 'role_name': 'pod-reader', 'binding_name': 'pod-reader-binding', 'owner': 'security-team', 'subject': 'backend-app-sa', 'verb': 'list', 'resource': 'pods', 'is_wildcard_grant': False}
+
