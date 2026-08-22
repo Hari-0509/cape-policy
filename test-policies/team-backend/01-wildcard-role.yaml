@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: backend-full-access
+  namespace: team-backend
+  labels:
+    owner-team: backend-team
+    cape-policy/managed: "true"
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["*"]
