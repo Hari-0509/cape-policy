@@ -1,0 +1,66 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    cape-test-case: subsumption-pos-000
+    owner-team: team-gamma
+  name: narrow-role-subsumption-pos-000
+  namespace: ns-subsumption-pos-000
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    cape-test-case: subsumption-pos-000
+    owner-team: team-gamma
+  name: narrow-binding-subsumption-pos-000
+  namespace: ns-subsumption-pos-000
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-role-subsumption-pos-000
+subjects:
+- kind: ServiceAccount
+  name: app-sa-subsumption-pos-000
+  namespace: ns-subsumption-pos-000
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    cape-test-case: subsumption-pos-000
+    owner-team: team-delta
+  name: broad-role-subsumption-pos-000
+  namespace: ns-subsumption-pos-000
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    cape-test-case: subsumption-pos-000
+    owner-team: team-delta
+  name: broad-binding-subsumption-pos-000
+  namespace: ns-subsumption-pos-000
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-role-subsumption-pos-000
+subjects:
+- kind: ServiceAccount
+  name: app-sa-subsumption-pos-000
+  namespace: ns-subsumption-pos-000

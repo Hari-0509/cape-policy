@@ -1,60 +1,62 @@
-{
-  "scan_timestamp": "2026-08-22T09:08:48.327666+00:00",
-  "total_conflicts": 3,
-  "conflicts_by_type": {
-    "subsumption": 1,
-    "shadowing": 1,
-    "cross_domain_misalignment": 1
+[
+  {
+    "conflict_type": "subsumption",
+    "decision_point": "team-backend:pods:get",
+    "subject": "backend-app-sa",
+    "narrow_policy": {
+      "role": "pod-reader",
+      "binding": "pod-reader-binding",
+      "owner": "security-team"
+    },
+    "overriding_policy": {
+      "role": "backend-full-access",
+      "binding": "backend-full-access-binding",
+      "owner": "backend-team"
+    },
+    "explanation": "Team 'security-team' granted a narrow permission (get on pods) via role 'pod-reader', but team 'backend-team' granted a wildcard permission via role 'backend-full-access' to the same subject 'backend-app-sa'. Since Kubernetes RBAC is purely additive, the wildcard grant makes the narrow restriction meaningless.",
+    "at_fault_team": "backend-team",
+    "severity": "high",
+    "affected_decision_points": [
+      "team-backend:pods:get",
+      "team-backend:pods:list"
+    ]
   },
-  "conflicts": [
-    {
-      "conflict_type": "subsumption",
-      "decision_point": "team-backend:pods:get",
-      "subject": "backend-app-sa",
-      "narrow_policy": {
-        "role": "pod-reader",
-        "binding": "pod-reader-binding",
-        "owner": "security-team"
-      },
-      "overriding_policy": {
-        "role": "backend-full-access",
-        "binding": "backend-full-access-binding",
-        "owner": "backend-team"
-      },
-      "explanation": "Team 'security-team' granted a narrow permission (get on pods) via role 'pod-reader', but team 'backend-team' granted a wildcard permission via role 'backend-full-access' to the same subject 'backend-app-sa'. Since Kubernetes RBAC is purely additive, the wildcard grant makes the narrow restriction meaningless.",
-      "at_fault_team": "backend-team",
-      "severity": "high",
-      "affected_decision_points": [
-        "team-backend:pods:get",
-        "team-backend:pods:list"
-      ]
-    },
-    {
-      "conflict_type": "shadowing",
-      "policy_name": "allowed-image-repos",
-      "owner": "security-team",
-      "covered_namespaces": [
-        "team-security"
-      ],
-      "uncovered_namespaces": [
-        "team-backend",
-        "team-data"
-      ],
-      "explanation": "Team 'security-team' created the policy 'allowed-image-repos' (allowed image repos: ['mycompany.com/']), but it only applies to ['team-security']. The namespace(s) ['team-backend', 'team-data'] have no equivalent protection, even though they run similar workloads. Deployments in ['team-backend', 'team-data'] can silently bypass this security control.",
-      "at_fault_team": "security-team",
-      "severity": "high"
-    },
-    {
-      "conflict_type": "cross_domain_misalignment",
-      "rbac_grant": "trigger-data-jobs",
-      "rbac_owner": "backend-team",
-      "netpol_name": "default-deny-ingress",
-      "netpol_owner": "data-team",
-      "affected_namespace": "team-data",
-      "affected_subject": "team-backend/backend-app-sa",
-      "explanation": "Team 'backend-team' granted RBAC access (role 'trigger-data-jobs') for 'team-backend/backend-app-sa' to act in namespace 'team-data'. However, team 'data-team' has a default-deny NetworkPolicy ('default-deny-ingress') in that same namespace. RBAC authorization will succeed, but any actual network traffic will be silently dropped at the network layer \u2014 a misalignment between the control plane and data plane that neither team can see from their own policy alone.",
-      "at_fault_team": "cross-team coordination gap (backend-team + data-team)",
-      "severity": "medium"
-    }
-  ]
-}
+  {
+    "conflict_type": "shadowing",
+    "policy_name": "allowed-image-repos",
+    "owner": "security-team",
+    "covered_namespaces": [
+      "team-security"
+    ],
+    "uncovered_namespaces": [
+      "team-backend",
+      "team-data"
+    ],
+    "explanation": "Team 'security-team' created the policy 'allowed-image-repos' (allowed image repos: ['mycompany.com/']), but it only applies to ['team-security']. The namespace(s) ['team-backend', 'team-data'] have no equivalent protection, even though they run similar workloads. Deployments in ['team-backend', 'team-data'] can silently bypass this security control.",
+    "at_fault_team": "security-team",
+    "severity": "high"
+  },
+  {
+    "conflict_type": "contradiction",
+    "policy_name": "require-readonly-rootfs",
+    "policy_owner": "security-team",
+    "affected_namespace": "team-data",
+    "affected_pod": "data-app-test",
+    "workload_owner": "data-team",
+    "explanation": "Team 'security-team' enforces 'require-readonly-rootfs' (readOnlyRootFilesystem) in namespace 'team-data', but team 'data-team''s pod 'data-app-test' attempts to write to a path with no declared writable volume mount. The pod passes admission control but fails at runtime, and neither team can tell from their own policy alone that the other's requirement is the root cause.",
+    "at_fault_team": "both \u2014 policy and workload spec are individually valid but incompatible together",
+    "severity": "medium"
+  },
+  {
+    "conflict_type": "cross_domain_misalignment",
+    "rbac_grant": "trigger-data-jobs",
+    "rbac_owner": "backend-team",
+    "netpol_name": "default-deny-ingress",
+    "netpol_owner": "data-team",
+    "affected_namespace": "team-data",
+    "affected_subject": "team-backend/backend-app-sa",
+    "explanation": "Team 'backend-team' granted RBAC access (role 'trigger-data-jobs') for 'team-backend/backend-app-sa' to act in namespace 'team-data'. However, team 'data-team' has a default-deny NetworkPolicy ('default-deny-ingress') in that same namespace. RBAC authorization will succeed, but any actual network traffic will be silently dropped at the network layer \u2014 a misalignment between the control plane and data plane that neither team can see from their own policy alone.",
+    "at_fault_team": "cross-team coordination gap (backend-team + data-team)",
+    "severity": "medium"
+  }
+]

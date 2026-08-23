@@ -1,0 +1,21 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  labels:
+    cape-test-case: shadowing-neg-006
+    owner-team: team-alpha
+  name: img-policy-clean-shadowing-neg-006
+spec:
+  match:
+    kinds:
+    - apiGroups:
+      - ''
+      kinds:
+      - Pod
+    namespaces:
+    - shadow-ns-shadowing-neg-006-0
+    - shadow-ns-shadowing-neg-006-1
+    - shadow-ns-shadowing-neg-006-2
+  parameters:
+    repos:
+    - mycompany.com/

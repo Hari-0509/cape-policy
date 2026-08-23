@@ -1,0 +1,194 @@
+negative:
+- case_id: subsumption-neg-000
+  file: tests/corpus/subsumption-neg-000.yaml
+  namespace: ns-subsumption-neg-000
+  type: subsumption
+- case_id: subsumption-neg-001
+  file: tests/corpus/subsumption-neg-001.yaml
+  namespace: ns-subsumption-neg-001
+  type: subsumption
+- case_id: subsumption-neg-002
+  file: tests/corpus/subsumption-neg-002.yaml
+  namespace: ns-subsumption-neg-002
+  type: subsumption
+- case_id: subsumption-neg-003
+  file: tests/corpus/subsumption-neg-003.yaml
+  namespace: ns-subsumption-neg-003
+  type: subsumption
+- case_id: subsumption-neg-004
+  file: tests/corpus/subsumption-neg-004.yaml
+  namespace: ns-subsumption-neg-004
+  type: subsumption
+- case_id: subsumption-neg-005
+  file: tests/corpus/subsumption-neg-005.yaml
+  namespace: ns-subsumption-neg-005
+  type: subsumption
+- case_id: subsumption-neg-006
+  file: tests/corpus/subsumption-neg-006.yaml
+  namespace: ns-subsumption-neg-006
+  type: subsumption
+- case_id: subsumption-neg-007
+  file: tests/corpus/subsumption-neg-007.yaml
+  namespace: ns-subsumption-neg-007
+  type: subsumption
+- all_namespaces:
+  - shadow-ns-shadowing-neg-000-0
+  - shadow-ns-shadowing-neg-000-1
+  - shadow-ns-shadowing-neg-000-2
+  case_id: shadowing-neg-000
+  file: tests/corpus/shadowing-neg-000.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-001-0
+  - shadow-ns-shadowing-neg-001-1
+  - shadow-ns-shadowing-neg-001-2
+  case_id: shadowing-neg-001
+  file: tests/corpus/shadowing-neg-001.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-002-0
+  - shadow-ns-shadowing-neg-002-1
+  - shadow-ns-shadowing-neg-002-2
+  case_id: shadowing-neg-002
+  file: tests/corpus/shadowing-neg-002.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-003-0
+  - shadow-ns-shadowing-neg-003-1
+  - shadow-ns-shadowing-neg-003-2
+  case_id: shadowing-neg-003
+  file: tests/corpus/shadowing-neg-003.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-004-0
+  - shadow-ns-shadowing-neg-004-1
+  - shadow-ns-shadowing-neg-004-2
+  case_id: shadowing-neg-004
+  file: tests/corpus/shadowing-neg-004.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-005-0
+  - shadow-ns-shadowing-neg-005-1
+  - shadow-ns-shadowing-neg-005-2
+  case_id: shadowing-neg-005
+  file: tests/corpus/shadowing-neg-005.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-006-0
+  - shadow-ns-shadowing-neg-006-1
+  - shadow-ns-shadowing-neg-006-2
+  case_id: shadowing-neg-006
+  file: tests/corpus/shadowing-neg-006.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-007-0
+  - shadow-ns-shadowing-neg-007-1
+  - shadow-ns-shadowing-neg-007-2
+  case_id: shadowing-neg-007
+  file: tests/corpus/shadowing-neg-007.yaml
+  type: shadowing
+positive:
+- case_id: subsumption-pos-000
+  file: tests/corpus/subsumption-pos-000.yaml
+  namespace: ns-subsumption-pos-000
+  type: subsumption
+- case_id: subsumption-pos-001
+  file: tests/corpus/subsumption-pos-001.yaml
+  namespace: ns-subsumption-pos-001
+  type: subsumption
+- case_id: subsumption-pos-002
+  file: tests/corpus/subsumption-pos-002.yaml
+  namespace: ns-subsumption-pos-002
+  type: subsumption
+- case_id: subsumption-pos-003
+  file: tests/corpus/subsumption-pos-003.yaml
+  namespace: ns-subsumption-pos-003
+  type: subsumption
+- case_id: subsumption-pos-004
+  file: tests/corpus/subsumption-pos-004.yaml
+  namespace: ns-subsumption-pos-004
+  type: subsumption
+- case_id: subsumption-pos-005
+  file: tests/corpus/subsumption-pos-005.yaml
+  namespace: ns-subsumption-pos-005
+  type: subsumption
+- case_id: subsumption-pos-006
+  file: tests/corpus/subsumption-pos-006.yaml
+  namespace: ns-subsumption-pos-006
+  type: subsumption
+- case_id: subsumption-pos-007
+  file: tests/corpus/subsumption-pos-007.yaml
+  namespace: ns-subsumption-pos-007
+  type: subsumption
+- all_namespaces:
+  - shadow-ns-shadowing-pos-000-0
+  - shadow-ns-shadowing-pos-000-1
+  - shadow-ns-shadowing-pos-000-2
+  case_id: shadowing-pos-000
+  covered:
+  - shadow-ns-shadowing-pos-000-0
+  file: tests/corpus/shadowing-pos-000.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-001-0
+  - shadow-ns-shadowing-pos-001-1
+  - shadow-ns-shadowing-pos-001-2
+  case_id: shadowing-pos-001
+  covered:
+  - shadow-ns-shadowing-pos-001-0
+  file: tests/corpus/shadowing-pos-001.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-002-0
+  - shadow-ns-shadowing-pos-002-1
+  - shadow-ns-shadowing-pos-002-2
+  case_id: shadowing-pos-002
+  covered:
+  - shadow-ns-shadowing-pos-002-0
+  file: tests/corpus/shadowing-pos-002.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-003-0
+  - shadow-ns-shadowing-pos-003-1
+  - shadow-ns-shadowing-pos-003-2
+  case_id: shadowing-pos-003
+  covered:
+  - shadow-ns-shadowing-pos-003-0
+  file: tests/corpus/shadowing-pos-003.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-004-0
+  - shadow-ns-shadowing-pos-004-1
+  - shadow-ns-shadowing-pos-004-2
+  case_id: shadowing-pos-004
+  covered:
+  - shadow-ns-shadowing-pos-004-0
+  file: tests/corpus/shadowing-pos-004.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-005-0
+  - shadow-ns-shadowing-pos-005-1
+  - shadow-ns-shadowing-pos-005-2
+  case_id: shadowing-pos-005
+  covered:
+  - shadow-ns-shadowing-pos-005-0
+  file: tests/corpus/shadowing-pos-005.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-006-0
+  - shadow-ns-shadowing-pos-006-1
+  - shadow-ns-shadowing-pos-006-2
+  case_id: shadowing-pos-006
+  covered:
+  - shadow-ns-shadowing-pos-006-0
+  file: tests/corpus/shadowing-pos-006.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-007-0
+  - shadow-ns-shadowing-pos-007-1
+  - shadow-ns-shadowing-pos-007-2
+  case_id: shadowing-pos-007
+  covered:
+  - shadow-ns-shadowing-pos-007-0
+  file: tests/corpus/shadowing-pos-007.yaml
+  type: shadowing
