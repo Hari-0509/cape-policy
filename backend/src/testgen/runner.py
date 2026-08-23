@@ -111,9 +111,14 @@ def scan_for_case(case):
     if subsumption_conflicts:
         detected_types.add("subsumption")
 
-    all_namespaces = list(set(
-        [r["namespace"] for r in scoped["rbac_roles"] if r["namespace"]]
-    ))
+    # Use the case's own declared namespace list for shadowing checks,
+    # since shadowing cases have no RBAC data to infer namespaces from.
+    if case["type"] == "shadowing":
+        all_namespaces = case.get("all_namespaces", [])
+    else:
+        all_namespaces = list(set(
+            [r["namespace"] for r in scoped["rbac_roles"] if r["namespace"]]
+        ))
     shadowing_conflicts = detect_shadowing(scoped["gatekeeper_constraints"], all_namespaces)
     if shadowing_conflicts:
         detected_types.add("shadowing")
