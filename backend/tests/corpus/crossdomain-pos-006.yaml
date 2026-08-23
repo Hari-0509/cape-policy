@@ -38,7 +38,7 @@ kind: NetworkPolicy
 metadata:
   labels:
     cape-test-case: crossdomain-pos-006
-    owner-team: team-alpha
+    owner-team: team-epsilon
   name: deny-ingress-crossdomain-pos-006
   namespace: tgt-ns-crossdomain-pos-006
 spec:

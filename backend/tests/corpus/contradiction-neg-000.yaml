@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   labels:
     cape-test-case: contradiction-neg-000
-    owner-team: team-epsilon
+    owner-team: team-alpha
   name: readonly-fs-clean-contradiction-neg-000
 spec:
   background: false
@@ -30,7 +30,7 @@ kind: Pod
 metadata:
   labels:
     cape-test-case: contradiction-neg-000
-    owner-team: team-alpha
+    owner-team: team-beta
   name: workload-clean-contradiction-neg-000
   namespace: contra-ns-contradiction-neg-000
 spec:

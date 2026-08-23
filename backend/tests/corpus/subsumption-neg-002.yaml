@@ -3,14 +3,14 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-neg-002
-    owner-team: team-alpha
+    owner-team: team-delta
   name: clean-role-a-subsumption-neg-002
   namespace: ns-subsumption-neg-002
 rules:
 - apiGroups:
   - ''
   resources:
-  - deployments
+  - pods
   verbs:
   - get
   - list
@@ -20,7 +20,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-neg-002
-    owner-team: team-alpha
+    owner-team: team-delta
   name: clean-binding-a-subsumption-neg-002
   namespace: ns-subsumption-neg-002
 roleRef:
@@ -37,14 +37,14 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-neg-002
-    owner-team: team-beta
+    owner-team: team-gamma
   name: clean-role-b-subsumption-neg-002
   namespace: ns-subsumption-neg-002
 rules:
 - apiGroups:
   - ''
   resources:
-  - configmaps
+  - services
   verbs:
   - get
   - list
@@ -54,7 +54,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-neg-002
-    owner-team: team-beta
+    owner-team: team-gamma
   name: clean-binding-b-subsumption-neg-002
   namespace: ns-subsumption-neg-002
 roleRef:

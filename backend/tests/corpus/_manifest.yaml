@@ -31,6 +31,26 @@ negative:
   file: tests/corpus/subsumption-neg-007.yaml
   namespace: ns-subsumption-neg-007
   type: subsumption
+- case_id: subsumption-neg-008
+  file: tests/corpus/subsumption-neg-008.yaml
+  namespace: ns-subsumption-neg-008
+  type: subsumption
+- case_id: subsumption-neg-009
+  file: tests/corpus/subsumption-neg-009.yaml
+  namespace: ns-subsumption-neg-009
+  type: subsumption
+- case_id: subsumption-neg-010
+  file: tests/corpus/subsumption-neg-010.yaml
+  namespace: ns-subsumption-neg-010
+  type: subsumption
+- case_id: subsumption-neg-011
+  file: tests/corpus/subsumption-neg-011.yaml
+  namespace: ns-subsumption-neg-011
+  type: subsumption
+- case_id: subsumption-neg-012
+  file: tests/corpus/subsumption-neg-012.yaml
+  namespace: ns-subsumption-neg-012
+  type: subsumption
 - all_namespaces:
   - shadow-ns-shadowing-neg-000-0
   - shadow-ns-shadowing-neg-000-1
@@ -87,6 +107,41 @@ negative:
   case_id: shadowing-neg-007
   file: tests/corpus/shadowing-neg-007.yaml
   type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-008-0
+  - shadow-ns-shadowing-neg-008-1
+  - shadow-ns-shadowing-neg-008-2
+  case_id: shadowing-neg-008
+  file: tests/corpus/shadowing-neg-008.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-009-0
+  - shadow-ns-shadowing-neg-009-1
+  - shadow-ns-shadowing-neg-009-2
+  case_id: shadowing-neg-009
+  file: tests/corpus/shadowing-neg-009.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-010-0
+  - shadow-ns-shadowing-neg-010-1
+  - shadow-ns-shadowing-neg-010-2
+  case_id: shadowing-neg-010
+  file: tests/corpus/shadowing-neg-010.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-011-0
+  - shadow-ns-shadowing-neg-011-1
+  - shadow-ns-shadowing-neg-011-2
+  case_id: shadowing-neg-011
+  file: tests/corpus/shadowing-neg-011.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-neg-012-0
+  - shadow-ns-shadowing-neg-012-1
+  - shadow-ns-shadowing-neg-012-2
+  case_id: shadowing-neg-012
+  file: tests/corpus/shadowing-neg-012.yaml
+  type: shadowing
 - case_id: crossdomain-neg-000
   file: tests/corpus/crossdomain-neg-000.yaml
   source_ns: src-ns-crossdomain-neg-000
@@ -126,6 +181,31 @@ negative:
   file: tests/corpus/crossdomain-neg-007.yaml
   source_ns: src-ns-crossdomain-neg-007
   target_ns: tgt-ns-crossdomain-neg-007
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-008
+  file: tests/corpus/crossdomain-neg-008.yaml
+  source_ns: src-ns-crossdomain-neg-008
+  target_ns: tgt-ns-crossdomain-neg-008
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-009
+  file: tests/corpus/crossdomain-neg-009.yaml
+  source_ns: src-ns-crossdomain-neg-009
+  target_ns: tgt-ns-crossdomain-neg-009
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-010
+  file: tests/corpus/crossdomain-neg-010.yaml
+  source_ns: src-ns-crossdomain-neg-010
+  target_ns: tgt-ns-crossdomain-neg-010
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-011
+  file: tests/corpus/crossdomain-neg-011.yaml
+  source_ns: src-ns-crossdomain-neg-011
+  target_ns: tgt-ns-crossdomain-neg-011
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-012
+  file: tests/corpus/crossdomain-neg-012.yaml
+  source_ns: src-ns-crossdomain-neg-012
+  target_ns: tgt-ns-crossdomain-neg-012
   type: cross_domain_misalignment
 - case_id: contradiction-neg-000
   file: tests/corpus/contradiction-neg-000.yaml
@@ -167,6 +247,31 @@ negative:
   namespace: contra-ns-contradiction-neg-007
   requires_runtime_check: true
   type: contradiction
+- case_id: contradiction-neg-008
+  file: tests/corpus/contradiction-neg-008.yaml
+  namespace: contra-ns-contradiction-neg-008
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-009
+  file: tests/corpus/contradiction-neg-009.yaml
+  namespace: contra-ns-contradiction-neg-009
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-010
+  file: tests/corpus/contradiction-neg-010.yaml
+  namespace: contra-ns-contradiction-neg-010
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-011
+  file: tests/corpus/contradiction-neg-011.yaml
+  namespace: contra-ns-contradiction-neg-011
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-012
+  file: tests/corpus/contradiction-neg-012.yaml
+  namespace: contra-ns-contradiction-neg-012
+  requires_runtime_check: true
+  type: contradiction
 positive:
 - case_id: subsumption-pos-000
   file: tests/corpus/subsumption-pos-000.yaml
@@ -199,6 +304,26 @@ positive:
 - case_id: subsumption-pos-007
   file: tests/corpus/subsumption-pos-007.yaml
   namespace: ns-subsumption-pos-007
+  type: subsumption
+- case_id: subsumption-pos-008
+  file: tests/corpus/subsumption-pos-008.yaml
+  namespace: ns-subsumption-pos-008
+  type: subsumption
+- case_id: subsumption-pos-009
+  file: tests/corpus/subsumption-pos-009.yaml
+  namespace: ns-subsumption-pos-009
+  type: subsumption
+- case_id: subsumption-pos-010
+  file: tests/corpus/subsumption-pos-010.yaml
+  namespace: ns-subsumption-pos-010
+  type: subsumption
+- case_id: subsumption-pos-011
+  file: tests/corpus/subsumption-pos-011.yaml
+  namespace: ns-subsumption-pos-011
+  type: subsumption
+- case_id: subsumption-pos-012
+  file: tests/corpus/subsumption-pos-012.yaml
+  namespace: ns-subsumption-pos-012
   type: subsumption
 - all_namespaces:
   - shadow-ns-shadowing-pos-000-0
@@ -272,6 +397,51 @@ positive:
   - shadow-ns-shadowing-pos-007-0
   file: tests/corpus/shadowing-pos-007.yaml
   type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-008-0
+  - shadow-ns-shadowing-pos-008-1
+  - shadow-ns-shadowing-pos-008-2
+  case_id: shadowing-pos-008
+  covered:
+  - shadow-ns-shadowing-pos-008-0
+  file: tests/corpus/shadowing-pos-008.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-009-0
+  - shadow-ns-shadowing-pos-009-1
+  - shadow-ns-shadowing-pos-009-2
+  case_id: shadowing-pos-009
+  covered:
+  - shadow-ns-shadowing-pos-009-0
+  file: tests/corpus/shadowing-pos-009.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-010-0
+  - shadow-ns-shadowing-pos-010-1
+  - shadow-ns-shadowing-pos-010-2
+  case_id: shadowing-pos-010
+  covered:
+  - shadow-ns-shadowing-pos-010-0
+  file: tests/corpus/shadowing-pos-010.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-011-0
+  - shadow-ns-shadowing-pos-011-1
+  - shadow-ns-shadowing-pos-011-2
+  case_id: shadowing-pos-011
+  covered:
+  - shadow-ns-shadowing-pos-011-0
+  file: tests/corpus/shadowing-pos-011.yaml
+  type: shadowing
+- all_namespaces:
+  - shadow-ns-shadowing-pos-012-0
+  - shadow-ns-shadowing-pos-012-1
+  - shadow-ns-shadowing-pos-012-2
+  case_id: shadowing-pos-012
+  covered:
+  - shadow-ns-shadowing-pos-012-0
+  file: tests/corpus/shadowing-pos-012.yaml
+  type: shadowing
 - case_id: crossdomain-pos-000
   file: tests/corpus/crossdomain-pos-000.yaml
   source_ns: src-ns-crossdomain-pos-000
@@ -312,6 +482,31 @@ positive:
   source_ns: src-ns-crossdomain-pos-007
   target_ns: tgt-ns-crossdomain-pos-007
   type: cross_domain_misalignment
+- case_id: crossdomain-pos-008
+  file: tests/corpus/crossdomain-pos-008.yaml
+  source_ns: src-ns-crossdomain-pos-008
+  target_ns: tgt-ns-crossdomain-pos-008
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-009
+  file: tests/corpus/crossdomain-pos-009.yaml
+  source_ns: src-ns-crossdomain-pos-009
+  target_ns: tgt-ns-crossdomain-pos-009
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-010
+  file: tests/corpus/crossdomain-pos-010.yaml
+  source_ns: src-ns-crossdomain-pos-010
+  target_ns: tgt-ns-crossdomain-pos-010
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-011
+  file: tests/corpus/crossdomain-pos-011.yaml
+  source_ns: src-ns-crossdomain-pos-011
+  target_ns: tgt-ns-crossdomain-pos-011
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-012
+  file: tests/corpus/crossdomain-pos-012.yaml
+  source_ns: src-ns-crossdomain-pos-012
+  target_ns: tgt-ns-crossdomain-pos-012
+  type: cross_domain_misalignment
 - case_id: contradiction-pos-000
   file: tests/corpus/contradiction-pos-000.yaml
   namespace: contra-ns-contradiction-pos-000
@@ -350,5 +545,30 @@ positive:
 - case_id: contradiction-pos-007
   file: tests/corpus/contradiction-pos-007.yaml
   namespace: contra-ns-contradiction-pos-007
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-008
+  file: tests/corpus/contradiction-pos-008.yaml
+  namespace: contra-ns-contradiction-pos-008
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-009
+  file: tests/corpus/contradiction-pos-009.yaml
+  namespace: contra-ns-contradiction-pos-009
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-010
+  file: tests/corpus/contradiction-pos-010.yaml
+  namespace: contra-ns-contradiction-pos-010
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-011
+  file: tests/corpus/contradiction-pos-011.yaml
+  namespace: contra-ns-contradiction-pos-011
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-012
+  file: tests/corpus/contradiction-pos-012.yaml
+  namespace: contra-ns-contradiction-pos-012
   requires_runtime_check: true
   type: contradiction

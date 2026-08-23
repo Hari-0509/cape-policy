@@ -3,14 +3,14 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-pos-005
-    owner-team: team-beta
+    owner-team: team-delta
   name: narrow-role-subsumption-pos-005
   namespace: ns-subsumption-pos-005
 rules:
 - apiGroups:
   - ''
   resources:
-  - secrets
+  - deployments
   verbs:
   - get
   - list
@@ -20,7 +20,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-pos-005
-    owner-team: team-beta
+    owner-team: team-delta
   name: narrow-binding-subsumption-pos-005
   namespace: ns-subsumption-pos-005
 roleRef:
@@ -37,14 +37,14 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-pos-005
-    owner-team: team-delta
+    owner-team: team-epsilon
   name: broad-role-subsumption-pos-005
   namespace: ns-subsumption-pos-005
 rules:
 - apiGroups:
   - ''
   resources:
-  - secrets
+  - deployments
   verbs:
   - '*'
 ---
@@ -53,7 +53,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-pos-005
-    owner-team: team-delta
+    owner-team: team-epsilon
   name: broad-binding-subsumption-pos-005
   namespace: ns-subsumption-pos-005
 roleRef:

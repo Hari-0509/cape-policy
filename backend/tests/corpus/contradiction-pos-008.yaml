@@ -1,0 +1,45 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  labels:
+    cape-test-case: contradiction-pos-008
+    owner-team: team-delta
+  name: readonly-fs-contradiction-pos-008
+spec:
+  background: false
+  rules:
+  - match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+          namespaces:
+          - contra-ns-contradiction-pos-008
+    name: check-readonly-rootfs
+    validate:
+      message: readOnlyRootFilesystem must be true
+      pattern:
+        spec:
+          containers:
+          - securityContext:
+              readOnlyRootFilesystem: true
+  validationFailureAction: Enforce
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    cape-test-case: contradiction-pos-008
+    owner-team: team-gamma
+  name: workload-contradiction-pos-008
+  namespace: contra-ns-contradiction-pos-008
+spec:
+  containers:
+  - command:
+    - sh
+    - -c
+    - echo test > /tmp/scratch/file.txt && sleep 3600
+    image: docker.io/busybox:latest
+    name: app
+    securityContext:
+      readOnlyRootFilesystem: true

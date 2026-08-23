@@ -10,7 +10,7 @@ rules:
 - apiGroups:
   - ''
   resources:
-  - pods
+  - deployments
   verbs:
   - get
   - list
@@ -37,14 +37,14 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-neg-004
-    owner-team: team-alpha
+    owner-team: team-beta
   name: clean-role-b-subsumption-neg-004
   namespace: ns-subsumption-neg-004
 rules:
 - apiGroups:
   - ''
   resources:
-  - deployments
+  - configmaps
   verbs:
   - get
   - list
@@ -54,7 +54,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-neg-004
-    owner-team: team-alpha
+    owner-team: team-beta
   name: clean-binding-b-subsumption-neg-004
   namespace: ns-subsumption-neg-004
 roleRef:

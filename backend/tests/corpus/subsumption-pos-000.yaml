@@ -10,7 +10,7 @@ rules:
 - apiGroups:
   - ''
   resources:
-  - configmaps
+  - deployments
   verbs:
   - get
   - list
@@ -44,7 +44,7 @@ rules:
 - apiGroups:
   - ''
   resources:
-  - configmaps
+  - deployments
   verbs:
   - '*'
 ---

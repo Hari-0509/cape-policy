@@ -1,0 +1,67 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    cape-test-case: subsumption-neg-008
+    owner-team: team-epsilon
+  name: clean-role-a-subsumption-neg-008
+  namespace: ns-subsumption-neg-008
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    cape-test-case: subsumption-neg-008
+    owner-team: team-epsilon
+  name: clean-binding-a-subsumption-neg-008
+  namespace: ns-subsumption-neg-008
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: clean-role-a-subsumption-neg-008
+subjects:
+- kind: ServiceAccount
+  name: app-sa-a-subsumption-neg-008
+  namespace: ns-subsumption-neg-008
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    cape-test-case: subsumption-neg-008
+    owner-team: team-delta
+  name: clean-role-b-subsumption-neg-008
+  namespace: ns-subsumption-neg-008
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    cape-test-case: subsumption-neg-008
+    owner-team: team-delta
+  name: clean-binding-b-subsumption-neg-008
+  namespace: ns-subsumption-neg-008
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: clean-role-b-subsumption-neg-008
+subjects:
+- kind: ServiceAccount
+  name: app-sa-b-subsumption-neg-008
+  namespace: ns-subsumption-neg-008

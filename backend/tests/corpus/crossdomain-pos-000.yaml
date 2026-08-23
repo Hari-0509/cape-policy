@@ -3,7 +3,7 @@ kind: Role
 metadata:
   labels:
     cape-test-case: crossdomain-pos-000
-    owner-team: team-alpha
+    owner-team: team-delta
   name: cross-role-crossdomain-pos-000
   namespace: tgt-ns-crossdomain-pos-000
 rules:
@@ -21,7 +21,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: crossdomain-pos-000
-    owner-team: team-alpha
+    owner-team: team-delta
   name: cross-binding-crossdomain-pos-000
   namespace: tgt-ns-crossdomain-pos-000
 roleRef:
@@ -38,7 +38,7 @@ kind: NetworkPolicy
 metadata:
   labels:
     cape-test-case: crossdomain-pos-000
-    owner-team: team-delta
+    owner-team: team-gamma
   name: deny-ingress-crossdomain-pos-000
   namespace: tgt-ns-crossdomain-pos-000
 spec:

@@ -38,7 +38,7 @@ kind: NetworkPolicy
 metadata:
   labels:
     cape-test-case: crossdomain-neg-007
-    owner-team: team-beta
+    owner-team: team-alpha
   name: allow-ingress-crossdomain-neg-007
   namespace: tgt-ns-crossdomain-neg-007
 spec:

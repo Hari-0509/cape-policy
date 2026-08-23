@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   labels:
     cape-test-case: contradiction-pos-002
-    owner-team: team-epsilon
+    owner-team: team-beta
   name: readonly-fs-contradiction-pos-002
 spec:
   background: false

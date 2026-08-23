@@ -113,7 +113,7 @@ def make_gatekeeper_clean_case(case_id, team_a, all_namespaces):
     }]
 
 
-def generate_corpus(n_positive_per_type=8, n_negative_per_type=8):
+def generate_corpus(n_positive_per_type=13, n_negative_per_type=13):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     manifest = {"positive": [], "negative": []}
 
@@ -358,4 +358,4 @@ def make_contradiction_clean_case(case_id, team_a, team_b, namespace, write_path
 
 
 if __name__ == "__main__":
-    generate_corpus(n_positive_per_type=8, n_negative_per_type=8)
+    generate_corpus(n_positive_per_type=13, n_negative_per_type=13)
