@@ -10,7 +10,7 @@ rules:
 - apiGroups:
   - ''
   resources:
-  - deployments
+  - configmaps
   verbs:
   - get
   - list
@@ -37,14 +37,14 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-pos-000
-    owner-team: team-delta
+    owner-team: team-epsilon
   name: broad-role-subsumption-pos-000
   namespace: ns-subsumption-pos-000
 rules:
 - apiGroups:
   - ''
   resources:
-  - deployments
+  - configmaps
   verbs:
   - '*'
 ---
@@ -53,7 +53,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-pos-000
-    owner-team: team-delta
+    owner-team: team-epsilon
   name: broad-binding-subsumption-pos-000
   namespace: ns-subsumption-pos-000
 roleRef:

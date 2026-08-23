@@ -1,0 +1,47 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    cape-test-case: crossdomain-pos-003
+    owner-team: team-alpha
+  name: cross-role-crossdomain-pos-003
+  namespace: tgt-ns-crossdomain-pos-003
+rules:
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  verbs:
+  - create
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    cape-test-case: crossdomain-pos-003
+    owner-team: team-alpha
+  name: cross-binding-crossdomain-pos-003
+  namespace: tgt-ns-crossdomain-pos-003
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cross-role-crossdomain-pos-003
+subjects:
+- kind: ServiceAccount
+  name: cross-sa-crossdomain-pos-003
+  namespace: src-ns-crossdomain-pos-003
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    cape-test-case: crossdomain-pos-003
+    owner-team: team-delta
+  name: deny-ingress-crossdomain-pos-003
+  namespace: tgt-ns-crossdomain-pos-003
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress

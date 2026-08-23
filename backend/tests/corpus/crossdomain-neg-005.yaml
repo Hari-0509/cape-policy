@@ -1,0 +1,52 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    cape-test-case: crossdomain-neg-005
+    owner-team: team-gamma
+  name: cross-role-clean-crossdomain-neg-005
+  namespace: tgt-ns-crossdomain-neg-005
+rules:
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  verbs:
+  - create
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    cape-test-case: crossdomain-neg-005
+    owner-team: team-gamma
+  name: cross-binding-clean-crossdomain-neg-005
+  namespace: tgt-ns-crossdomain-neg-005
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cross-role-clean-crossdomain-neg-005
+subjects:
+- kind: ServiceAccount
+  name: cross-sa-clean-crossdomain-neg-005
+  namespace: src-ns-crossdomain-neg-005
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    cape-test-case: crossdomain-neg-005
+    owner-team: team-beta
+  name: allow-ingress-crossdomain-neg-005
+  namespace: tgt-ns-crossdomain-neg-005
+spec:
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: src-ns-crossdomain-neg-005
+  podSelector: {}
+  policyTypes:
+  - Ingress

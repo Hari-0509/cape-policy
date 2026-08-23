@@ -3,7 +3,7 @@ kind: K8sAllowedRepos
 metadata:
   labels:
     cape-test-case: shadowing-neg-003
-    owner-team: team-beta
+    owner-team: team-gamma
   name: img-policy-clean-shadowing-neg-003
 spec:
   match:

@@ -3,14 +3,14 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-neg-007
-    owner-team: team-beta
+    owner-team: team-epsilon
   name: clean-role-a-subsumption-neg-007
   namespace: ns-subsumption-neg-007
 rules:
 - apiGroups:
   - ''
   resources:
-  - services
+  - deployments
   verbs:
   - get
   - list
@@ -20,7 +20,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-neg-007
-    owner-team: team-beta
+    owner-team: team-epsilon
   name: clean-binding-a-subsumption-neg-007
   namespace: ns-subsumption-neg-007
 roleRef:
@@ -44,7 +44,7 @@ rules:
 - apiGroups:
   - ''
   resources:
-  - deployments
+  - secrets
   verbs:
   - get
   - list

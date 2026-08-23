@@ -163,6 +163,31 @@ def generate_corpus(n_positive_per_type=8, n_negative_per_type=8):
         manifest["negative"].append({"case_id": case_id, "type": "shadowing",
                                        "all_namespaces": all_ns, "file": path})
 
+    # --- Cross-Domain Misalignment: positive + negative ---
+    for i in range(n_positive_per_type):
+        case_id = f"crossdomain-pos-{i:03d}"
+        team_a, team_b = random.sample(TEAMS, 2)
+        source_ns = f"src-ns-{case_id}"
+        target_ns = f"tgt-ns-{case_id}"
+        docs = make_cross_domain_positive_case(case_id, team_a, team_b, source_ns, target_ns)
+        path = os.path.join(OUTPUT_DIR, f"{case_id}.yaml")
+        with open(path, "w") as f:
+            yaml.dump_all(docs, f)
+        manifest["positive"].append({"case_id": case_id, "type": "cross_domain_misalignment",
+                                       "source_ns": source_ns, "target_ns": target_ns, "file": path})
+
+    for i in range(n_negative_per_type):
+        case_id = f"crossdomain-neg-{i:03d}"
+        team_a, team_b = random.sample(TEAMS, 2)
+        source_ns = f"src-ns-{case_id}"
+        target_ns = f"tgt-ns-{case_id}"
+        docs = make_cross_domain_clean_case(case_id, team_a, team_b, source_ns, target_ns)
+        path = os.path.join(OUTPUT_DIR, f"{case_id}.yaml")
+        with open(path, "w") as f:
+            yaml.dump_all(docs, f)
+        manifest["negative"].append({"case_id": case_id, "type": "cross_domain_misalignment",
+                                       "source_ns": source_ns, "target_ns": target_ns, "file": path})
+
     # Save manifest for the test runner to use
     with open(os.path.join(OUTPUT_DIR, "_manifest.yaml"), "w") as f:
         yaml.dump(manifest, f)
@@ -171,6 +196,66 @@ def generate_corpus(n_positive_per_type=8, n_negative_per_type=8):
     print(f"Generated {len(manifest['negative'])} negative cases")
     print(f"Manifest saved to {OUTPUT_DIR}/_manifest.yaml")
     return manifest
+
+
+
+
+def make_cross_domain_positive_case(case_id, team_a, team_b, source_ns, target_ns):
+    """POSITIVE case: RBAC grants cross-namespace access, NetworkPolicy blocks it."""
+    subject_sa = f"cross-sa-{case_id}"
+    docs = [
+        {
+            "apiVersion": "rbac.authorization.k8s.io/v1", "kind": "Role",
+            "metadata": {"name": f"cross-role-{case_id}", "namespace": target_ns,
+                         "labels": {"owner-team": team_a, "cape-test-case": case_id}},
+            "rules": [{"apiGroups": ["batch"], "resources": ["jobs"], "verbs": ["create", "get", "list"]}],
+        },
+        {
+            "apiVersion": "rbac.authorization.k8s.io/v1", "kind": "RoleBinding",
+            "metadata": {"name": f"cross-binding-{case_id}", "namespace": target_ns,
+                         "labels": {"owner-team": team_a, "cape-test-case": case_id}},
+            "subjects": [{"kind": "ServiceAccount", "name": subject_sa, "namespace": source_ns}],
+            "roleRef": {"kind": "Role", "name": f"cross-role-{case_id}", "apiGroup": "rbac.authorization.k8s.io"},
+        },
+        {
+            "apiVersion": "networking.k8s.io/v1", "kind": "NetworkPolicy",
+            "metadata": {"name": f"deny-ingress-{case_id}", "namespace": target_ns,
+                         "labels": {"owner-team": team_b, "cape-test-case": case_id}},
+            "spec": {"podSelector": {}, "policyTypes": ["Ingress"]},
+        },
+    ]
+    return docs
+
+
+def make_cross_domain_clean_case(case_id, team_a, team_b, source_ns, target_ns):
+    """NEGATIVE case: RBAC grants cross-namespace access, but NetworkPolicy explicitly
+    allows ingress from the granting namespace — no misalignment."""
+    subject_sa = f"cross-sa-clean-{case_id}"
+    docs = [
+        {
+            "apiVersion": "rbac.authorization.k8s.io/v1", "kind": "Role",
+            "metadata": {"name": f"cross-role-clean-{case_id}", "namespace": target_ns,
+                         "labels": {"owner-team": team_a, "cape-test-case": case_id}},
+            "rules": [{"apiGroups": ["batch"], "resources": ["jobs"], "verbs": ["create", "get", "list"]}],
+        },
+        {
+            "apiVersion": "rbac.authorization.k8s.io/v1", "kind": "RoleBinding",
+            "metadata": {"name": f"cross-binding-clean-{case_id}", "namespace": target_ns,
+                         "labels": {"owner-team": team_a, "cape-test-case": case_id}},
+            "subjects": [{"kind": "ServiceAccount", "name": subject_sa, "namespace": source_ns}],
+            "roleRef": {"kind": "Role", "name": f"cross-role-clean-{case_id}", "apiGroup": "rbac.authorization.k8s.io"},
+        },
+        {
+            "apiVersion": "networking.k8s.io/v1", "kind": "NetworkPolicy",
+            "metadata": {"name": f"allow-ingress-{case_id}", "namespace": target_ns,
+                         "labels": {"owner-team": team_b, "cape-test-case": case_id}},
+            "spec": {
+                "podSelector": {}, "policyTypes": ["Ingress"],
+                "ingress": [{"from": [{"namespaceSelector": {"matchLabels": {"kubernetes.io/metadata.name": source_ns}}}]}],
+            },
+        },
+    ]
+    return docs
 
 
 if __name__ == "__main__":

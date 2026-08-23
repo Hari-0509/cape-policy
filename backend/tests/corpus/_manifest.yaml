@@ -87,6 +87,46 @@ negative:
   case_id: shadowing-neg-007
   file: tests/corpus/shadowing-neg-007.yaml
   type: shadowing
+- case_id: crossdomain-neg-000
+  file: tests/corpus/crossdomain-neg-000.yaml
+  source_ns: src-ns-crossdomain-neg-000
+  target_ns: tgt-ns-crossdomain-neg-000
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-001
+  file: tests/corpus/crossdomain-neg-001.yaml
+  source_ns: src-ns-crossdomain-neg-001
+  target_ns: tgt-ns-crossdomain-neg-001
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-002
+  file: tests/corpus/crossdomain-neg-002.yaml
+  source_ns: src-ns-crossdomain-neg-002
+  target_ns: tgt-ns-crossdomain-neg-002
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-003
+  file: tests/corpus/crossdomain-neg-003.yaml
+  source_ns: src-ns-crossdomain-neg-003
+  target_ns: tgt-ns-crossdomain-neg-003
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-004
+  file: tests/corpus/crossdomain-neg-004.yaml
+  source_ns: src-ns-crossdomain-neg-004
+  target_ns: tgt-ns-crossdomain-neg-004
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-005
+  file: tests/corpus/crossdomain-neg-005.yaml
+  source_ns: src-ns-crossdomain-neg-005
+  target_ns: tgt-ns-crossdomain-neg-005
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-006
+  file: tests/corpus/crossdomain-neg-006.yaml
+  source_ns: src-ns-crossdomain-neg-006
+  target_ns: tgt-ns-crossdomain-neg-006
+  type: cross_domain_misalignment
+- case_id: crossdomain-neg-007
+  file: tests/corpus/crossdomain-neg-007.yaml
+  source_ns: src-ns-crossdomain-neg-007
+  target_ns: tgt-ns-crossdomain-neg-007
+  type: cross_domain_misalignment
 positive:
 - case_id: subsumption-pos-000
   file: tests/corpus/subsumption-pos-000.yaml
@@ -192,3 +232,43 @@ positive:
   - shadow-ns-shadowing-pos-007-0
   file: tests/corpus/shadowing-pos-007.yaml
   type: shadowing
+- case_id: crossdomain-pos-000
+  file: tests/corpus/crossdomain-pos-000.yaml
+  source_ns: src-ns-crossdomain-pos-000
+  target_ns: tgt-ns-crossdomain-pos-000
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-001
+  file: tests/corpus/crossdomain-pos-001.yaml
+  source_ns: src-ns-crossdomain-pos-001
+  target_ns: tgt-ns-crossdomain-pos-001
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-002
+  file: tests/corpus/crossdomain-pos-002.yaml
+  source_ns: src-ns-crossdomain-pos-002
+  target_ns: tgt-ns-crossdomain-pos-002
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-003
+  file: tests/corpus/crossdomain-pos-003.yaml
+  source_ns: src-ns-crossdomain-pos-003
+  target_ns: tgt-ns-crossdomain-pos-003
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-004
+  file: tests/corpus/crossdomain-pos-004.yaml
+  source_ns: src-ns-crossdomain-pos-004
+  target_ns: tgt-ns-crossdomain-pos-004
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-005
+  file: tests/corpus/crossdomain-pos-005.yaml
+  source_ns: src-ns-crossdomain-pos-005
+  target_ns: tgt-ns-crossdomain-pos-005
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-006
+  file: tests/corpus/crossdomain-pos-006.yaml
+  source_ns: src-ns-crossdomain-pos-006
+  target_ns: tgt-ns-crossdomain-pos-006
+  type: cross_domain_misalignment
+- case_id: crossdomain-pos-007
+  file: tests/corpus/crossdomain-pos-007.yaml
+  source_ns: src-ns-crossdomain-pos-007
+  target_ns: tgt-ns-crossdomain-pos-007
+  type: cross_domain_misalignment

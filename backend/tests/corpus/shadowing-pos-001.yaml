@@ -3,7 +3,7 @@ kind: K8sAllowedRepos
 metadata:
   labels:
     cape-test-case: shadowing-pos-001
-    owner-team: team-delta
+    owner-team: team-epsilon
   name: img-policy-shadowing-pos-001
 spec:
   match:
