@@ -4,7 +4,106 @@
     "subsumption-pos-001",
     "subsumption-pos-002",
     "subsumption-pos-003",
-    "subsumption-pos-004"
+    "subsumption-pos-004",
+    "subsumption-pos-005",
+    "subsumption-pos-006",
+    "subsumption-pos-007",
+    "subsumption-pos-008",
+    "subsumption-pos-009",
+    "subsumption-pos-010",
+    "subsumption-pos-011",
+    "subsumption-pos-012",
+    "shadowing-pos-000",
+    "shadowing-pos-001",
+    "shadowing-pos-002",
+    "shadowing-pos-003",
+    "shadowing-pos-004",
+    "shadowing-pos-005",
+    "shadowing-pos-006",
+    "shadowing-pos-007",
+    "shadowing-pos-008",
+    "shadowing-pos-009",
+    "shadowing-pos-010",
+    "shadowing-pos-011",
+    "shadowing-pos-012",
+    "crossdomain-pos-000",
+    "crossdomain-pos-001",
+    "crossdomain-pos-002",
+    "crossdomain-pos-003",
+    "crossdomain-pos-004",
+    "crossdomain-pos-005",
+    "crossdomain-pos-006",
+    "crossdomain-pos-007",
+    "crossdomain-pos-008",
+    "crossdomain-pos-009",
+    "crossdomain-pos-010",
+    "crossdomain-pos-011",
+    "crossdomain-pos-012",
+    "contradiction-pos-000",
+    "contradiction-pos-001",
+    "contradiction-pos-002",
+    "contradiction-pos-003",
+    "contradiction-pos-004",
+    "contradiction-pos-005",
+    "contradiction-pos-006",
+    "contradiction-pos-007",
+    "contradiction-pos-008",
+    "contradiction-pos-009",
+    "contradiction-pos-010",
+    "contradiction-pos-011",
+    "contradiction-pos-012",
+    "subsumption-neg-000",
+    "subsumption-neg-001",
+    "subsumption-neg-002",
+    "subsumption-neg-003",
+    "subsumption-neg-004",
+    "subsumption-neg-005",
+    "subsumption-neg-006",
+    "subsumption-neg-007",
+    "subsumption-neg-008",
+    "subsumption-neg-009",
+    "subsumption-neg-010",
+    "subsumption-neg-011",
+    "subsumption-neg-012",
+    "shadowing-neg-000",
+    "shadowing-neg-001",
+    "shadowing-neg-002",
+    "shadowing-neg-003",
+    "shadowing-neg-004",
+    "shadowing-neg-005",
+    "shadowing-neg-006",
+    "shadowing-neg-007",
+    "shadowing-neg-008",
+    "shadowing-neg-009",
+    "shadowing-neg-010",
+    "shadowing-neg-011",
+    "shadowing-neg-012",
+    "crossdomain-neg-000",
+    "crossdomain-neg-001",
+    "crossdomain-neg-002",
+    "crossdomain-neg-003",
+    "crossdomain-neg-004",
+    "crossdomain-neg-005",
+    "crossdomain-neg-006",
+    "crossdomain-neg-007",
+    "crossdomain-neg-008",
+    "crossdomain-neg-009",
+    "crossdomain-neg-010",
+    "crossdomain-neg-011",
+    "crossdomain-neg-012",
+    "contradiction-neg-000",
+    "contradiction-neg-001",
+    "contradiction-neg-002",
+    "contradiction-neg-003",
+    "contradiction-neg-004",
+    "contradiction-neg-005",
+    "contradiction-neg-006",
+    "contradiction-neg-007",
+    "contradiction-neg-008",
+    "contradiction-neg-009",
+    "contradiction-neg-010",
+    "contradiction-neg-011",
+    "contradiction-neg-012"
   ],
   "results": [
     {
@@ -41,6 +140,725 @@
       "expected": true,
       "detected": true,
       "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-005",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-006",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-007",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-008",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-009",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-010",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-011",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-012",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-000",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-001",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-002",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-003",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-004",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-005",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-006",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-007",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-008",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-009",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-010",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-011",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "shadowing-pos-012",
+      "type": "shadowing",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-000",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-001",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-002",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-003",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-004",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-005",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-006",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-007",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-008",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-009",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-010",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-011",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "crossdomain-pos-012",
+      "type": "cross_domain_misalignment",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "contradiction-pos-000",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-001",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-002",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-003",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-004",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-005",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-006",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-007",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-008",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-009",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-010",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-011",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-pos-012",
+      "type": "contradiction",
+      "expected": true,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "subsumption-neg-000",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-001",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-002",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-003",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-004",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-005",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-006",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-007",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-008",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-009",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-010",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-011",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "subsumption-neg-012",
+      "type": "subsumption",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-000",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-001",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-002",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-003",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-004",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-005",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-006",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-007",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-008",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-009",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-010",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-011",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "shadowing-neg-012",
+      "type": "shadowing",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-000",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-001",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-002",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-003",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-004",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-005",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-006",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-007",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-008",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-009",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-010",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-011",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "crossdomain-neg-012",
+      "type": "cross_domain_misalignment",
+      "expected": false,
+      "detected": true,
+      "correct": false
+    },
+    {
+      "case_id": "contradiction-neg-000",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-001",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-002",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-003",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-004",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-005",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-006",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-007",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-008",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-009",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-010",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-011",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
+    },
+    {
+      "case_id": "contradiction-neg-012",
+      "type": "contradiction",
+      "expected": false,
+      "detected": null,
+      "correct": null,
+      "note": "requires runtime check, run separately"
     }
   ]
 }
