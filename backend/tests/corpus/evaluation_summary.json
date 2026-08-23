@@ -9,11 +9,11 @@
   },
   "shadowing": {
     "total": 26,
-    "correct": 13,
-    "true_positive": 0,
+    "correct": 26,
+    "true_positive": 13,
     "false_positive": 0,
     "true_negative": 13,
-    "false_negative": 13
+    "false_negative": 0
   },
   "cross_domain_misalignment": {
     "total": 26,

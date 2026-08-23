@@ -201,92 +201,92 @@
       "case_id": "shadowing-pos-000",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-001",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-002",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-003",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-004",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-005",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-006",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-007",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-008",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-009",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-010",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-011",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "shadowing-pos-012",
       "type": "shadowing",
       "expected": true,
-      "detected": false,
-      "correct": false
+      "detected": true,
+      "correct": true
     },
     {
       "case_id": "crossdomain-pos-000",
