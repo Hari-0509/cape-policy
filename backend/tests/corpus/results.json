@@ -1,0 +1,46 @@
+{
+  "completed_case_ids": [
+    "subsumption-pos-000",
+    "subsumption-pos-001",
+    "subsumption-pos-002",
+    "subsumption-pos-003",
+    "subsumption-pos-004"
+  ],
+  "results": [
+    {
+      "case_id": "subsumption-pos-000",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-001",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-002",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-003",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    },
+    {
+      "case_id": "subsumption-pos-004",
+      "type": "subsumption",
+      "expected": true,
+      "detected": true,
+      "correct": true
+    }
+  ]
+}
