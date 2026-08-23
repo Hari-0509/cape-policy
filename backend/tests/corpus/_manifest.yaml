@@ -127,6 +127,46 @@ negative:
   source_ns: src-ns-crossdomain-neg-007
   target_ns: tgt-ns-crossdomain-neg-007
   type: cross_domain_misalignment
+- case_id: contradiction-neg-000
+  file: tests/corpus/contradiction-neg-000.yaml
+  namespace: contra-ns-contradiction-neg-000
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-001
+  file: tests/corpus/contradiction-neg-001.yaml
+  namespace: contra-ns-contradiction-neg-001
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-002
+  file: tests/corpus/contradiction-neg-002.yaml
+  namespace: contra-ns-contradiction-neg-002
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-003
+  file: tests/corpus/contradiction-neg-003.yaml
+  namespace: contra-ns-contradiction-neg-003
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-004
+  file: tests/corpus/contradiction-neg-004.yaml
+  namespace: contra-ns-contradiction-neg-004
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-005
+  file: tests/corpus/contradiction-neg-005.yaml
+  namespace: contra-ns-contradiction-neg-005
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-006
+  file: tests/corpus/contradiction-neg-006.yaml
+  namespace: contra-ns-contradiction-neg-006
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-neg-007
+  file: tests/corpus/contradiction-neg-007.yaml
+  namespace: contra-ns-contradiction-neg-007
+  requires_runtime_check: true
+  type: contradiction
 positive:
 - case_id: subsumption-pos-000
   file: tests/corpus/subsumption-pos-000.yaml
@@ -272,3 +312,43 @@ positive:
   source_ns: src-ns-crossdomain-pos-007
   target_ns: tgt-ns-crossdomain-pos-007
   type: cross_domain_misalignment
+- case_id: contradiction-pos-000
+  file: tests/corpus/contradiction-pos-000.yaml
+  namespace: contra-ns-contradiction-pos-000
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-001
+  file: tests/corpus/contradiction-pos-001.yaml
+  namespace: contra-ns-contradiction-pos-001
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-002
+  file: tests/corpus/contradiction-pos-002.yaml
+  namespace: contra-ns-contradiction-pos-002
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-003
+  file: tests/corpus/contradiction-pos-003.yaml
+  namespace: contra-ns-contradiction-pos-003
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-004
+  file: tests/corpus/contradiction-pos-004.yaml
+  namespace: contra-ns-contradiction-pos-004
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-005
+  file: tests/corpus/contradiction-pos-005.yaml
+  namespace: contra-ns-contradiction-pos-005
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-006
+  file: tests/corpus/contradiction-pos-006.yaml
+  namespace: contra-ns-contradiction-pos-006
+  requires_runtime_check: true
+  type: contradiction
+- case_id: contradiction-pos-007
+  file: tests/corpus/contradiction-pos-007.yaml
+  namespace: contra-ns-contradiction-pos-007
+  requires_runtime_check: true
+  type: contradiction

@@ -188,6 +188,29 @@ def generate_corpus(n_positive_per_type=8, n_negative_per_type=8):
         manifest["negative"].append({"case_id": case_id, "type": "cross_domain_misalignment",
                                        "source_ns": source_ns, "target_ns": target_ns, "file": path})
 
+    # --- Contradiction/Lockout: positive + negative ---
+    for i in range(n_positive_per_type):
+        case_id = f"contradiction-pos-{i:03d}"
+        team_a, team_b = random.sample(TEAMS, 2)
+        ns = f"contra-ns-{case_id}"
+        docs = make_contradiction_positive_case(case_id, team_a, team_b, ns, "/tmp/scratch")
+        path = os.path.join(OUTPUT_DIR, f"{case_id}.yaml")
+        with open(path, "w") as f:
+            yaml.dump_all(docs, f)
+        manifest["positive"].append({"case_id": case_id, "type": "contradiction",
+                                       "namespace": ns, "file": path, "requires_runtime_check": True})
+
+    for i in range(n_negative_per_type):
+        case_id = f"contradiction-neg-{i:03d}"
+        team_a, team_b = random.sample(TEAMS, 2)
+        ns = f"contra-ns-{case_id}"
+        docs = make_contradiction_clean_case(case_id, team_a, team_b, ns, "/tmp/scratch")
+        path = os.path.join(OUTPUT_DIR, f"{case_id}.yaml")
+        with open(path, "w") as f:
+            yaml.dump_all(docs, f)
+        manifest["negative"].append({"case_id": case_id, "type": "contradiction",
+                                       "namespace": ns, "file": path, "requires_runtime_check": True})
+
     # Save manifest for the test runner to use
     with open(os.path.join(OUTPUT_DIR, "_manifest.yaml"), "w") as f:
         yaml.dump(manifest, f)
@@ -252,6 +275,82 @@ def make_cross_domain_clean_case(case_id, team_a, team_b, source_ns, target_ns):
             "spec": {
                 "podSelector": {}, "policyTypes": ["Ingress"],
                 "ingress": [{"from": [{"namespaceSelector": {"matchLabels": {"kubernetes.io/metadata.name": source_ns}}}]}],
+            },
+        },
+    ]
+    return docs
+
+
+
+
+def make_contradiction_positive_case(case_id, team_a, team_b, namespace, write_path):
+    """POSITIVE case: Kyverno enforces readOnlyRootFilesystem, pod needs to write
+    to a path with no declared volume — causes a runtime lockout."""
+    docs = [
+        {
+            "apiVersion": "kyverno.io/v1", "kind": "ClusterPolicy",
+            "metadata": {"name": f"readonly-fs-{case_id}",
+                         "labels": {"owner-team": team_a, "cape-test-case": case_id}},
+            "spec": {
+                "validationFailureAction": "Enforce", "background": False,
+                "rules": [{
+                    "name": "check-readonly-rootfs",
+                    "match": {"any": [{"resources": {"kinds": ["Pod"], "namespaces": [namespace]}}]},
+                    "validate": {
+                        "message": "readOnlyRootFilesystem must be true",
+                        "pattern": {"spec": {"containers": [{"securityContext": {"readOnlyRootFilesystem": True}}]}},
+                    },
+                }],
+            },
+        },
+        {
+            "apiVersion": "v1", "kind": "Pod",
+            "metadata": {"name": f"workload-{case_id}", "namespace": namespace,
+                         "labels": {"owner-team": team_b, "cape-test-case": case_id}},
+            "spec": {
+                "containers": [{
+                    "name": "app", "image": "docker.io/busybox:latest",
+                    "command": ["sh", "-c", f"echo test > {write_path}/file.txt && sleep 3600"],
+                    "securityContext": {"readOnlyRootFilesystem": True},
+                }],
+            },
+        },
+    ]
+    return docs
+
+
+def make_contradiction_clean_case(case_id, team_a, team_b, namespace, write_path):
+    """NEGATIVE case: same readOnlyRootFilesystem policy, but the pod correctly
+    declares an emptyDir volume for its writable path — no lockout."""
+    docs = [
+        {
+            "apiVersion": "kyverno.io/v1", "kind": "ClusterPolicy",
+            "metadata": {"name": f"readonly-fs-clean-{case_id}",
+                         "labels": {"owner-team": team_a, "cape-test-case": case_id}},
+            "spec": {
+                "validationFailureAction": "Enforce", "background": False,
+                "rules": [{
+                    "name": "check-readonly-rootfs",
+                    "match": {"any": [{"resources": {"kinds": ["Pod"], "namespaces": [namespace]}}]},
+                    "validate": {
+                        "message": "readOnlyRootFilesystem must be true",
+                        "pattern": {"spec": {"containers": [{"securityContext": {"readOnlyRootFilesystem": True}}]}},
+                    },
+                }],
+            },
+        },
+        {
+            "apiVersion": "v1", "kind": "Pod",
+            "metadata": {"name": f"workload-clean-{case_id}", "namespace": namespace,
+                         "labels": {"owner-team": team_b, "cape-test-case": case_id}},
+            "spec": {
+                "containers": [{
+                    "name": "app", "image": "docker.io/busybox:latest",
+                    "command": ["sh", "-c", f"echo test > {write_path}/file.txt && sleep 3600"],
+                    "securityContext": {"readOnlyRootFilesystem": True},
+                    "volumeMounts": [{"name": "scratch", "mountPath": write_path}],
+                }],
+                "volumes": [{"name": "scratch", "emptyDir": {}}],
             },
         },
     ]

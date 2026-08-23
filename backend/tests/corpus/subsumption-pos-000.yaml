@@ -3,7 +3,7 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-pos-000
-    owner-team: team-gamma
+    owner-team: team-beta
   name: narrow-role-subsumption-pos-000
   namespace: ns-subsumption-pos-000
 rules:
@@ -20,7 +20,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-pos-000
-    owner-team: team-gamma
+    owner-team: team-beta
   name: narrow-binding-subsumption-pos-000
   namespace: ns-subsumption-pos-000
 roleRef:
@@ -37,7 +37,7 @@ kind: Role
 metadata:
   labels:
     cape-test-case: subsumption-pos-000
-    owner-team: team-epsilon
+    owner-team: team-gamma
   name: broad-role-subsumption-pos-000
   namespace: ns-subsumption-pos-000
 rules:
@@ -53,7 +53,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: subsumption-pos-000
-    owner-team: team-epsilon
+    owner-team: team-gamma
   name: broad-binding-subsumption-pos-000
   namespace: ns-subsumption-pos-000
 roleRef:

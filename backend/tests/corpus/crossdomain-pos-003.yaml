@@ -3,7 +3,7 @@ kind: Role
 metadata:
   labels:
     cape-test-case: crossdomain-pos-003
-    owner-team: team-alpha
+    owner-team: team-epsilon
   name: cross-role-crossdomain-pos-003
   namespace: tgt-ns-crossdomain-pos-003
 rules:
@@ -21,7 +21,7 @@ kind: RoleBinding
 metadata:
   labels:
     cape-test-case: crossdomain-pos-003
-    owner-team: team-alpha
+    owner-team: team-epsilon
   name: cross-binding-crossdomain-pos-003
   namespace: tgt-ns-crossdomain-pos-003
 roleRef:
