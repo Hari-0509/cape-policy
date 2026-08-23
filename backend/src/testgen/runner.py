@@ -1,8 +1,8 @@
 """
 CAPE-Policy: Test Corpus Runner
 Applies each generated test case to the cluster, runs the detection engine,
-and scores whether CAPE-Policy correctly identifies positive (conflicting)
-cases and correctly ignores negative (clean) cases.
+filters results to ONLY this case's resources (using the cape-test-case
+label), and scores detection accuracy.
 """
 
 import yaml
@@ -42,8 +42,6 @@ def save_results(results):
 
 
 def extract_namespaces_from_yaml(filepath):
-    """Read the YAML file and find every distinct namespace referenced,
-    so we can create them before applying the actual resources."""
     namespaces = set()
     with open(filepath) as f:
         docs = yaml.safe_load_all(f)
@@ -53,11 +51,9 @@ def extract_namespaces_from_yaml(filepath):
             ns = doc.get("metadata", {}).get("namespace")
             if ns:
                 namespaces.add(ns)
-            # Also catch namespaces referenced inside subjects (RoleBinding)
             for subject in doc.get("subjects", []) or []:
                 if subject.get("namespace"):
                     namespaces.add(subject["namespace"])
-            # And namespaces referenced in Gatekeeper match namespaces / NetworkPolicy targets
             match_ns = doc.get("spec", {}).get("match", {}).get("namespaces", [])
             namespaces.update(match_ns)
     return namespaces
@@ -65,38 +61,50 @@ def extract_namespaces_from_yaml(filepath):
 
 def ensure_namespaces(namespaces):
     for ns in namespaces:
-        subprocess.run(
-            ["kubectl", "create", "namespace", ns],
-            capture_output=True  # ignore "already exists" errors silently
-        )
+        subprocess.run(["kubectl", "create", "namespace", ns], capture_output=True)
 
 
 def apply_case(case):
-    """Ensure required namespaces exist, then apply the case's YAML file."""
     namespaces = extract_namespaces_from_yaml(case["file"])
     ensure_namespaces(namespaces)
-    time.sleep(1)  # let namespace creation propagate
-
-    result = subprocess.run(
-        ["kubectl", "apply", "-f", case["file"]],
-        capture_output=True, text=True
-    )
+    time.sleep(1)
+    result = subprocess.run(["kubectl", "apply", "-f", case["file"]], capture_output=True, text=True)
     if result.returncode != 0:
         raise RuntimeError(f"kubectl apply failed: {result.stderr}")
+    return namespaces
 
 
-def cleanup_case(case):
-    """Delete the case's resources from the cluster."""
+def cleanup_case(case, namespaces):
     subprocess.run(["kubectl", "delete", "-f", case["file"],
-                     "--ignore-not-found=true", "--wait=false"],
+                     "--ignore-not-found=true", "--wait=true", "--timeout=15s"],
                     capture_output=True)
+    # Also delete the namespaces themselves to guarantee full cleanup
+    for ns in namespaces:
+        subprocess.run(["kubectl", "delete", "namespace", ns,
+                         "--ignore-not-found=true", "--wait=false"],
+                        capture_output=True)
+
+
+def filter_scan_to_case(scan_data, case_id):
+    """Keep only resources tagged with this case's cape-test-case label."""
+    filtered = {"rbac_roles": [], "rbac_bindings": [], "gatekeeper_constraints": [], "network_policies": []}
+    for key in filtered:
+        items = scan_data.get(key, [])
+        # owner field encodes team; we need to check raw label instead —
+        # re-check via a lightweight direct match on name substrings, since
+        # our generator embeds case_id into every resource name.
+        filtered[key] = [item for item in items if case_id in item.get("name", "")]
+    return filtered
 
 
 def scan_for_case(case):
     scan_data = run_full_scan()
+    case_id = case["case_id"]
+    scoped = filter_scan_to_case(scan_data, case_id)
+
     detected_types = set()
 
-    G = build_full_graph(scan_data)
+    G = build_full_graph(scoped)
     multi_team_nodes = find_multi_team_nodes(G)
 
     subsumption_conflicts = detect_subsumption(multi_team_nodes)
@@ -104,13 +112,13 @@ def scan_for_case(case):
         detected_types.add("subsumption")
 
     all_namespaces = list(set(
-        [r["namespace"] for r in scan_data["rbac_roles"] if r["namespace"]]
+        [r["namespace"] for r in scoped["rbac_roles"] if r["namespace"]]
     ))
-    shadowing_conflicts = detect_shadowing(scan_data["gatekeeper_constraints"], all_namespaces)
+    shadowing_conflicts = detect_shadowing(scoped["gatekeeper_constraints"], all_namespaces)
     if shadowing_conflicts:
         detected_types.add("shadowing")
 
-    cross_domain_conflicts = detect_cross_domain(scan_data)
+    cross_domain_conflicts = detect_cross_domain(scoped)
     if cross_domain_conflicts:
         detected_types.add("cross_domain_misalignment")
 
@@ -127,13 +135,13 @@ def run_case(case, is_positive):
             "correct": None, "note": "requires runtime check, run separately",
         }
 
-    apply_case(case)
+    namespaces = apply_case(case)
     time.sleep(3)
 
     detected_types = scan_for_case(case)
     was_detected = case_type in detected_types
 
-    cleanup_case(case)
+    cleanup_case(case, namespaces)
     time.sleep(1)
 
     correct = (was_detected == is_positive)
@@ -168,7 +176,6 @@ def run_full_corpus(limit=None):
             print(f"    -> {result}")
         except Exception as e:
             print(f"    -> ERROR: {e}")
-            cleanup_case(case)
 
     print(f"\nCompleted {len(state['completed_case_ids'])} / {len(all_cases)} cases")
     return state

@@ -1,0 +1,26 @@
+{
+  "subsumption": {
+    "total": 26,
+    "correct": 13,
+    "true_positive": 13,
+    "false_positive": 13,
+    "true_negative": 0,
+    "false_negative": 0
+  },
+  "shadowing": {
+    "total": 26,
+    "correct": 13,
+    "true_positive": 13,
+    "false_positive": 13,
+    "true_negative": 0,
+    "false_negative": 0
+  },
+  "cross_domain_misalignment": {
+    "total": 26,
+    "correct": 13,
+    "true_positive": 13,
+    "false_positive": 13,
+    "true_negative": 0,
+    "false_negative": 0
+  }
+}
