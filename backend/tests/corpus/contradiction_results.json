@@ -1,0 +1,42 @@
+{
+  "completed_case_ids": [
+    "contradiction-pos-000",
+    "contradiction-pos-001",
+    "contradiction-pos-002",
+    "contradiction-pos-003"
+  ],
+  "results": [
+    {
+      "case_id": "contradiction-pos-000",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 10
+    },
+    {
+      "case_id": "contradiction-pos-001",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-002",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-003",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    }
+  ]
+}
