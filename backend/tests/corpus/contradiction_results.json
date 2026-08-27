@@ -3,7 +3,29 @@
     "contradiction-pos-000",
     "contradiction-pos-001",
     "contradiction-pos-002",
-    "contradiction-pos-003"
+    "contradiction-pos-003",
+    "contradiction-pos-004",
+    "contradiction-pos-005",
+    "contradiction-pos-006",
+    "contradiction-pos-007",
+    "contradiction-pos-008",
+    "contradiction-pos-009",
+    "contradiction-pos-010",
+    "contradiction-pos-011",
+    "contradiction-pos-012",
+    "contradiction-neg-000",
+    "contradiction-neg-001",
+    "contradiction-neg-002",
+    "contradiction-neg-003",
+    "contradiction-neg-004",
+    "contradiction-neg-005",
+    "contradiction-neg-006",
+    "contradiction-neg-007",
+    "contradiction-neg-008",
+    "contradiction-neg-009",
+    "contradiction-neg-010",
+    "contradiction-neg-011",
+    "contradiction-neg-012"
   ],
   "results": [
     {
@@ -37,6 +59,182 @@
       "detected": true,
       "correct": true,
       "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-004",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-005",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-006",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-007",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-008",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 10
+    },
+    {
+      "case_id": "contradiction-pos-009",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-010",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-011",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-pos-012",
+      "type": "contradiction",
+      "expected": true,
+      "detected": true,
+      "correct": true,
+      "poll_time_seconds": 5
+    },
+    {
+      "case_id": "contradiction-neg-000",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-001",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-002",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-003",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-004",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-005",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-006",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-007",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-008",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-009",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-010",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-011",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
+    },
+    {
+      "case_id": "contradiction-neg-012",
+      "type": "contradiction",
+      "expected": false,
+      "detected": false,
+      "correct": true,
+      "poll_time_seconds": 45
     }
   ]
 }
