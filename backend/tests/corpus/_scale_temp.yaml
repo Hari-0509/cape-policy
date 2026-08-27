@@ -1,0 +1,10499 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-0
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-0
+  namespace: scale-200-run-0
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-0
+  namespace: scale-200-run-0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-0
+subjects:
+- kind: ServiceAccount
+  name: sa-0
+  namespace: scale-200-run-0
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-0
+  namespace: scale-200-run-0
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-0
+  namespace: scale-200-run-0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-0
+subjects:
+- kind: ServiceAccount
+  name: sa-0
+  namespace: scale-200-run-0
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-1
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-1
+  namespace: scale-200-run-1
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-1
+  namespace: scale-200-run-1
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-1
+subjects:
+- kind: ServiceAccount
+  name: sa-1
+  namespace: scale-200-run-1
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-2
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-2
+  namespace: scale-200-run-2
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-2
+  namespace: scale-200-run-2
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-2
+subjects:
+- kind: ServiceAccount
+  name: sa-2
+  namespace: scale-200-run-2
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-2
+  namespace: scale-200-run-2
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-2
+  namespace: scale-200-run-2
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-2
+subjects:
+- kind: ServiceAccount
+  name: sa-2
+  namespace: scale-200-run-2
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-3
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-3
+  namespace: scale-200-run-3
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-3
+  namespace: scale-200-run-3
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-3
+subjects:
+- kind: ServiceAccount
+  name: sa-3
+  namespace: scale-200-run-3
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-4
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-4
+  namespace: scale-200-run-4
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-4
+  namespace: scale-200-run-4
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-4
+subjects:
+- kind: ServiceAccount
+  name: sa-4
+  namespace: scale-200-run-4
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-4
+  namespace: scale-200-run-4
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-4
+  namespace: scale-200-run-4
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-4
+subjects:
+- kind: ServiceAccount
+  name: sa-4
+  namespace: scale-200-run-4
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-5
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-5
+  namespace: scale-200-run-5
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-5
+  namespace: scale-200-run-5
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-5
+subjects:
+- kind: ServiceAccount
+  name: sa-5
+  namespace: scale-200-run-5
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-6
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-6
+  namespace: scale-200-run-6
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-6
+  namespace: scale-200-run-6
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-6
+subjects:
+- kind: ServiceAccount
+  name: sa-6
+  namespace: scale-200-run-6
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-6
+  namespace: scale-200-run-6
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-6
+  namespace: scale-200-run-6
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-6
+subjects:
+- kind: ServiceAccount
+  name: sa-6
+  namespace: scale-200-run-6
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-7
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-7
+  namespace: scale-200-run-7
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-7
+  namespace: scale-200-run-7
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-7
+subjects:
+- kind: ServiceAccount
+  name: sa-7
+  namespace: scale-200-run-7
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-8
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-8
+  namespace: scale-200-run-8
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-8
+  namespace: scale-200-run-8
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-8
+subjects:
+- kind: ServiceAccount
+  name: sa-8
+  namespace: scale-200-run-8
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-8
+  namespace: scale-200-run-8
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-8
+  namespace: scale-200-run-8
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-8
+subjects:
+- kind: ServiceAccount
+  name: sa-8
+  namespace: scale-200-run-8
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-9
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-9
+  namespace: scale-200-run-9
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-9
+  namespace: scale-200-run-9
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-9
+subjects:
+- kind: ServiceAccount
+  name: sa-9
+  namespace: scale-200-run-9
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-10
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-10
+  namespace: scale-200-run-10
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-10
+  namespace: scale-200-run-10
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-10
+subjects:
+- kind: ServiceAccount
+  name: sa-10
+  namespace: scale-200-run-10
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-10
+  namespace: scale-200-run-10
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-10
+  namespace: scale-200-run-10
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-10
+subjects:
+- kind: ServiceAccount
+  name: sa-10
+  namespace: scale-200-run-10
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-11
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-11
+  namespace: scale-200-run-11
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-11
+  namespace: scale-200-run-11
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-11
+subjects:
+- kind: ServiceAccount
+  name: sa-11
+  namespace: scale-200-run-11
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-12
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-12
+  namespace: scale-200-run-12
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-12
+  namespace: scale-200-run-12
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-12
+subjects:
+- kind: ServiceAccount
+  name: sa-12
+  namespace: scale-200-run-12
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-12
+  namespace: scale-200-run-12
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-12
+  namespace: scale-200-run-12
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-12
+subjects:
+- kind: ServiceAccount
+  name: sa-12
+  namespace: scale-200-run-12
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-13
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-13
+  namespace: scale-200-run-13
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-13
+  namespace: scale-200-run-13
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-13
+subjects:
+- kind: ServiceAccount
+  name: sa-13
+  namespace: scale-200-run-13
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-14
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-14
+  namespace: scale-200-run-14
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-14
+  namespace: scale-200-run-14
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-14
+subjects:
+- kind: ServiceAccount
+  name: sa-14
+  namespace: scale-200-run-14
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-14
+  namespace: scale-200-run-14
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-14
+  namespace: scale-200-run-14
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-14
+subjects:
+- kind: ServiceAccount
+  name: sa-14
+  namespace: scale-200-run-14
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-15
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-15
+  namespace: scale-200-run-15
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-15
+  namespace: scale-200-run-15
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-15
+subjects:
+- kind: ServiceAccount
+  name: sa-15
+  namespace: scale-200-run-15
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-16
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-16
+  namespace: scale-200-run-16
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-16
+  namespace: scale-200-run-16
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-16
+subjects:
+- kind: ServiceAccount
+  name: sa-16
+  namespace: scale-200-run-16
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-16
+  namespace: scale-200-run-16
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-16
+  namespace: scale-200-run-16
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-16
+subjects:
+- kind: ServiceAccount
+  name: sa-16
+  namespace: scale-200-run-16
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-17
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-17
+  namespace: scale-200-run-17
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-17
+  namespace: scale-200-run-17
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-17
+subjects:
+- kind: ServiceAccount
+  name: sa-17
+  namespace: scale-200-run-17
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-18
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-18
+  namespace: scale-200-run-18
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-18
+  namespace: scale-200-run-18
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-18
+subjects:
+- kind: ServiceAccount
+  name: sa-18
+  namespace: scale-200-run-18
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-18
+  namespace: scale-200-run-18
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-18
+  namespace: scale-200-run-18
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-18
+subjects:
+- kind: ServiceAccount
+  name: sa-18
+  namespace: scale-200-run-18
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-19
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-19
+  namespace: scale-200-run-19
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-19
+  namespace: scale-200-run-19
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-19
+subjects:
+- kind: ServiceAccount
+  name: sa-19
+  namespace: scale-200-run-19
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-20
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-20
+  namespace: scale-200-run-20
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-20
+  namespace: scale-200-run-20
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-20
+subjects:
+- kind: ServiceAccount
+  name: sa-20
+  namespace: scale-200-run-20
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-20
+  namespace: scale-200-run-20
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-20
+  namespace: scale-200-run-20
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-20
+subjects:
+- kind: ServiceAccount
+  name: sa-20
+  namespace: scale-200-run-20
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-21
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-21
+  namespace: scale-200-run-21
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-21
+  namespace: scale-200-run-21
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-21
+subjects:
+- kind: ServiceAccount
+  name: sa-21
+  namespace: scale-200-run-21
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-22
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-22
+  namespace: scale-200-run-22
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-22
+  namespace: scale-200-run-22
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-22
+subjects:
+- kind: ServiceAccount
+  name: sa-22
+  namespace: scale-200-run-22
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-22
+  namespace: scale-200-run-22
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-22
+  namespace: scale-200-run-22
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-22
+subjects:
+- kind: ServiceAccount
+  name: sa-22
+  namespace: scale-200-run-22
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-23
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-23
+  namespace: scale-200-run-23
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-23
+  namespace: scale-200-run-23
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-23
+subjects:
+- kind: ServiceAccount
+  name: sa-23
+  namespace: scale-200-run-23
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-24
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-24
+  namespace: scale-200-run-24
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-24
+  namespace: scale-200-run-24
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-24
+subjects:
+- kind: ServiceAccount
+  name: sa-24
+  namespace: scale-200-run-24
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-24
+  namespace: scale-200-run-24
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-24
+  namespace: scale-200-run-24
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-24
+subjects:
+- kind: ServiceAccount
+  name: sa-24
+  namespace: scale-200-run-24
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-25
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-25
+  namespace: scale-200-run-25
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-25
+  namespace: scale-200-run-25
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-25
+subjects:
+- kind: ServiceAccount
+  name: sa-25
+  namespace: scale-200-run-25
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-26
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-26
+  namespace: scale-200-run-26
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-26
+  namespace: scale-200-run-26
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-26
+subjects:
+- kind: ServiceAccount
+  name: sa-26
+  namespace: scale-200-run-26
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-26
+  namespace: scale-200-run-26
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-26
+  namespace: scale-200-run-26
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-26
+subjects:
+- kind: ServiceAccount
+  name: sa-26
+  namespace: scale-200-run-26
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-27
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-27
+  namespace: scale-200-run-27
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-27
+  namespace: scale-200-run-27
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-27
+subjects:
+- kind: ServiceAccount
+  name: sa-27
+  namespace: scale-200-run-27
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-28
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-28
+  namespace: scale-200-run-28
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-28
+  namespace: scale-200-run-28
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-28
+subjects:
+- kind: ServiceAccount
+  name: sa-28
+  namespace: scale-200-run-28
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-28
+  namespace: scale-200-run-28
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-28
+  namespace: scale-200-run-28
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-28
+subjects:
+- kind: ServiceAccount
+  name: sa-28
+  namespace: scale-200-run-28
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-29
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-29
+  namespace: scale-200-run-29
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-29
+  namespace: scale-200-run-29
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-29
+subjects:
+- kind: ServiceAccount
+  name: sa-29
+  namespace: scale-200-run-29
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-30
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-30
+  namespace: scale-200-run-30
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-30
+  namespace: scale-200-run-30
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-30
+subjects:
+- kind: ServiceAccount
+  name: sa-30
+  namespace: scale-200-run-30
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-30
+  namespace: scale-200-run-30
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-30
+  namespace: scale-200-run-30
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-30
+subjects:
+- kind: ServiceAccount
+  name: sa-30
+  namespace: scale-200-run-30
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-31
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-31
+  namespace: scale-200-run-31
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-31
+  namespace: scale-200-run-31
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-31
+subjects:
+- kind: ServiceAccount
+  name: sa-31
+  namespace: scale-200-run-31
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-32
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-32
+  namespace: scale-200-run-32
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-32
+  namespace: scale-200-run-32
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-32
+subjects:
+- kind: ServiceAccount
+  name: sa-32
+  namespace: scale-200-run-32
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-32
+  namespace: scale-200-run-32
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-32
+  namespace: scale-200-run-32
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-32
+subjects:
+- kind: ServiceAccount
+  name: sa-32
+  namespace: scale-200-run-32
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-33
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-33
+  namespace: scale-200-run-33
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-33
+  namespace: scale-200-run-33
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-33
+subjects:
+- kind: ServiceAccount
+  name: sa-33
+  namespace: scale-200-run-33
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-34
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-34
+  namespace: scale-200-run-34
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-34
+  namespace: scale-200-run-34
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-34
+subjects:
+- kind: ServiceAccount
+  name: sa-34
+  namespace: scale-200-run-34
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-34
+  namespace: scale-200-run-34
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-34
+  namespace: scale-200-run-34
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-34
+subjects:
+- kind: ServiceAccount
+  name: sa-34
+  namespace: scale-200-run-34
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-35
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-35
+  namespace: scale-200-run-35
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-35
+  namespace: scale-200-run-35
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-35
+subjects:
+- kind: ServiceAccount
+  name: sa-35
+  namespace: scale-200-run-35
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-36
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-36
+  namespace: scale-200-run-36
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-36
+  namespace: scale-200-run-36
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-36
+subjects:
+- kind: ServiceAccount
+  name: sa-36
+  namespace: scale-200-run-36
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-36
+  namespace: scale-200-run-36
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-36
+  namespace: scale-200-run-36
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-36
+subjects:
+- kind: ServiceAccount
+  name: sa-36
+  namespace: scale-200-run-36
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-37
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-37
+  namespace: scale-200-run-37
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-37
+  namespace: scale-200-run-37
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-37
+subjects:
+- kind: ServiceAccount
+  name: sa-37
+  namespace: scale-200-run-37
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-38
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-38
+  namespace: scale-200-run-38
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-38
+  namespace: scale-200-run-38
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-38
+subjects:
+- kind: ServiceAccount
+  name: sa-38
+  namespace: scale-200-run-38
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-38
+  namespace: scale-200-run-38
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-38
+  namespace: scale-200-run-38
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-38
+subjects:
+- kind: ServiceAccount
+  name: sa-38
+  namespace: scale-200-run-38
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-39
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-39
+  namespace: scale-200-run-39
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-39
+  namespace: scale-200-run-39
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-39
+subjects:
+- kind: ServiceAccount
+  name: sa-39
+  namespace: scale-200-run-39
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-40
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-40
+  namespace: scale-200-run-40
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-40
+  namespace: scale-200-run-40
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-40
+subjects:
+- kind: ServiceAccount
+  name: sa-40
+  namespace: scale-200-run-40
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-40
+  namespace: scale-200-run-40
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-40
+  namespace: scale-200-run-40
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-40
+subjects:
+- kind: ServiceAccount
+  name: sa-40
+  namespace: scale-200-run-40
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-41
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-41
+  namespace: scale-200-run-41
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-41
+  namespace: scale-200-run-41
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-41
+subjects:
+- kind: ServiceAccount
+  name: sa-41
+  namespace: scale-200-run-41
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-42
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-42
+  namespace: scale-200-run-42
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-42
+  namespace: scale-200-run-42
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-42
+subjects:
+- kind: ServiceAccount
+  name: sa-42
+  namespace: scale-200-run-42
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-42
+  namespace: scale-200-run-42
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-42
+  namespace: scale-200-run-42
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-42
+subjects:
+- kind: ServiceAccount
+  name: sa-42
+  namespace: scale-200-run-42
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-43
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-43
+  namespace: scale-200-run-43
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-43
+  namespace: scale-200-run-43
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-43
+subjects:
+- kind: ServiceAccount
+  name: sa-43
+  namespace: scale-200-run-43
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-44
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-44
+  namespace: scale-200-run-44
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-44
+  namespace: scale-200-run-44
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-44
+subjects:
+- kind: ServiceAccount
+  name: sa-44
+  namespace: scale-200-run-44
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-44
+  namespace: scale-200-run-44
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-44
+  namespace: scale-200-run-44
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-44
+subjects:
+- kind: ServiceAccount
+  name: sa-44
+  namespace: scale-200-run-44
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-45
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-45
+  namespace: scale-200-run-45
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-45
+  namespace: scale-200-run-45
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-45
+subjects:
+- kind: ServiceAccount
+  name: sa-45
+  namespace: scale-200-run-45
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-46
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-46
+  namespace: scale-200-run-46
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-46
+  namespace: scale-200-run-46
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-46
+subjects:
+- kind: ServiceAccount
+  name: sa-46
+  namespace: scale-200-run-46
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-46
+  namespace: scale-200-run-46
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-46
+  namespace: scale-200-run-46
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-46
+subjects:
+- kind: ServiceAccount
+  name: sa-46
+  namespace: scale-200-run-46
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-47
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-47
+  namespace: scale-200-run-47
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-47
+  namespace: scale-200-run-47
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-47
+subjects:
+- kind: ServiceAccount
+  name: sa-47
+  namespace: scale-200-run-47
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-48
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-48
+  namespace: scale-200-run-48
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-48
+  namespace: scale-200-run-48
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-48
+subjects:
+- kind: ServiceAccount
+  name: sa-48
+  namespace: scale-200-run-48
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-48
+  namespace: scale-200-run-48
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-48
+  namespace: scale-200-run-48
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-48
+subjects:
+- kind: ServiceAccount
+  name: sa-48
+  namespace: scale-200-run-48
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-49
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-49
+  namespace: scale-200-run-49
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-49
+  namespace: scale-200-run-49
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-49
+subjects:
+- kind: ServiceAccount
+  name: sa-49
+  namespace: scale-200-run-49
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-50
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-50
+  namespace: scale-200-run-50
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-50
+  namespace: scale-200-run-50
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-50
+subjects:
+- kind: ServiceAccount
+  name: sa-50
+  namespace: scale-200-run-50
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-50
+  namespace: scale-200-run-50
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-50
+  namespace: scale-200-run-50
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-50
+subjects:
+- kind: ServiceAccount
+  name: sa-50
+  namespace: scale-200-run-50
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-51
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-51
+  namespace: scale-200-run-51
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-51
+  namespace: scale-200-run-51
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-51
+subjects:
+- kind: ServiceAccount
+  name: sa-51
+  namespace: scale-200-run-51
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-52
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-52
+  namespace: scale-200-run-52
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-52
+  namespace: scale-200-run-52
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-52
+subjects:
+- kind: ServiceAccount
+  name: sa-52
+  namespace: scale-200-run-52
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-52
+  namespace: scale-200-run-52
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-52
+  namespace: scale-200-run-52
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-52
+subjects:
+- kind: ServiceAccount
+  name: sa-52
+  namespace: scale-200-run-52
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-53
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-53
+  namespace: scale-200-run-53
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-53
+  namespace: scale-200-run-53
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-53
+subjects:
+- kind: ServiceAccount
+  name: sa-53
+  namespace: scale-200-run-53
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-54
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-54
+  namespace: scale-200-run-54
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-54
+  namespace: scale-200-run-54
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-54
+subjects:
+- kind: ServiceAccount
+  name: sa-54
+  namespace: scale-200-run-54
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-54
+  namespace: scale-200-run-54
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-54
+  namespace: scale-200-run-54
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-54
+subjects:
+- kind: ServiceAccount
+  name: sa-54
+  namespace: scale-200-run-54
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-55
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-55
+  namespace: scale-200-run-55
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-55
+  namespace: scale-200-run-55
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-55
+subjects:
+- kind: ServiceAccount
+  name: sa-55
+  namespace: scale-200-run-55
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-56
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-56
+  namespace: scale-200-run-56
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-56
+  namespace: scale-200-run-56
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-56
+subjects:
+- kind: ServiceAccount
+  name: sa-56
+  namespace: scale-200-run-56
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-56
+  namespace: scale-200-run-56
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-56
+  namespace: scale-200-run-56
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-56
+subjects:
+- kind: ServiceAccount
+  name: sa-56
+  namespace: scale-200-run-56
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-57
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-57
+  namespace: scale-200-run-57
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-57
+  namespace: scale-200-run-57
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-57
+subjects:
+- kind: ServiceAccount
+  name: sa-57
+  namespace: scale-200-run-57
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-58
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-58
+  namespace: scale-200-run-58
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-58
+  namespace: scale-200-run-58
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-58
+subjects:
+- kind: ServiceAccount
+  name: sa-58
+  namespace: scale-200-run-58
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-58
+  namespace: scale-200-run-58
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-58
+  namespace: scale-200-run-58
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-58
+subjects:
+- kind: ServiceAccount
+  name: sa-58
+  namespace: scale-200-run-58
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-59
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-59
+  namespace: scale-200-run-59
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-59
+  namespace: scale-200-run-59
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-59
+subjects:
+- kind: ServiceAccount
+  name: sa-59
+  namespace: scale-200-run-59
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-60
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-60
+  namespace: scale-200-run-60
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-60
+  namespace: scale-200-run-60
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-60
+subjects:
+- kind: ServiceAccount
+  name: sa-60
+  namespace: scale-200-run-60
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-60
+  namespace: scale-200-run-60
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-60
+  namespace: scale-200-run-60
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-60
+subjects:
+- kind: ServiceAccount
+  name: sa-60
+  namespace: scale-200-run-60
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-61
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-61
+  namespace: scale-200-run-61
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-61
+  namespace: scale-200-run-61
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-61
+subjects:
+- kind: ServiceAccount
+  name: sa-61
+  namespace: scale-200-run-61
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-62
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-62
+  namespace: scale-200-run-62
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-62
+  namespace: scale-200-run-62
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-62
+subjects:
+- kind: ServiceAccount
+  name: sa-62
+  namespace: scale-200-run-62
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-62
+  namespace: scale-200-run-62
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-62
+  namespace: scale-200-run-62
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-62
+subjects:
+- kind: ServiceAccount
+  name: sa-62
+  namespace: scale-200-run-62
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-63
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-63
+  namespace: scale-200-run-63
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-63
+  namespace: scale-200-run-63
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-63
+subjects:
+- kind: ServiceAccount
+  name: sa-63
+  namespace: scale-200-run-63
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-64
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-64
+  namespace: scale-200-run-64
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-64
+  namespace: scale-200-run-64
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-64
+subjects:
+- kind: ServiceAccount
+  name: sa-64
+  namespace: scale-200-run-64
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-64
+  namespace: scale-200-run-64
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-64
+  namespace: scale-200-run-64
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-64
+subjects:
+- kind: ServiceAccount
+  name: sa-64
+  namespace: scale-200-run-64
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-65
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-65
+  namespace: scale-200-run-65
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-65
+  namespace: scale-200-run-65
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-65
+subjects:
+- kind: ServiceAccount
+  name: sa-65
+  namespace: scale-200-run-65
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-66
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-66
+  namespace: scale-200-run-66
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-66
+  namespace: scale-200-run-66
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-66
+subjects:
+- kind: ServiceAccount
+  name: sa-66
+  namespace: scale-200-run-66
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-66
+  namespace: scale-200-run-66
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-66
+  namespace: scale-200-run-66
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-66
+subjects:
+- kind: ServiceAccount
+  name: sa-66
+  namespace: scale-200-run-66
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-67
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-67
+  namespace: scale-200-run-67
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-67
+  namespace: scale-200-run-67
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-67
+subjects:
+- kind: ServiceAccount
+  name: sa-67
+  namespace: scale-200-run-67
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-68
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-68
+  namespace: scale-200-run-68
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-68
+  namespace: scale-200-run-68
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-68
+subjects:
+- kind: ServiceAccount
+  name: sa-68
+  namespace: scale-200-run-68
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-68
+  namespace: scale-200-run-68
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-68
+  namespace: scale-200-run-68
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-68
+subjects:
+- kind: ServiceAccount
+  name: sa-68
+  namespace: scale-200-run-68
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-69
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-69
+  namespace: scale-200-run-69
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-69
+  namespace: scale-200-run-69
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-69
+subjects:
+- kind: ServiceAccount
+  name: sa-69
+  namespace: scale-200-run-69
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-70
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-70
+  namespace: scale-200-run-70
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-70
+  namespace: scale-200-run-70
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-70
+subjects:
+- kind: ServiceAccount
+  name: sa-70
+  namespace: scale-200-run-70
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-70
+  namespace: scale-200-run-70
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-70
+  namespace: scale-200-run-70
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-70
+subjects:
+- kind: ServiceAccount
+  name: sa-70
+  namespace: scale-200-run-70
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-71
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-71
+  namespace: scale-200-run-71
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-71
+  namespace: scale-200-run-71
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-71
+subjects:
+- kind: ServiceAccount
+  name: sa-71
+  namespace: scale-200-run-71
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-72
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-72
+  namespace: scale-200-run-72
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-72
+  namespace: scale-200-run-72
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-72
+subjects:
+- kind: ServiceAccount
+  name: sa-72
+  namespace: scale-200-run-72
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-72
+  namespace: scale-200-run-72
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-72
+  namespace: scale-200-run-72
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-72
+subjects:
+- kind: ServiceAccount
+  name: sa-72
+  namespace: scale-200-run-72
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-73
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-73
+  namespace: scale-200-run-73
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-73
+  namespace: scale-200-run-73
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-73
+subjects:
+- kind: ServiceAccount
+  name: sa-73
+  namespace: scale-200-run-73
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-74
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-74
+  namespace: scale-200-run-74
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-74
+  namespace: scale-200-run-74
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-74
+subjects:
+- kind: ServiceAccount
+  name: sa-74
+  namespace: scale-200-run-74
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-74
+  namespace: scale-200-run-74
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-74
+  namespace: scale-200-run-74
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-74
+subjects:
+- kind: ServiceAccount
+  name: sa-74
+  namespace: scale-200-run-74
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-75
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-75
+  namespace: scale-200-run-75
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-75
+  namespace: scale-200-run-75
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-75
+subjects:
+- kind: ServiceAccount
+  name: sa-75
+  namespace: scale-200-run-75
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-76
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-76
+  namespace: scale-200-run-76
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-76
+  namespace: scale-200-run-76
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-76
+subjects:
+- kind: ServiceAccount
+  name: sa-76
+  namespace: scale-200-run-76
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-76
+  namespace: scale-200-run-76
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-76
+  namespace: scale-200-run-76
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-76
+subjects:
+- kind: ServiceAccount
+  name: sa-76
+  namespace: scale-200-run-76
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-77
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-77
+  namespace: scale-200-run-77
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-77
+  namespace: scale-200-run-77
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-77
+subjects:
+- kind: ServiceAccount
+  name: sa-77
+  namespace: scale-200-run-77
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-78
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-78
+  namespace: scale-200-run-78
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-78
+  namespace: scale-200-run-78
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-78
+subjects:
+- kind: ServiceAccount
+  name: sa-78
+  namespace: scale-200-run-78
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-78
+  namespace: scale-200-run-78
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-78
+  namespace: scale-200-run-78
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-78
+subjects:
+- kind: ServiceAccount
+  name: sa-78
+  namespace: scale-200-run-78
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-79
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-79
+  namespace: scale-200-run-79
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-79
+  namespace: scale-200-run-79
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-79
+subjects:
+- kind: ServiceAccount
+  name: sa-79
+  namespace: scale-200-run-79
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-80
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-80
+  namespace: scale-200-run-80
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-80
+  namespace: scale-200-run-80
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-80
+subjects:
+- kind: ServiceAccount
+  name: sa-80
+  namespace: scale-200-run-80
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-80
+  namespace: scale-200-run-80
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-80
+  namespace: scale-200-run-80
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-80
+subjects:
+- kind: ServiceAccount
+  name: sa-80
+  namespace: scale-200-run-80
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-81
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-81
+  namespace: scale-200-run-81
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-81
+  namespace: scale-200-run-81
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-81
+subjects:
+- kind: ServiceAccount
+  name: sa-81
+  namespace: scale-200-run-81
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-82
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-82
+  namespace: scale-200-run-82
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-82
+  namespace: scale-200-run-82
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-82
+subjects:
+- kind: ServiceAccount
+  name: sa-82
+  namespace: scale-200-run-82
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-82
+  namespace: scale-200-run-82
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-82
+  namespace: scale-200-run-82
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-82
+subjects:
+- kind: ServiceAccount
+  name: sa-82
+  namespace: scale-200-run-82
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-83
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-83
+  namespace: scale-200-run-83
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-83
+  namespace: scale-200-run-83
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-83
+subjects:
+- kind: ServiceAccount
+  name: sa-83
+  namespace: scale-200-run-83
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-84
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-84
+  namespace: scale-200-run-84
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-84
+  namespace: scale-200-run-84
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-84
+subjects:
+- kind: ServiceAccount
+  name: sa-84
+  namespace: scale-200-run-84
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-84
+  namespace: scale-200-run-84
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-84
+  namespace: scale-200-run-84
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-84
+subjects:
+- kind: ServiceAccount
+  name: sa-84
+  namespace: scale-200-run-84
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-85
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-85
+  namespace: scale-200-run-85
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-85
+  namespace: scale-200-run-85
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-85
+subjects:
+- kind: ServiceAccount
+  name: sa-85
+  namespace: scale-200-run-85
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-86
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-86
+  namespace: scale-200-run-86
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-86
+  namespace: scale-200-run-86
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-86
+subjects:
+- kind: ServiceAccount
+  name: sa-86
+  namespace: scale-200-run-86
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-86
+  namespace: scale-200-run-86
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-86
+  namespace: scale-200-run-86
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-86
+subjects:
+- kind: ServiceAccount
+  name: sa-86
+  namespace: scale-200-run-86
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-87
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-87
+  namespace: scale-200-run-87
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-87
+  namespace: scale-200-run-87
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-87
+subjects:
+- kind: ServiceAccount
+  name: sa-87
+  namespace: scale-200-run-87
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-88
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-88
+  namespace: scale-200-run-88
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-88
+  namespace: scale-200-run-88
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-88
+subjects:
+- kind: ServiceAccount
+  name: sa-88
+  namespace: scale-200-run-88
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-88
+  namespace: scale-200-run-88
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-88
+  namespace: scale-200-run-88
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-88
+subjects:
+- kind: ServiceAccount
+  name: sa-88
+  namespace: scale-200-run-88
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-89
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-89
+  namespace: scale-200-run-89
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-89
+  namespace: scale-200-run-89
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-89
+subjects:
+- kind: ServiceAccount
+  name: sa-89
+  namespace: scale-200-run-89
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-90
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-90
+  namespace: scale-200-run-90
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-90
+  namespace: scale-200-run-90
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-90
+subjects:
+- kind: ServiceAccount
+  name: sa-90
+  namespace: scale-200-run-90
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-90
+  namespace: scale-200-run-90
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-90
+  namespace: scale-200-run-90
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-90
+subjects:
+- kind: ServiceAccount
+  name: sa-90
+  namespace: scale-200-run-90
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-91
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-91
+  namespace: scale-200-run-91
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-91
+  namespace: scale-200-run-91
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-91
+subjects:
+- kind: ServiceAccount
+  name: sa-91
+  namespace: scale-200-run-91
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-92
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-92
+  namespace: scale-200-run-92
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-92
+  namespace: scale-200-run-92
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-92
+subjects:
+- kind: ServiceAccount
+  name: sa-92
+  namespace: scale-200-run-92
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-92
+  namespace: scale-200-run-92
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-92
+  namespace: scale-200-run-92
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-92
+subjects:
+- kind: ServiceAccount
+  name: sa-92
+  namespace: scale-200-run-92
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-93
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-93
+  namespace: scale-200-run-93
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-93
+  namespace: scale-200-run-93
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-93
+subjects:
+- kind: ServiceAccount
+  name: sa-93
+  namespace: scale-200-run-93
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-94
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-94
+  namespace: scale-200-run-94
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-94
+  namespace: scale-200-run-94
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-94
+subjects:
+- kind: ServiceAccount
+  name: sa-94
+  namespace: scale-200-run-94
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-94
+  namespace: scale-200-run-94
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-94
+  namespace: scale-200-run-94
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-94
+subjects:
+- kind: ServiceAccount
+  name: sa-94
+  namespace: scale-200-run-94
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-95
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-95
+  namespace: scale-200-run-95
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-95
+  namespace: scale-200-run-95
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-95
+subjects:
+- kind: ServiceAccount
+  name: sa-95
+  namespace: scale-200-run-95
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-96
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-96
+  namespace: scale-200-run-96
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-96
+  namespace: scale-200-run-96
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-96
+subjects:
+- kind: ServiceAccount
+  name: sa-96
+  namespace: scale-200-run-96
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-96
+  namespace: scale-200-run-96
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-96
+  namespace: scale-200-run-96
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-96
+subjects:
+- kind: ServiceAccount
+  name: sa-96
+  namespace: scale-200-run-96
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-97
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-97
+  namespace: scale-200-run-97
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-97
+  namespace: scale-200-run-97
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-97
+subjects:
+- kind: ServiceAccount
+  name: sa-97
+  namespace: scale-200-run-97
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-98
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-98
+  namespace: scale-200-run-98
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-98
+  namespace: scale-200-run-98
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-98
+subjects:
+- kind: ServiceAccount
+  name: sa-98
+  namespace: scale-200-run-98
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-98
+  namespace: scale-200-run-98
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-98
+  namespace: scale-200-run-98
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-98
+subjects:
+- kind: ServiceAccount
+  name: sa-98
+  namespace: scale-200-run-98
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-99
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-99
+  namespace: scale-200-run-99
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-99
+  namespace: scale-200-run-99
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-99
+subjects:
+- kind: ServiceAccount
+  name: sa-99
+  namespace: scale-200-run-99
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-100
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-100
+  namespace: scale-200-run-100
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-100
+  namespace: scale-200-run-100
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-100
+subjects:
+- kind: ServiceAccount
+  name: sa-100
+  namespace: scale-200-run-100
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-100
+  namespace: scale-200-run-100
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-100
+  namespace: scale-200-run-100
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-100
+subjects:
+- kind: ServiceAccount
+  name: sa-100
+  namespace: scale-200-run-100
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-101
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-101
+  namespace: scale-200-run-101
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-101
+  namespace: scale-200-run-101
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-101
+subjects:
+- kind: ServiceAccount
+  name: sa-101
+  namespace: scale-200-run-101
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-102
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-102
+  namespace: scale-200-run-102
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-102
+  namespace: scale-200-run-102
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-102
+subjects:
+- kind: ServiceAccount
+  name: sa-102
+  namespace: scale-200-run-102
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-102
+  namespace: scale-200-run-102
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-102
+  namespace: scale-200-run-102
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-102
+subjects:
+- kind: ServiceAccount
+  name: sa-102
+  namespace: scale-200-run-102
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-103
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-103
+  namespace: scale-200-run-103
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-103
+  namespace: scale-200-run-103
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-103
+subjects:
+- kind: ServiceAccount
+  name: sa-103
+  namespace: scale-200-run-103
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-104
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-104
+  namespace: scale-200-run-104
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-104
+  namespace: scale-200-run-104
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-104
+subjects:
+- kind: ServiceAccount
+  name: sa-104
+  namespace: scale-200-run-104
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-104
+  namespace: scale-200-run-104
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-104
+  namespace: scale-200-run-104
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-104
+subjects:
+- kind: ServiceAccount
+  name: sa-104
+  namespace: scale-200-run-104
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-105
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-105
+  namespace: scale-200-run-105
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-105
+  namespace: scale-200-run-105
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-105
+subjects:
+- kind: ServiceAccount
+  name: sa-105
+  namespace: scale-200-run-105
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-106
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-106
+  namespace: scale-200-run-106
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-106
+  namespace: scale-200-run-106
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-106
+subjects:
+- kind: ServiceAccount
+  name: sa-106
+  namespace: scale-200-run-106
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-106
+  namespace: scale-200-run-106
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-106
+  namespace: scale-200-run-106
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-106
+subjects:
+- kind: ServiceAccount
+  name: sa-106
+  namespace: scale-200-run-106
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-107
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-107
+  namespace: scale-200-run-107
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-107
+  namespace: scale-200-run-107
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-107
+subjects:
+- kind: ServiceAccount
+  name: sa-107
+  namespace: scale-200-run-107
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-108
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-108
+  namespace: scale-200-run-108
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-108
+  namespace: scale-200-run-108
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-108
+subjects:
+- kind: ServiceAccount
+  name: sa-108
+  namespace: scale-200-run-108
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-108
+  namespace: scale-200-run-108
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-108
+  namespace: scale-200-run-108
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-108
+subjects:
+- kind: ServiceAccount
+  name: sa-108
+  namespace: scale-200-run-108
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-109
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-109
+  namespace: scale-200-run-109
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-109
+  namespace: scale-200-run-109
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-109
+subjects:
+- kind: ServiceAccount
+  name: sa-109
+  namespace: scale-200-run-109
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-110
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-110
+  namespace: scale-200-run-110
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-110
+  namespace: scale-200-run-110
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-110
+subjects:
+- kind: ServiceAccount
+  name: sa-110
+  namespace: scale-200-run-110
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-110
+  namespace: scale-200-run-110
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-110
+  namespace: scale-200-run-110
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-110
+subjects:
+- kind: ServiceAccount
+  name: sa-110
+  namespace: scale-200-run-110
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-111
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-111
+  namespace: scale-200-run-111
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-111
+  namespace: scale-200-run-111
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-111
+subjects:
+- kind: ServiceAccount
+  name: sa-111
+  namespace: scale-200-run-111
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-112
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-112
+  namespace: scale-200-run-112
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-112
+  namespace: scale-200-run-112
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-112
+subjects:
+- kind: ServiceAccount
+  name: sa-112
+  namespace: scale-200-run-112
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-112
+  namespace: scale-200-run-112
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-112
+  namespace: scale-200-run-112
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-112
+subjects:
+- kind: ServiceAccount
+  name: sa-112
+  namespace: scale-200-run-112
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-113
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-113
+  namespace: scale-200-run-113
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-113
+  namespace: scale-200-run-113
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-113
+subjects:
+- kind: ServiceAccount
+  name: sa-113
+  namespace: scale-200-run-113
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-114
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-114
+  namespace: scale-200-run-114
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-114
+  namespace: scale-200-run-114
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-114
+subjects:
+- kind: ServiceAccount
+  name: sa-114
+  namespace: scale-200-run-114
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-114
+  namespace: scale-200-run-114
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-114
+  namespace: scale-200-run-114
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-114
+subjects:
+- kind: ServiceAccount
+  name: sa-114
+  namespace: scale-200-run-114
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-115
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-115
+  namespace: scale-200-run-115
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-115
+  namespace: scale-200-run-115
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-115
+subjects:
+- kind: ServiceAccount
+  name: sa-115
+  namespace: scale-200-run-115
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-116
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-116
+  namespace: scale-200-run-116
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-116
+  namespace: scale-200-run-116
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-116
+subjects:
+- kind: ServiceAccount
+  name: sa-116
+  namespace: scale-200-run-116
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-116
+  namespace: scale-200-run-116
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-116
+  namespace: scale-200-run-116
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-116
+subjects:
+- kind: ServiceAccount
+  name: sa-116
+  namespace: scale-200-run-116
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-117
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-117
+  namespace: scale-200-run-117
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-117
+  namespace: scale-200-run-117
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-117
+subjects:
+- kind: ServiceAccount
+  name: sa-117
+  namespace: scale-200-run-117
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-118
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-118
+  namespace: scale-200-run-118
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-118
+  namespace: scale-200-run-118
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-118
+subjects:
+- kind: ServiceAccount
+  name: sa-118
+  namespace: scale-200-run-118
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-118
+  namespace: scale-200-run-118
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-118
+  namespace: scale-200-run-118
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-118
+subjects:
+- kind: ServiceAccount
+  name: sa-118
+  namespace: scale-200-run-118
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-119
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-119
+  namespace: scale-200-run-119
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-119
+  namespace: scale-200-run-119
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-119
+subjects:
+- kind: ServiceAccount
+  name: sa-119
+  namespace: scale-200-run-119
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-120
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-120
+  namespace: scale-200-run-120
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-120
+  namespace: scale-200-run-120
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-120
+subjects:
+- kind: ServiceAccount
+  name: sa-120
+  namespace: scale-200-run-120
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-120
+  namespace: scale-200-run-120
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-120
+  namespace: scale-200-run-120
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-120
+subjects:
+- kind: ServiceAccount
+  name: sa-120
+  namespace: scale-200-run-120
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-121
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-121
+  namespace: scale-200-run-121
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-121
+  namespace: scale-200-run-121
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-121
+subjects:
+- kind: ServiceAccount
+  name: sa-121
+  namespace: scale-200-run-121
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-122
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-122
+  namespace: scale-200-run-122
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-122
+  namespace: scale-200-run-122
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-122
+subjects:
+- kind: ServiceAccount
+  name: sa-122
+  namespace: scale-200-run-122
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-122
+  namespace: scale-200-run-122
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-122
+  namespace: scale-200-run-122
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-122
+subjects:
+- kind: ServiceAccount
+  name: sa-122
+  namespace: scale-200-run-122
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-123
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-123
+  namespace: scale-200-run-123
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-123
+  namespace: scale-200-run-123
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-123
+subjects:
+- kind: ServiceAccount
+  name: sa-123
+  namespace: scale-200-run-123
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-124
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-124
+  namespace: scale-200-run-124
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-124
+  namespace: scale-200-run-124
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-124
+subjects:
+- kind: ServiceAccount
+  name: sa-124
+  namespace: scale-200-run-124
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-124
+  namespace: scale-200-run-124
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-124
+  namespace: scale-200-run-124
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-124
+subjects:
+- kind: ServiceAccount
+  name: sa-124
+  namespace: scale-200-run-124
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-125
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-125
+  namespace: scale-200-run-125
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-125
+  namespace: scale-200-run-125
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-125
+subjects:
+- kind: ServiceAccount
+  name: sa-125
+  namespace: scale-200-run-125
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-126
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-126
+  namespace: scale-200-run-126
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-126
+  namespace: scale-200-run-126
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-126
+subjects:
+- kind: ServiceAccount
+  name: sa-126
+  namespace: scale-200-run-126
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-126
+  namespace: scale-200-run-126
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-126
+  namespace: scale-200-run-126
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-126
+subjects:
+- kind: ServiceAccount
+  name: sa-126
+  namespace: scale-200-run-126
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-127
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-127
+  namespace: scale-200-run-127
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-127
+  namespace: scale-200-run-127
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-127
+subjects:
+- kind: ServiceAccount
+  name: sa-127
+  namespace: scale-200-run-127
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-128
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-128
+  namespace: scale-200-run-128
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-128
+  namespace: scale-200-run-128
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-128
+subjects:
+- kind: ServiceAccount
+  name: sa-128
+  namespace: scale-200-run-128
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-128
+  namespace: scale-200-run-128
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-128
+  namespace: scale-200-run-128
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-128
+subjects:
+- kind: ServiceAccount
+  name: sa-128
+  namespace: scale-200-run-128
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-129
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-129
+  namespace: scale-200-run-129
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-129
+  namespace: scale-200-run-129
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-129
+subjects:
+- kind: ServiceAccount
+  name: sa-129
+  namespace: scale-200-run-129
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-130
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-130
+  namespace: scale-200-run-130
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-130
+  namespace: scale-200-run-130
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-130
+subjects:
+- kind: ServiceAccount
+  name: sa-130
+  namespace: scale-200-run-130
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-130
+  namespace: scale-200-run-130
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-130
+  namespace: scale-200-run-130
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-130
+subjects:
+- kind: ServiceAccount
+  name: sa-130
+  namespace: scale-200-run-130
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-131
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-131
+  namespace: scale-200-run-131
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-131
+  namespace: scale-200-run-131
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-131
+subjects:
+- kind: ServiceAccount
+  name: sa-131
+  namespace: scale-200-run-131
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-132
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-132
+  namespace: scale-200-run-132
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-132
+  namespace: scale-200-run-132
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-132
+subjects:
+- kind: ServiceAccount
+  name: sa-132
+  namespace: scale-200-run-132
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-132
+  namespace: scale-200-run-132
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-132
+  namespace: scale-200-run-132
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-132
+subjects:
+- kind: ServiceAccount
+  name: sa-132
+  namespace: scale-200-run-132
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-133
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-133
+  namespace: scale-200-run-133
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-133
+  namespace: scale-200-run-133
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-133
+subjects:
+- kind: ServiceAccount
+  name: sa-133
+  namespace: scale-200-run-133
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-134
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-134
+  namespace: scale-200-run-134
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-134
+  namespace: scale-200-run-134
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-134
+subjects:
+- kind: ServiceAccount
+  name: sa-134
+  namespace: scale-200-run-134
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-134
+  namespace: scale-200-run-134
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-134
+  namespace: scale-200-run-134
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-134
+subjects:
+- kind: ServiceAccount
+  name: sa-134
+  namespace: scale-200-run-134
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-135
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-135
+  namespace: scale-200-run-135
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-135
+  namespace: scale-200-run-135
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-135
+subjects:
+- kind: ServiceAccount
+  name: sa-135
+  namespace: scale-200-run-135
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-136
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-136
+  namespace: scale-200-run-136
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-136
+  namespace: scale-200-run-136
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-136
+subjects:
+- kind: ServiceAccount
+  name: sa-136
+  namespace: scale-200-run-136
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-136
+  namespace: scale-200-run-136
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-136
+  namespace: scale-200-run-136
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-136
+subjects:
+- kind: ServiceAccount
+  name: sa-136
+  namespace: scale-200-run-136
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-137
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-137
+  namespace: scale-200-run-137
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-137
+  namespace: scale-200-run-137
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-137
+subjects:
+- kind: ServiceAccount
+  name: sa-137
+  namespace: scale-200-run-137
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-138
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-138
+  namespace: scale-200-run-138
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-138
+  namespace: scale-200-run-138
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-138
+subjects:
+- kind: ServiceAccount
+  name: sa-138
+  namespace: scale-200-run-138
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-138
+  namespace: scale-200-run-138
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-138
+  namespace: scale-200-run-138
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-138
+subjects:
+- kind: ServiceAccount
+  name: sa-138
+  namespace: scale-200-run-138
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-139
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-139
+  namespace: scale-200-run-139
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-139
+  namespace: scale-200-run-139
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-139
+subjects:
+- kind: ServiceAccount
+  name: sa-139
+  namespace: scale-200-run-139
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-140
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-140
+  namespace: scale-200-run-140
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-140
+  namespace: scale-200-run-140
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-140
+subjects:
+- kind: ServiceAccount
+  name: sa-140
+  namespace: scale-200-run-140
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-140
+  namespace: scale-200-run-140
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-140
+  namespace: scale-200-run-140
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-140
+subjects:
+- kind: ServiceAccount
+  name: sa-140
+  namespace: scale-200-run-140
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-141
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-141
+  namespace: scale-200-run-141
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-141
+  namespace: scale-200-run-141
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-141
+subjects:
+- kind: ServiceAccount
+  name: sa-141
+  namespace: scale-200-run-141
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-142
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-142
+  namespace: scale-200-run-142
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-142
+  namespace: scale-200-run-142
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-142
+subjects:
+- kind: ServiceAccount
+  name: sa-142
+  namespace: scale-200-run-142
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-142
+  namespace: scale-200-run-142
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-142
+  namespace: scale-200-run-142
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-142
+subjects:
+- kind: ServiceAccount
+  name: sa-142
+  namespace: scale-200-run-142
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-143
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-143
+  namespace: scale-200-run-143
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-143
+  namespace: scale-200-run-143
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-143
+subjects:
+- kind: ServiceAccount
+  name: sa-143
+  namespace: scale-200-run-143
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-144
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-144
+  namespace: scale-200-run-144
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-144
+  namespace: scale-200-run-144
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-144
+subjects:
+- kind: ServiceAccount
+  name: sa-144
+  namespace: scale-200-run-144
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-144
+  namespace: scale-200-run-144
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-144
+  namespace: scale-200-run-144
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-144
+subjects:
+- kind: ServiceAccount
+  name: sa-144
+  namespace: scale-200-run-144
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-145
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-145
+  namespace: scale-200-run-145
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-145
+  namespace: scale-200-run-145
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-145
+subjects:
+- kind: ServiceAccount
+  name: sa-145
+  namespace: scale-200-run-145
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-146
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-146
+  namespace: scale-200-run-146
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-146
+  namespace: scale-200-run-146
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-146
+subjects:
+- kind: ServiceAccount
+  name: sa-146
+  namespace: scale-200-run-146
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-146
+  namespace: scale-200-run-146
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-146
+  namespace: scale-200-run-146
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-146
+subjects:
+- kind: ServiceAccount
+  name: sa-146
+  namespace: scale-200-run-146
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-147
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-147
+  namespace: scale-200-run-147
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-147
+  namespace: scale-200-run-147
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-147
+subjects:
+- kind: ServiceAccount
+  name: sa-147
+  namespace: scale-200-run-147
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-148
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-148
+  namespace: scale-200-run-148
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-148
+  namespace: scale-200-run-148
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-148
+subjects:
+- kind: ServiceAccount
+  name: sa-148
+  namespace: scale-200-run-148
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-148
+  namespace: scale-200-run-148
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-148
+  namespace: scale-200-run-148
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-148
+subjects:
+- kind: ServiceAccount
+  name: sa-148
+  namespace: scale-200-run-148
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-149
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-149
+  namespace: scale-200-run-149
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-149
+  namespace: scale-200-run-149
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-149
+subjects:
+- kind: ServiceAccount
+  name: sa-149
+  namespace: scale-200-run-149
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-150
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-150
+  namespace: scale-200-run-150
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-150
+  namespace: scale-200-run-150
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-150
+subjects:
+- kind: ServiceAccount
+  name: sa-150
+  namespace: scale-200-run-150
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-150
+  namespace: scale-200-run-150
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-150
+  namespace: scale-200-run-150
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-150
+subjects:
+- kind: ServiceAccount
+  name: sa-150
+  namespace: scale-200-run-150
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-151
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-151
+  namespace: scale-200-run-151
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-151
+  namespace: scale-200-run-151
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-151
+subjects:
+- kind: ServiceAccount
+  name: sa-151
+  namespace: scale-200-run-151
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-152
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-152
+  namespace: scale-200-run-152
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-152
+  namespace: scale-200-run-152
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-152
+subjects:
+- kind: ServiceAccount
+  name: sa-152
+  namespace: scale-200-run-152
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-152
+  namespace: scale-200-run-152
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-152
+  namespace: scale-200-run-152
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-152
+subjects:
+- kind: ServiceAccount
+  name: sa-152
+  namespace: scale-200-run-152
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-153
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-153
+  namespace: scale-200-run-153
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-153
+  namespace: scale-200-run-153
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-153
+subjects:
+- kind: ServiceAccount
+  name: sa-153
+  namespace: scale-200-run-153
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-154
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-154
+  namespace: scale-200-run-154
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-154
+  namespace: scale-200-run-154
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-154
+subjects:
+- kind: ServiceAccount
+  name: sa-154
+  namespace: scale-200-run-154
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-154
+  namespace: scale-200-run-154
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-154
+  namespace: scale-200-run-154
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-154
+subjects:
+- kind: ServiceAccount
+  name: sa-154
+  namespace: scale-200-run-154
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-155
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-155
+  namespace: scale-200-run-155
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-155
+  namespace: scale-200-run-155
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-155
+subjects:
+- kind: ServiceAccount
+  name: sa-155
+  namespace: scale-200-run-155
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-156
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-156
+  namespace: scale-200-run-156
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-156
+  namespace: scale-200-run-156
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-156
+subjects:
+- kind: ServiceAccount
+  name: sa-156
+  namespace: scale-200-run-156
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-156
+  namespace: scale-200-run-156
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-156
+  namespace: scale-200-run-156
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-156
+subjects:
+- kind: ServiceAccount
+  name: sa-156
+  namespace: scale-200-run-156
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-157
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-157
+  namespace: scale-200-run-157
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-157
+  namespace: scale-200-run-157
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-157
+subjects:
+- kind: ServiceAccount
+  name: sa-157
+  namespace: scale-200-run-157
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-158
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-158
+  namespace: scale-200-run-158
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-158
+  namespace: scale-200-run-158
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-158
+subjects:
+- kind: ServiceAccount
+  name: sa-158
+  namespace: scale-200-run-158
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-158
+  namespace: scale-200-run-158
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-158
+  namespace: scale-200-run-158
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-158
+subjects:
+- kind: ServiceAccount
+  name: sa-158
+  namespace: scale-200-run-158
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-159
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-159
+  namespace: scale-200-run-159
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-159
+  namespace: scale-200-run-159
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-159
+subjects:
+- kind: ServiceAccount
+  name: sa-159
+  namespace: scale-200-run-159
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-160
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-160
+  namespace: scale-200-run-160
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-160
+  namespace: scale-200-run-160
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-160
+subjects:
+- kind: ServiceAccount
+  name: sa-160
+  namespace: scale-200-run-160
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-160
+  namespace: scale-200-run-160
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-160
+  namespace: scale-200-run-160
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-160
+subjects:
+- kind: ServiceAccount
+  name: sa-160
+  namespace: scale-200-run-160
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-161
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-161
+  namespace: scale-200-run-161
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-161
+  namespace: scale-200-run-161
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-161
+subjects:
+- kind: ServiceAccount
+  name: sa-161
+  namespace: scale-200-run-161
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-162
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-162
+  namespace: scale-200-run-162
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-162
+  namespace: scale-200-run-162
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-162
+subjects:
+- kind: ServiceAccount
+  name: sa-162
+  namespace: scale-200-run-162
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-162
+  namespace: scale-200-run-162
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-162
+  namespace: scale-200-run-162
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-162
+subjects:
+- kind: ServiceAccount
+  name: sa-162
+  namespace: scale-200-run-162
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-163
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-163
+  namespace: scale-200-run-163
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-163
+  namespace: scale-200-run-163
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-163
+subjects:
+- kind: ServiceAccount
+  name: sa-163
+  namespace: scale-200-run-163
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-164
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-164
+  namespace: scale-200-run-164
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-164
+  namespace: scale-200-run-164
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-164
+subjects:
+- kind: ServiceAccount
+  name: sa-164
+  namespace: scale-200-run-164
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-164
+  namespace: scale-200-run-164
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-164
+  namespace: scale-200-run-164
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-164
+subjects:
+- kind: ServiceAccount
+  name: sa-164
+  namespace: scale-200-run-164
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-165
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-165
+  namespace: scale-200-run-165
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-165
+  namespace: scale-200-run-165
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-165
+subjects:
+- kind: ServiceAccount
+  name: sa-165
+  namespace: scale-200-run-165
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-166
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-166
+  namespace: scale-200-run-166
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-166
+  namespace: scale-200-run-166
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-166
+subjects:
+- kind: ServiceAccount
+  name: sa-166
+  namespace: scale-200-run-166
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-166
+  namespace: scale-200-run-166
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-166
+  namespace: scale-200-run-166
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-166
+subjects:
+- kind: ServiceAccount
+  name: sa-166
+  namespace: scale-200-run-166
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-167
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-167
+  namespace: scale-200-run-167
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-167
+  namespace: scale-200-run-167
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-167
+subjects:
+- kind: ServiceAccount
+  name: sa-167
+  namespace: scale-200-run-167
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-168
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-168
+  namespace: scale-200-run-168
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-168
+  namespace: scale-200-run-168
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-168
+subjects:
+- kind: ServiceAccount
+  name: sa-168
+  namespace: scale-200-run-168
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-168
+  namespace: scale-200-run-168
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-168
+  namespace: scale-200-run-168
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-168
+subjects:
+- kind: ServiceAccount
+  name: sa-168
+  namespace: scale-200-run-168
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-169
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-169
+  namespace: scale-200-run-169
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-169
+  namespace: scale-200-run-169
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-169
+subjects:
+- kind: ServiceAccount
+  name: sa-169
+  namespace: scale-200-run-169
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-170
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-170
+  namespace: scale-200-run-170
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-170
+  namespace: scale-200-run-170
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-170
+subjects:
+- kind: ServiceAccount
+  name: sa-170
+  namespace: scale-200-run-170
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-170
+  namespace: scale-200-run-170
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: broad-binding-170
+  namespace: scale-200-run-170
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-170
+subjects:
+- kind: ServiceAccount
+  name: sa-170
+  namespace: scale-200-run-170
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-171
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-171
+  namespace: scale-200-run-171
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-171
+  namespace: scale-200-run-171
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-171
+subjects:
+- kind: ServiceAccount
+  name: sa-171
+  namespace: scale-200-run-171
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-172
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-172
+  namespace: scale-200-run-172
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-172
+  namespace: scale-200-run-172
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-172
+subjects:
+- kind: ServiceAccount
+  name: sa-172
+  namespace: scale-200-run-172
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-172
+  namespace: scale-200-run-172
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: broad-binding-172
+  namespace: scale-200-run-172
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-172
+subjects:
+- kind: ServiceAccount
+  name: sa-172
+  namespace: scale-200-run-172
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-173
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-173
+  namespace: scale-200-run-173
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-173
+  namespace: scale-200-run-173
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-173
+subjects:
+- kind: ServiceAccount
+  name: sa-173
+  namespace: scale-200-run-173
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-174
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-174
+  namespace: scale-200-run-174
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-174
+  namespace: scale-200-run-174
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-174
+subjects:
+- kind: ServiceAccount
+  name: sa-174
+  namespace: scale-200-run-174
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-174
+  namespace: scale-200-run-174
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-174
+  namespace: scale-200-run-174
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-174
+subjects:
+- kind: ServiceAccount
+  name: sa-174
+  namespace: scale-200-run-174
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-175
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-175
+  namespace: scale-200-run-175
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-175
+  namespace: scale-200-run-175
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-175
+subjects:
+- kind: ServiceAccount
+  name: sa-175
+  namespace: scale-200-run-175
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-176
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-176
+  namespace: scale-200-run-176
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-176
+  namespace: scale-200-run-176
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-176
+subjects:
+- kind: ServiceAccount
+  name: sa-176
+  namespace: scale-200-run-176
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-176
+  namespace: scale-200-run-176
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-176
+  namespace: scale-200-run-176
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-176
+subjects:
+- kind: ServiceAccount
+  name: sa-176
+  namespace: scale-200-run-176
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-177
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-177
+  namespace: scale-200-run-177
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-177
+  namespace: scale-200-run-177
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-177
+subjects:
+- kind: ServiceAccount
+  name: sa-177
+  namespace: scale-200-run-177
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-178
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-178
+  namespace: scale-200-run-178
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-178
+  namespace: scale-200-run-178
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-178
+subjects:
+- kind: ServiceAccount
+  name: sa-178
+  namespace: scale-200-run-178
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-178
+  namespace: scale-200-run-178
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-178
+  namespace: scale-200-run-178
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-178
+subjects:
+- kind: ServiceAccount
+  name: sa-178
+  namespace: scale-200-run-178
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-179
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-179
+  namespace: scale-200-run-179
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-179
+  namespace: scale-200-run-179
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-179
+subjects:
+- kind: ServiceAccount
+  name: sa-179
+  namespace: scale-200-run-179
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-180
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-180
+  namespace: scale-200-run-180
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-180
+  namespace: scale-200-run-180
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-180
+subjects:
+- kind: ServiceAccount
+  name: sa-180
+  namespace: scale-200-run-180
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-180
+  namespace: scale-200-run-180
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-180
+  namespace: scale-200-run-180
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-180
+subjects:
+- kind: ServiceAccount
+  name: sa-180
+  namespace: scale-200-run-180
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-181
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-181
+  namespace: scale-200-run-181
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-181
+  namespace: scale-200-run-181
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-181
+subjects:
+- kind: ServiceAccount
+  name: sa-181
+  namespace: scale-200-run-181
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-182
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-182
+  namespace: scale-200-run-182
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-182
+  namespace: scale-200-run-182
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-182
+subjects:
+- kind: ServiceAccount
+  name: sa-182
+  namespace: scale-200-run-182
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-182
+  namespace: scale-200-run-182
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-182
+  namespace: scale-200-run-182
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-182
+subjects:
+- kind: ServiceAccount
+  name: sa-182
+  namespace: scale-200-run-182
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-183
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-183
+  namespace: scale-200-run-183
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-183
+  namespace: scale-200-run-183
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-183
+subjects:
+- kind: ServiceAccount
+  name: sa-183
+  namespace: scale-200-run-183
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-184
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-184
+  namespace: scale-200-run-184
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-184
+  namespace: scale-200-run-184
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-184
+subjects:
+- kind: ServiceAccount
+  name: sa-184
+  namespace: scale-200-run-184
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-184
+  namespace: scale-200-run-184
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-184
+  namespace: scale-200-run-184
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-184
+subjects:
+- kind: ServiceAccount
+  name: sa-184
+  namespace: scale-200-run-184
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-185
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-185
+  namespace: scale-200-run-185
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-185
+  namespace: scale-200-run-185
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-185
+subjects:
+- kind: ServiceAccount
+  name: sa-185
+  namespace: scale-200-run-185
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-186
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-186
+  namespace: scale-200-run-186
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-186
+  namespace: scale-200-run-186
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-186
+subjects:
+- kind: ServiceAccount
+  name: sa-186
+  namespace: scale-200-run-186
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-186
+  namespace: scale-200-run-186
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-186
+  namespace: scale-200-run-186
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-186
+subjects:
+- kind: ServiceAccount
+  name: sa-186
+  namespace: scale-200-run-186
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-187
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-187
+  namespace: scale-200-run-187
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-187
+  namespace: scale-200-run-187
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-187
+subjects:
+- kind: ServiceAccount
+  name: sa-187
+  namespace: scale-200-run-187
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-188
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-188
+  namespace: scale-200-run-188
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-188
+  namespace: scale-200-run-188
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-188
+subjects:
+- kind: ServiceAccount
+  name: sa-188
+  namespace: scale-200-run-188
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-188
+  namespace: scale-200-run-188
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-188
+  namespace: scale-200-run-188
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-188
+subjects:
+- kind: ServiceAccount
+  name: sa-188
+  namespace: scale-200-run-188
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-189
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-189
+  namespace: scale-200-run-189
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-189
+  namespace: scale-200-run-189
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-189
+subjects:
+- kind: ServiceAccount
+  name: sa-189
+  namespace: scale-200-run-189
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-190
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-190
+  namespace: scale-200-run-190
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-190
+  namespace: scale-200-run-190
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-190
+subjects:
+- kind: ServiceAccount
+  name: sa-190
+  namespace: scale-200-run-190
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-190
+  namespace: scale-200-run-190
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-190
+  namespace: scale-200-run-190
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-190
+subjects:
+- kind: ServiceAccount
+  name: sa-190
+  namespace: scale-200-run-190
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-191
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-191
+  namespace: scale-200-run-191
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-191
+  namespace: scale-200-run-191
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-191
+subjects:
+- kind: ServiceAccount
+  name: sa-191
+  namespace: scale-200-run-191
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-192
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-192
+  namespace: scale-200-run-192
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-192
+  namespace: scale-200-run-192
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-192
+subjects:
+- kind: ServiceAccount
+  name: sa-192
+  namespace: scale-200-run-192
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-192
+  namespace: scale-200-run-192
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-192
+  namespace: scale-200-run-192
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-192
+subjects:
+- kind: ServiceAccount
+  name: sa-192
+  namespace: scale-200-run-192
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-193
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-193
+  namespace: scale-200-run-193
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: narrow-binding-193
+  namespace: scale-200-run-193
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-193
+subjects:
+- kind: ServiceAccount
+  name: sa-193
+  namespace: scale-200-run-193
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-194
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-194
+  namespace: scale-200-run-194
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: narrow-binding-194
+  namespace: scale-200-run-194
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-194
+subjects:
+- kind: ServiceAccount
+  name: sa-194
+  namespace: scale-200-run-194
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-194
+  namespace: scale-200-run-194
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-beta
+  name: broad-binding-194
+  namespace: scale-200-run-194
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-194
+subjects:
+- kind: ServiceAccount
+  name: sa-194
+  namespace: scale-200-run-194
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-195
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-195
+  namespace: scale-200-run-195
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-195
+  namespace: scale-200-run-195
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-195
+subjects:
+- kind: ServiceAccount
+  name: sa-195
+  namespace: scale-200-run-195
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-196
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-196
+  namespace: scale-200-run-196
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-epsilon
+  name: narrow-binding-196
+  namespace: scale-200-run-196
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-196
+subjects:
+- kind: ServiceAccount
+  name: sa-196
+  namespace: scale-200-run-196
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-196
+  namespace: scale-200-run-196
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - services
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: broad-binding-196
+  namespace: scale-200-run-196
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-196
+subjects:
+- kind: ServiceAccount
+  name: sa-196
+  namespace: scale-200-run-196
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-197
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-197
+  namespace: scale-200-run-197
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-197
+  namespace: scale-200-run-197
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-197
+subjects:
+- kind: ServiceAccount
+  name: sa-197
+  namespace: scale-200-run-197
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-198
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-198
+  namespace: scale-200-run-198
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-delta
+  name: narrow-binding-198
+  namespace: scale-200-run-198
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-198
+subjects:
+- kind: ServiceAccount
+  name: sa-198
+  namespace: scale-200-run-198
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-198
+  namespace: scale-200-run-198
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - deployments
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-gamma
+  name: broad-binding-198
+  namespace: scale-200-run-198
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: broad-198
+subjects:
+- kind: ServiceAccount
+  name: sa-198
+  namespace: scale-200-run-198
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale-200-run-199
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-199
+  namespace: scale-200-run-199
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    owner-team: team-alpha
+  name: narrow-binding-199
+  namespace: scale-200-run-199
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: narrow-199
+subjects:
+- kind: ServiceAccount
+  name: sa-199
+  namespace: scale-200-run-199

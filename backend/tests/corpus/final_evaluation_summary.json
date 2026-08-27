@@ -1,0 +1,34 @@
+{
+  "subsumption": {
+    "total": 26,
+    "correct": 26,
+    "tp": 13,
+    "fp": 0,
+    "tn": 13,
+    "fn": 0
+  },
+  "shadowing": {
+    "total": 26,
+    "correct": 26,
+    "tp": 13,
+    "fp": 0,
+    "tn": 13,
+    "fn": 0
+  },
+  "cross_domain_misalignment": {
+    "total": 26,
+    "correct": 26,
+    "tp": 13,
+    "fp": 0,
+    "tn": 13,
+    "fn": 0
+  },
+  "contradiction": {
+    "total": 26,
+    "correct": 26,
+    "tp": 13,
+    "fp": 0,
+    "tn": 13,
+    "fn": 0
+  }
+}

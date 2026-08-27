@@ -1,0 +1,47 @@
+[
+  {
+    "ingestion_seconds": 0.049,
+    "graph_build_seconds": 0.001,
+    "detection_seconds": 0.0,
+    "total_seconds": 0.049,
+    "policy_count": 70,
+    "conflicts_found": 6,
+    "n_pairs_requested": 10
+  },
+  {
+    "ingestion_seconds": 0.051,
+    "graph_build_seconds": 0.001,
+    "detection_seconds": 0.0,
+    "total_seconds": 0.051,
+    "policy_count": 116,
+    "conflicts_found": 14,
+    "n_pairs_requested": 25
+  },
+  {
+    "ingestion_seconds": 0.062,
+    "graph_build_seconds": 0.001,
+    "detection_seconds": 0.0,
+    "total_seconds": 0.063,
+    "policy_count": 190,
+    "conflicts_found": 26,
+    "n_pairs_requested": 50
+  },
+  {
+    "ingestion_seconds": 0.102,
+    "graph_build_seconds": 0.002,
+    "detection_seconds": 0.0,
+    "total_seconds": 0.104,
+    "policy_count": 340,
+    "conflicts_found": 51,
+    "n_pairs_requested": 100
+  },
+  {
+    "ingestion_seconds": 0.172,
+    "graph_build_seconds": 0.004,
+    "detection_seconds": 0.001,
+    "total_seconds": 0.176,
+    "policy_count": 640,
+    "conflicts_found": 101,
+    "n_pairs_requested": 200
+  }
+]
