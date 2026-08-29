@@ -2,19 +2,19 @@
 CAPE-Policy: Shadowing Detector
 Detects when a security-critical policy (e.g., Gatekeeper image allow-list)
 is scoped to cover only some team namespaces, silently leaving others
-unprotected — even though the policy "looks like" it's enforced cluster-wide.
+unprotected. Now attaches a confidence-scored attribution decision.
 """
 
 import json
+import sys
+
+sys.path.insert(0, "src")
+sys.path.insert(0, ".")
+
+from attribution.attribution import confidence_label
 
 
 def detect_shadowing(gatekeeper_constraints, all_team_namespaces):
-    """
-    For each Gatekeeper constraint, check if it covers all known team
-    namespaces. If it's missing coverage for some, flag it as a shadowing
-    gap — the policy exists and looks active, but isn't protecting everyone
-    it plausibly should.
-    """
     conflicts = []
 
     for constraint in gatekeeper_constraints:
@@ -22,7 +22,25 @@ def detect_shadowing(gatekeeper_constraints, all_team_namespaces):
         missing = set(all_team_namespaces) - covered
 
         if missing and covered:
-            # Policy IS active somewhere, but not everywhere it should be
+            # Shadowing attribution is different from subsumption: there's
+            # only ONE policy involved (the gap is an omission, not a
+            # competing second policy), so confidence reflects how certain
+            # we are that the omission is unintentional rather than a
+            # deliberate scoping choice. We use coverage ratio as the signal:
+            # covering very few of many namespaces suggests an oversight;
+            # covering most but missing one or two is more ambiguous.
+            coverage_ratio = len(covered) / len(all_team_namespaces) if all_team_namespaces else 0
+
+            if coverage_ratio <= 0.34:
+                confidence = 0.85
+                certainty_note = "policy covers a small minority of active namespaces, strongly suggesting an unintentional gap"
+            elif coverage_ratio <= 0.67:
+                confidence = 0.65
+                certainty_note = "policy covers roughly half of active namespaces; gap may be intentional or accidental"
+            else:
+                confidence = 0.45
+                certainty_note = "policy covers most namespaces; the small remaining gap could be an intentional exclusion"
+
             conflicts.append({
                 "conflict_type": "shadowing",
                 "policy_name": constraint["name"],
@@ -40,6 +58,15 @@ def detect_shadowing(gatekeeper_constraints, all_team_namespaces):
                 ),
                 "at_fault_team": constraint["owner"],
                 "severity": "high",
+                "formal_attribution": {
+                    "at_fault_owner": constraint["owner"],
+                    "confidence_score": confidence,
+                    "confidence_label": confidence_label(confidence),
+                    "reasoning": (
+                        f"Coverage ratio: {len(covered)}/{len(all_team_namespaces)} "
+                        f"namespaces ({coverage_ratio*100:.0f}%). {certainty_note}."
+                    ),
+                },
             })
 
     return conflicts
@@ -49,8 +76,6 @@ if __name__ == "__main__":
     with open("data/latest_scan.json") as f:
         scan_data = json.load(f)
 
-    # In a real system this would come from listing all namespaces with an
-    # "owner" label. For now, we know our 3 seeded teams.
     all_team_namespaces = ["team-security", "team-backend", "team-data"]
 
     conflicts = detect_shadowing(
@@ -60,10 +85,7 @@ if __name__ == "__main__":
     print(f"Shadowing conflicts found: {len(conflicts)}\n")
     for c in conflicts:
         print(f"--- CONFLICT: {c['conflict_type'].upper()} ---")
-        print(f"Policy: {c['policy_name']}")
         print(f"At fault: {c['at_fault_team']}")
-        print(f"Severity: {c['severity']}")
-        print(f"Covered: {c['covered_namespaces']}")
-        print(f"Uncovered (gap): {c['uncovered_namespaces']}")
-        print(f"Explanation: {c['explanation']}")
+        print(f"Confidence: {c['formal_attribution']['confidence_label']} ({c['formal_attribution']['confidence_score']})")
+        print(f"Reasoning: {c['formal_attribution']['reasoning']}")
         print()
