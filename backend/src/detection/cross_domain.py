@@ -1,20 +1,20 @@
 """
 CAPE-Policy: Cross-Domain Misalignment Detector
 Detects when RBAC grants access that a NetworkPolicy silently blocks at
-the network layer — authorization succeeds at the API level, but the
-resulting traffic never actually reaches its destination.
+the network layer. Now attaches a confidence-scored attribution decision.
 """
 
 import json
+import sys
 from kubernetes import client, config
+
+sys.path.insert(0, "src")
+sys.path.insert(0, ".")
+
+from attribution.attribution import confidence_label
 
 
 def get_cross_namespace_rbac_grants(roles, bindings):
-    """
-    Find RoleBindings where the subject's namespace differs from the
-    Role's namespace — i.e., Team A's service account is granted access
-    INTO Team B's namespace.
-    """
     role_index = {(r["namespace"], r["name"]): r for r in roles}
     cross_ns_grants = []
 
@@ -38,11 +38,6 @@ def get_cross_namespace_rbac_grants(roles, bindings):
 
 
 def get_default_deny_netpols(target_namespaces):
-    """
-    Check if the target namespace has a NetworkPolicy that blocks all
-    ingress by default (empty podSelector, Ingress in policyTypes, no
-    explicit ingress rules allowing traffic).
-    """
     config.load_kube_config()
     net_api = client.NetworkingV1Api()
 
@@ -78,7 +73,18 @@ def detect_cross_domain(scan_data):
         if ns in deny_policies:
             deny = deny_policies[ns]
             if deny["owner"] == grant["granting_role_owner"]:
-                continue  # same team, not cross-team
+                continue
+
+            # Cross-domain confidence: this is inherently a "both sides are
+            # individually reasonable" conflict, since RBAC and NetworkPolicy
+            # are evaluated by completely independent systems that were never
+            # designed to be consistency-checked against each other. Neither
+            # policy is more "at fault" in a temporal sense — the conflict is
+            # structural, not a mistake by whoever acted later. We reflect this
+            # with a fixed, moderate confidence and explicitly note the shared
+            # responsibility in the reasoning, rather than forcing a single
+            # named "culprit" the way subsumption/shadowing do.
+            confidence = 0.55
 
             conflicts.append({
                 "conflict_type": "cross_domain_misalignment",
@@ -96,13 +102,23 @@ def detect_cross_domain(scan_data):
                     f"default-deny NetworkPolicy ('{deny['policy_name']}') in that "
                     f"same namespace. RBAC authorization will succeed, but any "
                     f"actual network traffic will be silently dropped at the "
-                    f"network layer — a misalignment between the control plane "
-                    f"and data plane that neither team can see from their own "
-                    f"policy alone."
+                    f"network layer."
                 ),
                 "at_fault_team": "cross-team coordination gap "
                                   f"({grant['granting_role_owner']} + {deny['owner']})",
                 "severity": "medium",
+                "formal_attribution": {
+                    "at_fault_owner": f"joint: {grant['granting_role_owner']} + {deny['owner']}",
+                    "confidence_score": confidence,
+                    "confidence_label": confidence_label(confidence),
+                    "reasoning": (
+                        f"This is a structural cross-layer conflict between independently "
+                        f"evaluated systems (RBAC and NetworkPolicy), not a timing-based "
+                        f"fault. Neither '{grant['granting_role_owner']}' nor '{deny['owner']}' "
+                        f"acted incorrectly in isolation; responsibility is shared and "
+                        f"resolution requires coordination between both teams."
+                    ),
+                },
             })
 
     return conflicts
@@ -116,10 +132,7 @@ if __name__ == "__main__":
     print(f"Cross-domain misalignment conflicts found: {len(conflicts)}\n")
     for c in conflicts:
         print(f"--- CONFLICT: {c['conflict_type'].upper()} ---")
-        print(f"RBAC grant: {c['rbac_grant']} (owner: {c['rbac_owner']})")
-        print(f"NetworkPolicy: {c['netpol_name']} (owner: {c['netpol_owner']})")
-        print(f"Affected namespace: {c['affected_namespace']}")
-        print(f"Affected subject: {c['affected_subject']}")
         print(f"At fault: {c['at_fault_team']}")
-        print(f"Explanation: {c['explanation']}")
+        print(f"Confidence: {c['formal_attribution']['confidence_label']} ({c['formal_attribution']['confidence_score']})")
+        print(f"Reasoning: {c['formal_attribution']['reasoning']}")
         print()
