@@ -2,12 +2,12 @@ name: CAPE-Policy Scan
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # every 6 hours
+    - cron: '0 */6 * * *'
   pull_request:
     paths:
       - 'test-policies/**'
       - 'backend/src/**'
-  workflow_dispatch:        # allows manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   scan:
@@ -42,7 +42,7 @@ jobs:
           helm repo update
           helm install kyverno kyverno/kyverno -n kyverno --create-namespace --wait --timeout 120s
 
-      - name: Apply seeded test policies
+      - name: Create namespaces
         run: |
           kubectl create namespace team-security
           kubectl create namespace team-backend
@@ -50,7 +50,39 @@ jobs:
           kubectl label namespace team-security owner=security-team
           kubectl label namespace team-backend owner=backend-team
           kubectl label namespace team-data owner=data-team
-          kubectl apply -f test-policies/ --recursive
+
+      - name: Apply base RBAC and NetworkPolicy test resources
+        run: |
+          kubectl apply -f test-policies/team-backend/00-serviceaccount.yaml
+          kubectl apply -f test-policies/team-backend/01-wildcard-role.yaml
+          kubectl apply -f test-policies/team-backend/02-wildcard-binding.yaml
+          kubectl apply -f test-policies/team-backend/03-cross-namespace-role.yaml
+          kubectl apply -f test-policies/team-backend/04-cross-namespace-binding.yaml
+          kubectl apply -f test-policies/team-data/01-default-deny-netpol.yaml
+          kubectl apply -f test-policies/team-security/01-narrow-role.yaml
+          kubectl apply -f test-policies/team-security/02-narrow-binding.yaml
+
+      - name: Apply Gatekeeper ConstraintTemplate and wait for CRD registration
+        run: |
+          kubectl apply -f test-policies/team-security/03-image-constrainttemplate.yaml
+          echo "Waiting for K8sAllowedRepos CRD to be registered..."
+          for i in $(seq 1 30); do
+            if kubectl get crd k8sallowedrepos.constraints.gatekeeper.sh &> /dev/null; then
+              echo "CRD is ready"
+              break
+            fi
+            echo "Waiting... ($i/30)"
+            sleep 2
+          done
+          sleep 5
+
+      - name: Apply Gatekeeper Constraint
+        run: |
+          kubectl apply -f test-policies/team-security/04-image-constraint.yaml
+
+      - name: Apply Kyverno policy
+        run: |
+          kubectl apply -f test-policies/team-security/05-readonly-fs-policy.yaml
 
       - name: Run CAPE-Policy scan
         working-directory: backend
