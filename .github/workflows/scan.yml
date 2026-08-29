@@ -66,7 +66,11 @@ jobs:
         run: |
           kubectl apply -f test-policies/team-security/03-image-constrainttemplate.yaml
           kubectl wait --for=condition=Established crd/k8sallowedrepos.constraints.gatekeeper.sh --timeout=120s
-          sleep 3
+          for i in {1..20}; do
+            kubectl api-resources --api-group=constraints.gatekeeper.sh | grep -q k8sallowedrepos && break
+            sleep 2
+          done
+          kubectl api-resources --api-group=constraints.gatekeeper.sh | grep -q k8sallowedrepos
 
       - name: Apply Gatekeeper Constraint
         run: |
