@@ -37,10 +37,10 @@
       "team-security"
     ],
     "uncovered_namespaces": [
-      "team-backend",
-      "team-data"
+      "team-data",
+      "team-backend"
     ],
-    "explanation": "Team 'security-team' created the policy 'allowed-image-repos' (allowed image repos: ['mycompany.com/']), but it only applies to ['team-security']. The namespace(s) ['team-backend', 'team-data'] have no equivalent protection, even though they run similar workloads. Deployments in ['team-backend', 'team-data'] can silently bypass this security control.",
+    "explanation": "Team 'security-team' created the policy 'allowed-image-repos' (allowed image repos: ['mycompany.com/']), but it only applies to ['team-security']. The namespace(s) ['team-data', 'team-backend'] have no equivalent protection, even though they run similar workloads. Deployments in ['team-data', 'team-backend'] can silently bypass this security control.",
     "at_fault_team": "security-team",
     "severity": "high",
     "formal_attribution": {

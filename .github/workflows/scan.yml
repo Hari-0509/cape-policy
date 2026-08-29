@@ -1,0 +1,82 @@
+name: CAPE-Policy Scan
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # every 6 hours
+  pull_request:
+    paths:
+      - 'test-policies/**'
+      - 'backend/src/**'
+  workflow_dispatch:        # allows manual trigger from GitHub UI
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        working-directory: backend
+        run: |
+          pip install -r requirements.txt
+
+      - name: Create kind cluster
+        uses: helm/kind-action@v1
+        with:
+          cluster_name: cape-policy-ci
+
+      - name: Install OPA Gatekeeper
+        run: |
+          kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
+          kubectl wait --for=condition=Ready pods --all -n gatekeeper-system --timeout=120s
+
+      - name: Install Kyverno
+        run: |
+          helm repo add kyverno https://kyverno.github.io/kyverno/
+          helm repo update
+          helm install kyverno kyverno/kyverno -n kyverno --create-namespace --wait --timeout 120s
+
+      - name: Apply seeded test policies
+        run: |
+          kubectl create namespace team-security
+          kubectl create namespace team-backend
+          kubectl create namespace team-data
+          kubectl label namespace team-security owner=security-team
+          kubectl label namespace team-backend owner=backend-team
+          kubectl label namespace team-data owner=data-team
+          kubectl apply -f test-policies/ --recursive
+
+      - name: Run CAPE-Policy scan
+        working-directory: backend
+        run: |
+          mkdir -p data
+          python src/ingestion/collector.py > data/latest_scan.json
+          python src/detection/engine.py
+
+      - name: Upload scan report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cape-policy-conflict-report
+          path: backend/data/conflict_report.json
+
+      - name: Fail the build if high-severity conflicts found
+        working-directory: backend
+        run: |
+          python3 -c "
+          import json, sys
+          with open('data/conflict_report.json') as f:
+              conflicts = json.load(f)
+          high_severity = [c for c in conflicts if c.get('severity') == 'high']
+          print(f'Found {len(conflicts)} total conflicts, {len(high_severity)} high severity')
+          if high_severity:
+              print('HIGH SEVERITY CONFLICTS DETECTED:')
+              for c in high_severity:
+                  print(f\"  - [{c[\'conflict_type\']}] at fault: {c.get(\'at_fault_team\')}\")
+              sys.exit(1)
+          "
