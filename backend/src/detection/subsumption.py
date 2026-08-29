@@ -1,19 +1,20 @@
 """
 CAPE-Policy: Subsumption Detector
 Detects when a broad/wildcard RBAC grant from one team silently renders
-another team's narrower, intentional restriction meaningless.
+another team's narrower, intentional restriction meaningless. Now attaches
+a confidence-scored attribution decision to each finding.
 """
 
 import json
-from datetime import datetime
+import sys
+
+sys.path.insert(0, "src")
+sys.path.insert(0, ".")
+
+from attribution.attribution import enrich_conflict_with_attribution
 
 
 def detect_subsumption(multi_team_nodes):
-    """
-    For each multi-team decision point, check if one policy is a wildcard
-    grant while another is a narrow grant from a different team — that's
-    a subsumption conflict: the narrow policy is functionally overridden.
-    """
     conflicts = []
 
     for node in multi_team_nodes:
@@ -26,9 +27,9 @@ def detect_subsumption(multi_team_nodes):
             for wide in wildcard_policies:
                 for narrow in narrow_policies:
                     if wide["owner"] == narrow["owner"]:
-                        continue  # same team, not a cross-team conflict
+                        continue
 
-                    conflicts.append({
+                    conflict = {
                         "conflict_type": "subsumption",
                         "decision_point": node["decision_point"],
                         "subject": wide.get("subject"),
@@ -53,10 +54,26 @@ def detect_subsumption(multi_team_nodes):
                         ),
                         "at_fault_team": wide["owner"],
                         "severity": "high",
-                    })
+                    }
 
-    # Deduplicate conflicts that appear once per verb (get, list, etc.)
-    # into one conflict per (subject, narrow_role, wide_role) pair
+                    # Attach confidence-scored attribution using timestamps
+                    # if available, falling back to wildcard-scope tie-breaker
+                    policy_a = {
+                        "owner": narrow["owner"],
+                        "created_at": narrow.get("created_at"),
+                        "is_wildcard_grant": False,
+                    }
+                    policy_b = {
+                        "owner": wide["owner"],
+                        "created_at": wide.get("created_at"),
+                        "is_wildcard_grant": True,
+                    }
+                    conflict = enrich_conflict_with_attribution(
+                        conflict, policy_a, policy_b, tie_breaker_key="is_wildcard_grant"
+                    )
+
+                    conflicts.append(conflict)
+
     deduped = {}
     for c in conflicts:
         key = (c["subject"], c["narrow_policy"]["role"], c["overriding_policy"]["role"])
@@ -70,7 +87,6 @@ def detect_subsumption(multi_team_nodes):
 
 
 if __name__ == "__main__":
-    import sys
     sys.path.insert(0, "src")
     from graph.builder import build_full_graph, find_multi_team_nodes
 
@@ -85,9 +101,7 @@ if __name__ == "__main__":
     print(f"Subsumption conflicts found: {len(conflicts)}\n")
     for c in conflicts:
         print(f"--- CONFLICT: {c['conflict_type'].upper()} ---")
-        print(f"Subject: {c['subject']}")
         print(f"At fault: {c['at_fault_team']}")
-        print(f"Severity: {c['severity']}")
-        print(f"Affected decision points: {c['affected_decision_points']}")
-        print(f"Explanation: {c['explanation']}")
+        print(f"Confidence: {c['formal_attribution']['confidence_label']} ({c['formal_attribution']['confidence_score']})")
+        print(f"Reasoning: {c['formal_attribution']['reasoning']}")
         print()
