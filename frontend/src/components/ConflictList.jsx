@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp, User, Clock } from "lucide-react";
+import { ChevronDown, ChevronUp, User, Clock, Gauge } from "lucide-react";
 
 const SEVERITY_STYLES = {
   high: "border-l-red-500 bg-red-500/[0.03]",
@@ -14,8 +14,16 @@ const TYPE_BADGE = {
   cross_domain_misalignment: "bg-violet-500/15 text-violet-400",
 };
 
+const CONFIDENCE_STYLES = {
+  "High": "bg-emerald-500/15 text-emerald-400",
+  "Medium-High": "bg-emerald-500/10 text-emerald-500",
+  "Medium": "bg-amber-500/15 text-amber-400",
+  "Low": "bg-red-500/15 text-red-400",
+};
+
 function ConflictCard({ conflict }) {
   const [expanded, setExpanded] = useState(false);
+  const attribution = conflict.formal_attribution;
 
   return (
     <div
@@ -27,7 +35,7 @@ function ConflictCard({ conflict }) {
         className="flex items-center justify-between cursor-pointer"
         onClick={() => setExpanded(!expanded)}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <span
             className={`px-2.5 py-1 rounded-md text-[11px] font-medium uppercase tracking-wide ${
               TYPE_BADGE[conflict.conflict_type] || "bg-slate-500/15 text-slate-400"
@@ -39,6 +47,16 @@ function ConflictCard({ conflict }) {
             <User size={12} />
             {conflict.at_fault_team}
           </div>
+          {attribution && (
+            <span
+              className={`flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium ${
+                CONFIDENCE_STYLES[attribution.confidence_label] || "bg-slate-500/15 text-slate-400"
+              }`}
+            >
+              <Gauge size={10} />
+              {attribution.confidence_label} confidence
+            </span>
+          )}
         </div>
         {expanded ? (
           <ChevronUp size={16} className="text-slate-500" />
@@ -52,14 +70,19 @@ function ConflictCard({ conflict }) {
           <p className="text-slate-300 text-sm leading-relaxed">
             {conflict.explanation}
           </p>
-          {conflict.formal_attribution && (
+          {attribution && (
             <div className="bg-white/[0.03] rounded-lg p-3 mt-2">
-              <div className="flex items-center gap-1.5 text-slate-500 text-[11px] mb-1">
-                <Clock size={11} />
-                Attribution reasoning
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                  <Clock size={11} />
+                  Attribution reasoning
+                </div>
+                <span className="text-slate-500 text-[11px]">
+                  Confidence score: {attribution.confidence_score}
+                </span>
               </div>
               <p className="text-slate-400 text-xs leading-relaxed">
-                {conflict.formal_attribution.reasoning}
+                {attribution.reasoning}
               </p>
             </div>
           )}
