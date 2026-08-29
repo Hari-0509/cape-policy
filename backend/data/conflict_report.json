@@ -16,6 +16,14 @@
     "explanation": "Team 'security-team' granted a narrow permission (get on pods) via role 'pod-reader', but team 'backend-team' granted a wildcard permission via role 'backend-full-access' to the same subject 'backend-app-sa'. Since Kubernetes RBAC is purely additive, the wildcard grant makes the narrow restriction meaningless.",
     "at_fault_team": "backend-team",
     "severity": "high",
+    "formal_attribution": {
+      "at_fault_owner": "backend-team",
+      "confidence_score": 0.6,
+      "confidence_label": "Medium",
+      "reasoning": "Timestamps are identical or unavailable. Falling back to policy scope: 'backend-team''s policy is broader (is_wildcard_grant=True) and is treated as the more likely source of the conflict.",
+      "policy_a_timestamp": null,
+      "policy_b_timestamp": null
+    },
     "affected_decision_points": [
       "team-backend:pods:get",
       "team-backend:pods:list"
@@ -34,7 +42,13 @@
     ],
     "explanation": "Team 'security-team' created the policy 'allowed-image-repos' (allowed image repos: ['mycompany.com/']), but it only applies to ['team-security']. The namespace(s) ['team-backend', 'team-data'] have no equivalent protection, even though they run similar workloads. Deployments in ['team-backend', 'team-data'] can silently bypass this security control.",
     "at_fault_team": "security-team",
-    "severity": "high"
+    "severity": "high",
+    "formal_attribution": {
+      "at_fault_owner": "security-team",
+      "confidence_score": 0.85,
+      "confidence_label": "Medium-High",
+      "reasoning": "Coverage ratio: 1/3 namespaces (33%). policy covers a small minority of active namespaces, strongly suggesting an unintentional gap."
+    }
   },
   {
     "conflict_type": "contradiction",
@@ -55,8 +69,14 @@
     "netpol_owner": "data-team",
     "affected_namespace": "team-data",
     "affected_subject": "team-backend/backend-app-sa",
-    "explanation": "Team 'backend-team' granted RBAC access (role 'trigger-data-jobs') for 'team-backend/backend-app-sa' to act in namespace 'team-data'. However, team 'data-team' has a default-deny NetworkPolicy ('default-deny-ingress') in that same namespace. RBAC authorization will succeed, but any actual network traffic will be silently dropped at the network layer \u2014 a misalignment between the control plane and data plane that neither team can see from their own policy alone.",
+    "explanation": "Team 'backend-team' granted RBAC access (role 'trigger-data-jobs') for 'team-backend/backend-app-sa' to act in namespace 'team-data'. However, team 'data-team' has a default-deny NetworkPolicy ('default-deny-ingress') in that same namespace. RBAC authorization will succeed, but any actual network traffic will be silently dropped at the network layer.",
     "at_fault_team": "cross-team coordination gap (backend-team + data-team)",
-    "severity": "medium"
+    "severity": "medium",
+    "formal_attribution": {
+      "at_fault_owner": "joint: backend-team + data-team",
+      "confidence_score": 0.55,
+      "confidence_label": "Medium",
+      "reasoning": "This is a structural cross-layer conflict between independently evaluated systems (RBAC and NetworkPolicy), not a timing-based fault. Neither 'backend-team' nor 'data-team' acted incorrectly in isolation; responsibility is shared and resolution requires coordination between both teams."
+    }
   }
 ]
