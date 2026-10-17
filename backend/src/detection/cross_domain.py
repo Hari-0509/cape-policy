@@ -60,69 +60,43 @@ def get_default_deny_netpols(target_namespaces):
 
 
 def detect_cross_domain(scan_data):
-    cross_ns_grants = get_cross_namespace_rbac_grants(
-        scan_data["rbac_roles"], scan_data["rbac_bindings"]
-    )
-
-    target_namespaces = list(set(g["target_namespace"] for g in cross_ns_grants))
-    deny_policies = get_default_deny_netpols(target_namespaces)
-
-    conflicts = []
-    for grant in cross_ns_grants:
-        ns = grant["target_namespace"]
-        if ns in deny_policies:
-            deny = deny_policies[ns]
-            if deny["owner"] == grant["granting_role_owner"]:
-                continue
-
-            # Cross-domain confidence: this is inherently a "both sides are
-            # individually reasonable" conflict, since RBAC and NetworkPolicy
-            # are evaluated by completely independent systems that were never
-            # designed to be consistency-checked against each other. Neither
-            # policy is more "at fault" in a temporal sense — the conflict is
-            # structural, not a mistake by whoever acted later. We reflect this
-            # with a fixed, moderate confidence and explicitly note the shared
-            # responsibility in the reasoning, rather than forcing a single
-            # named "culprit" the way subsumption/shadowing do.
-            confidence = 0.55
-
-            conflicts.append({
-                "conflict_type": "cross_domain_misalignment",
-                "rbac_grant": grant["granting_role"],
-                "rbac_owner": grant["granting_role_owner"],
-                "netpol_name": deny["policy_name"],
-                "netpol_owner": deny["owner"],
-                "affected_namespace": ns,
-                "affected_subject": f"{grant['subject_namespace']}/{grant['subject_name']}",
-                "explanation": (
-                    f"Team '{grant['granting_role_owner']}' granted RBAC access "
-                    f"(role '{grant['granting_role']}') for "
-                    f"'{grant['subject_namespace']}/{grant['subject_name']}' to act in "
-                    f"namespace '{ns}'. However, team '{deny['owner']}' has a "
-                    f"default-deny NetworkPolicy ('{deny['policy_name']}') in that "
-                    f"same namespace. RBAC authorization will succeed, but any "
-                    f"actual network traffic will be silently dropped at the "
-                    f"network layer."
-                ),
-                "at_fault_team": "cross-team coordination gap "
-                                  f"({grant['granting_role_owner']} + {deny['owner']})",
-                "severity": "medium",
-                "formal_attribution": {
-                    "at_fault_owner": f"joint: {grant['granting_role_owner']} + {deny['owner']}",
-                    "confidence_score": confidence,
-                    "confidence_label": confidence_label(confidence),
-                    "reasoning": (
-                        f"This is a structural cross-layer conflict between independently "
-                        f"evaluated systems (RBAC and NetworkPolicy), not a timing-based "
-                        f"fault. Neither '{grant['granting_role_owner']}' nor '{deny['owner']}' "
-                        f"acted incorrectly in isolation; responsibility is shared and "
-                        f"resolution requires coordination between both teams."
-                    ),
-                },
-            })
-
-    return conflicts
-
+    grants = get_cross_namespace_rbac_grants(scan_data["rbac_roles"], scan_data["rbac_bindings"])
+    deny_policies = get_default_deny_netpols(list(set(g["target_namespace"] for g in grants)))
+    found = []
+    for g in grants:
+        ns = g["target_namespace"]
+        deny = deny_policies.get(ns)
+        if not deny or deny["owner"] == g["granting_role_owner"]:
+            continue
+        conf = 0.55
+        found.append({
+            "conflict_type": "cross_domain_misalignment",
+            "finding_status": "advisory (review needed)",
+            "rbac_grant": g["granting_role"],
+            "rbac_owner": g["granting_role_owner"],
+            "netpol_name": deny["policy_name"],
+            "netpol_owner": deny["owner"],
+            "affected_namespace": ns,
+            "affected_subject": f"{g['subject_namespace']}/{g['subject_name']}",
+            "explanation": (
+                f"Team '{g['granting_role_owner']}' granted RBAC access (role '{g['granting_role']}') in "
+                f"namespace '{ns}' to '{g['subject_namespace']}/{g['subject_name']}'. Team '{deny['owner']}' "
+                f"applies default-deny ingress ('{deny['policy_name']}') in the same namespace. RBAC governs "
+                f"Kubernetes API calls and NetworkPolicy governs pod-to-pod traffic, so these are different "
+                f"properties and not a direct contradiction. If this subject also needs network access to "
+                f"pods in '{ns}', the default-deny policy may block it. Review."
+            ),
+            "at_fault_team": f"shared: {g['granting_role_owner']} and {deny['owner']}",
+            "severity": "low",
+            "formal_attribution": {
+                "at_fault_owner": f"joint: {g['granting_role_owner']} + {deny['owner']}",
+                "confidence_score": conf,
+                "confidence_label": confidence_label(conf),
+                "reasoning": ("Two independently evaluated mechanisms written by different teams; "
+                              "neither policy is wrong alone, so no single owner is named."),
+            },
+        })
+    return found
 
 if __name__ == "__main__":
     with open("data/latest_scan.json") as f:

@@ -1,0 +1,151 @@
+{
+  "hardware": {
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_threads": 12,
+    "ram_gb": 3.7,
+    "python": "3.12.3"
+  },
+  "runs_per_scale": 30,
+  "scales": [
+    {
+      "n_pairs": 10,
+      "policies": 70,
+      "total": {
+        "mean_ms": 41.7,
+        "std_ms": 1.0,
+        "min_ms": 40.0,
+        "max_ms": 45.0
+      },
+      "ingestion": {
+        "mean_ms": 41.2,
+        "std_ms": 1.1,
+        "min_ms": 40.0,
+        "max_ms": 45.0
+      },
+      "graph": {
+        "mean_ms": 0.1,
+        "std_ms": 0.3,
+        "min_ms": 0.0,
+        "max_ms": 1.0
+      },
+      "detection": {
+        "mean_ms": 0.0,
+        "std_ms": 0.0,
+        "min_ms": 0.0,
+        "max_ms": 0.0
+      }
+    },
+    {
+      "n_pairs": 25,
+      "policies": 116,
+      "total": {
+        "mean_ms": 48.7,
+        "std_ms": 2.0,
+        "min_ms": 47.0,
+        "max_ms": 56.0
+      },
+      "ingestion": {
+        "mean_ms": 48.1,
+        "std_ms": 2.1,
+        "min_ms": 46.0,
+        "max_ms": 56.0
+      },
+      "graph": {
+        "mean_ms": 1.0,
+        "std_ms": 0.0,
+        "min_ms": 1.0,
+        "max_ms": 1.0
+      },
+      "detection": {
+        "mean_ms": 0.0,
+        "std_ms": 0.0,
+        "min_ms": 0.0,
+        "max_ms": 0.0
+      }
+    },
+    {
+      "n_pairs": 50,
+      "policies": 190,
+      "total": {
+        "mean_ms": 60.6,
+        "std_ms": 5.4,
+        "min_ms": 58.0,
+        "max_ms": 81.0
+      },
+      "ingestion": {
+        "mean_ms": 58.1,
+        "std_ms": 1.1,
+        "min_ms": 57.0,
+        "max_ms": 62.0
+      },
+      "graph": {
+        "mean_ms": 2.4,
+        "std_ms": 5.3,
+        "min_ms": 1.0,
+        "max_ms": 23.0
+      },
+      "detection": {
+        "mean_ms": 0.0,
+        "std_ms": 0.0,
+        "min_ms": 0.0,
+        "max_ms": 0.0
+      }
+    },
+    {
+      "n_pairs": 100,
+      "policies": 340,
+      "total": {
+        "mean_ms": 86.4,
+        "std_ms": 9.0,
+        "min_ms": 79.0,
+        "max_ms": 114.0
+      },
+      "ingestion": {
+        "mean_ms": 84.5,
+        "std_ms": 9.1,
+        "min_ms": 77.0,
+        "max_ms": 113.0
+      },
+      "graph": {
+        "mean_ms": 1.7,
+        "std_ms": 0.5,
+        "min_ms": 1.0,
+        "max_ms": 3.0
+      },
+      "detection": {
+        "mean_ms": 0.0,
+        "std_ms": 0.0,
+        "min_ms": 0.0,
+        "max_ms": 0.0
+      }
+    },
+    {
+      "n_pairs": 200,
+      "policies": 640,
+      "total": {
+        "mean_ms": 128.0,
+        "std_ms": 8.4,
+        "min_ms": 122.0,
+        "max_ms": 148.0
+      },
+      "ingestion": {
+        "mean_ms": 122.4,
+        "std_ms": 5.8,
+        "min_ms": 119.0,
+        "max_ms": 144.0
+      },
+      "graph": {
+        "mean_ms": 5.1,
+        "std_ms": 6.4,
+        "min_ms": 3.0,
+        "max_ms": 25.0
+      },
+      "detection": {
+        "mean_ms": 1.0,
+        "std_ms": 0.0,
+        "min_ms": 1.0,
+        "max_ms": 1.0
+      }
+    }
+  ]
+}

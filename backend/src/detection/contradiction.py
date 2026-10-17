@@ -38,7 +38,6 @@ def get_restrictive_fs_policies():
 
 
 def _container_logs(core_api, ns, pod_name, container):
-    """Current and previous container logs, lowercased, for error matching."""
     texts = []
     for previous in (False, True):
         try:
@@ -47,7 +46,7 @@ def _container_logs(core_api, ns, pod_name, container):
                 tail_lines=50, _preload_content=False)
             texts.append(raw.data.decode("utf-8", errors="replace"))
         except client.exceptions.ApiException:
-            pass  # no previous container yet, or logs not available
+            pass
     return "\n".join(texts).lower()
 
 

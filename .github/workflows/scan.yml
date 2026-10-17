@@ -54,6 +54,7 @@ jobs:
           kubectl label namespace team-security owner=security-team
           kubectl label namespace team-backend owner=backend-team
           kubectl label namespace team-data owner=data-team
+          kubectl label namespace team-security team-backend team-data cape-policy/class=application
 
       - name: Apply RBAC test resources
         run: |

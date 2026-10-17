@@ -1,0 +1,100 @@
+{
+  "full": {
+    "subsumption": [
+      26,
+      26
+    ],
+    "shadowing": [
+      26,
+      26
+    ],
+    "cross_domain_misalignment": [
+      26,
+      26
+    ]
+  },
+  "no_wildcard_expansion": {
+    "subsumption": [
+      13,
+      26
+    ],
+    "shadowing": [
+      26,
+      26
+    ],
+    "cross_domain_misalignment": [
+      26,
+      26
+    ]
+  },
+  "no_class_filter": {
+    "subsumption": [
+      26,
+      26
+    ],
+    "shadowing": [
+      20,
+      26
+    ],
+    "cross_domain_misalignment": [
+      26,
+      26
+    ]
+  },
+  "crossdomain_any_netpol": {
+    "subsumption": [
+      26,
+      26
+    ],
+    "shadowing": [
+      26,
+      26
+    ],
+    "cross_domain_misalignment": [
+      13,
+      26
+    ]
+  },
+  "b1_same_subject": {
+    "subsumption": [
+      26,
+      26
+    ],
+    "shadowing": [
+      13,
+      26
+    ],
+    "cross_domain_misalignment": [
+      13,
+      26
+    ]
+  },
+  "b2_any_explicit_ns": {
+    "subsumption": [
+      13,
+      26
+    ],
+    "shadowing": [
+      20,
+      26
+    ],
+    "cross_domain_misalignment": [
+      13,
+      26
+    ]
+  },
+  "b3_any_cross_ns_grant": {
+    "subsumption": [
+      13,
+      26
+    ],
+    "shadowing": [
+      13,
+      26
+    ],
+    "cross_domain_misalignment": [
+      13,
+      26
+    ]
+  }
+}

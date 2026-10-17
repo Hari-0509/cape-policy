@@ -1,10 +1,31 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    cape-policy/class: application
+  name: shadow-ns-shadowing-neg-003-0
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    cape-policy/class: application
+  name: shadow-ns-shadowing-neg-003-1
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    cape-policy/class: application
+  name: shadow-ns-shadowing-neg-003-2
+---
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sAllowedRepos
 metadata:
   labels:
     cape-test-case: shadowing-neg-003
-    owner-team: team-delta
-  name: img-policy-clean-shadowing-neg-003
+    owner-team: team-gamma
+  name: img-policy-shadowing-neg-003
 spec:
   match:
     kinds:

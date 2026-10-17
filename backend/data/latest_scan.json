@@ -763,6 +763,96 @@
           ]
         }
       ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "narrow-a",
+      "namespace": "ts-a",
+      "owner": "team-x",
+      "owner_source": "explicit-label",
+      "managed": "false",
+      "created_at": "2026-10-17T07:46:22+00:00",
+      "rules": [
+        {
+          "resources": [
+            "pods"
+          ],
+          "verbs": [
+            "get",
+            "list"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "wide-a",
+      "namespace": "ts-a",
+      "owner": "team-y",
+      "owner_source": "explicit-label",
+      "managed": "false",
+      "created_at": "2026-10-17T07:47:35+00:00",
+      "rules": [
+        {
+          "resources": [
+            "pods"
+          ],
+          "verbs": [
+            "*"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "narrow-b",
+      "namespace": "ts-b",
+      "owner": "team-x",
+      "owner_source": "explicit-label",
+      "managed": "false",
+      "created_at": "2026-10-17T07:48:47+00:00",
+      "rules": [
+        {
+          "resources": [
+            "pods"
+          ],
+          "verbs": [
+            "get",
+            "list"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RBAC-Role",
+      "name": "wide-b",
+      "namespace": "ts-b",
+      "owner": "team-y",
+      "owner_source": "explicit-label",
+      "managed": "false",
+      "created_at": "2026-10-17T07:47:35+00:00",
+      "rules": [
+        {
+          "resources": [
+            "pods"
+          ],
+          "verbs": [
+            "*"
+          ],
+          "apiGroups": [
+            ""
+          ]
+        }
+      ]
     }
   ],
   "rbac_bindings": [
@@ -1113,6 +1203,70 @@
           "kind": "ServiceAccount",
           "name": "backend-app-sa",
           "namespace": "team-backend"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "narrow-a-bind",
+      "namespace": "ts-a",
+      "owner": "team-x",
+      "owner_source": "explicit-label",
+      "created_at": "2026-10-17T07:46:22+00:00",
+      "role_ref": "narrow-a",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "sa-ts-a",
+          "namespace": "ts-a"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "wide-a-bind",
+      "namespace": "ts-a",
+      "owner": "team-y",
+      "owner_source": "explicit-label",
+      "created_at": "2026-10-17T07:47:35+00:00",
+      "role_ref": "wide-a",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "sa-ts-a",
+          "namespace": "ts-a"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "narrow-b-bind",
+      "namespace": "ts-b",
+      "owner": "team-x",
+      "owner_source": "explicit-label",
+      "created_at": "2026-10-17T07:48:47+00:00",
+      "role_ref": "narrow-b",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "sa-ts-b",
+          "namespace": "ts-b"
+        }
+      ]
+    },
+    {
+      "type": "RBAC-RoleBinding",
+      "name": "wide-b-bind",
+      "namespace": "ts-b",
+      "owner": "team-y",
+      "owner_source": "explicit-label",
+      "created_at": "2026-10-17T07:47:35+00:00",
+      "role_ref": "wide-b",
+      "subjects": [
+        {
+          "kind": "ServiceAccount",
+          "name": "sa-ts-b",
+          "namespace": "ts-b"
         }
       ]
     }

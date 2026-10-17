@@ -51,96 +51,180 @@ negative:
   file: tests/corpus/subsumption-neg-012.yaml
   namespace: ns-subsumption-neg-012
   type: subsumption
-- all_namespaces:
+- all_namespaces: &id001
   - shadow-ns-shadowing-neg-000-0
   - shadow-ns-shadowing-neg-000-1
   - shadow-ns-shadowing-neg-000-2
   case_id: shadowing-neg-000
+  covered: *id001
   file: tests/corpus/shadowing-neg-000.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-000-0: application
+    shadow-ns-shadowing-neg-000-1: application
+    shadow-ns-shadowing-neg-000-2: application
+  subtype: full-coverage
   type: shadowing
-- all_namespaces:
+- all_namespaces: &id002
   - shadow-ns-shadowing-neg-001-0
   - shadow-ns-shadowing-neg-001-1
   - shadow-ns-shadowing-neg-001-2
   case_id: shadowing-neg-001
+  covered: *id002
   file: tests/corpus/shadowing-neg-001.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-001-0: application
+    shadow-ns-shadowing-neg-001-1: application
+    shadow-ns-shadowing-neg-001-2: application
+  subtype: full-coverage
   type: shadowing
-- all_namespaces:
+- all_namespaces: &id003
   - shadow-ns-shadowing-neg-002-0
   - shadow-ns-shadowing-neg-002-1
   - shadow-ns-shadowing-neg-002-2
   case_id: shadowing-neg-002
+  covered: *id003
   file: tests/corpus/shadowing-neg-002.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-002-0: application
+    shadow-ns-shadowing-neg-002-1: application
+    shadow-ns-shadowing-neg-002-2: application
+  subtype: full-coverage
   type: shadowing
-- all_namespaces:
+- all_namespaces: &id004
   - shadow-ns-shadowing-neg-003-0
   - shadow-ns-shadowing-neg-003-1
   - shadow-ns-shadowing-neg-003-2
   case_id: shadowing-neg-003
+  covered: *id004
   file: tests/corpus/shadowing-neg-003.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-003-0: application
+    shadow-ns-shadowing-neg-003-1: application
+    shadow-ns-shadowing-neg-003-2: application
+  subtype: full-coverage
   type: shadowing
-- all_namespaces:
+- all_namespaces: &id005
   - shadow-ns-shadowing-neg-004-0
   - shadow-ns-shadowing-neg-004-1
   - shadow-ns-shadowing-neg-004-2
   case_id: shadowing-neg-004
+  covered: *id005
   file: tests/corpus/shadowing-neg-004.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-004-0: application
+    shadow-ns-shadowing-neg-004-1: application
+    shadow-ns-shadowing-neg-004-2: application
+  subtype: full-coverage
   type: shadowing
-- all_namespaces:
+- all_namespaces: &id006
   - shadow-ns-shadowing-neg-005-0
   - shadow-ns-shadowing-neg-005-1
   - shadow-ns-shadowing-neg-005-2
   case_id: shadowing-neg-005
+  covered: *id006
   file: tests/corpus/shadowing-neg-005.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-005-0: application
+    shadow-ns-shadowing-neg-005-1: application
+    shadow-ns-shadowing-neg-005-2: application
+  subtype: full-coverage
   type: shadowing
-- all_namespaces:
+- all_namespaces: &id007
   - shadow-ns-shadowing-neg-006-0
   - shadow-ns-shadowing-neg-006-1
   - shadow-ns-shadowing-neg-006-2
   case_id: shadowing-neg-006
+  covered: *id007
   file: tests/corpus/shadowing-neg-006.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-006-0: application
+    shadow-ns-shadowing-neg-006-1: application
+    shadow-ns-shadowing-neg-006-2: application
+  subtype: full-coverage
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-neg-007-0
   - shadow-ns-shadowing-neg-007-1
   - shadow-ns-shadowing-neg-007-2
   case_id: shadowing-neg-007
+  covered:
+  - shadow-ns-shadowing-neg-007-0
   file: tests/corpus/shadowing-neg-007.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-007-0: application
+    shadow-ns-shadowing-neg-007-1: system
+    shadow-ns-shadowing-neg-007-2: system
+  subtype: class-exclusion
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-neg-008-0
   - shadow-ns-shadowing-neg-008-1
   - shadow-ns-shadowing-neg-008-2
   case_id: shadowing-neg-008
+  covered:
+  - shadow-ns-shadowing-neg-008-0
   file: tests/corpus/shadowing-neg-008.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-008-0: application
+    shadow-ns-shadowing-neg-008-1: system
+    shadow-ns-shadowing-neg-008-2: system
+  subtype: class-exclusion
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-neg-009-0
   - shadow-ns-shadowing-neg-009-1
   - shadow-ns-shadowing-neg-009-2
   case_id: shadowing-neg-009
+  covered:
+  - shadow-ns-shadowing-neg-009-0
   file: tests/corpus/shadowing-neg-009.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-009-0: application
+    shadow-ns-shadowing-neg-009-1: system
+    shadow-ns-shadowing-neg-009-2: system
+  subtype: class-exclusion
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-neg-010-0
   - shadow-ns-shadowing-neg-010-1
   - shadow-ns-shadowing-neg-010-2
   case_id: shadowing-neg-010
+  covered:
+  - shadow-ns-shadowing-neg-010-0
   file: tests/corpus/shadowing-neg-010.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-010-0: application
+    shadow-ns-shadowing-neg-010-1: system
+    shadow-ns-shadowing-neg-010-2: system
+  subtype: class-exclusion
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-neg-011-0
   - shadow-ns-shadowing-neg-011-1
   - shadow-ns-shadowing-neg-011-2
   case_id: shadowing-neg-011
+  covered:
+  - shadow-ns-shadowing-neg-011-0
   file: tests/corpus/shadowing-neg-011.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-011-0: application
+    shadow-ns-shadowing-neg-011-1: system
+    shadow-ns-shadowing-neg-011-2: system
+  subtype: class-exclusion
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-neg-012-0
   - shadow-ns-shadowing-neg-012-1
   - shadow-ns-shadowing-neg-012-2
   case_id: shadowing-neg-012
+  covered:
+  - shadow-ns-shadowing-neg-012-0
   file: tests/corpus/shadowing-neg-012.yaml
+  ns_classes:
+    shadow-ns-shadowing-neg-012-0: application
+    shadow-ns-shadowing-neg-012-1: system
+    shadow-ns-shadowing-neg-012-2: system
+  subtype: class-exclusion
   type: shadowing
 - case_id: crossdomain-neg-000
   file: tests/corpus/crossdomain-neg-000.yaml
@@ -333,6 +417,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-000-0
   file: tests/corpus/shadowing-pos-000.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-000-0: application
+    shadow-ns-shadowing-pos-000-1: application
+    shadow-ns-shadowing-pos-000-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-001-0
@@ -342,6 +431,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-001-0
   file: tests/corpus/shadowing-pos-001.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-001-0: application
+    shadow-ns-shadowing-pos-001-1: application
+    shadow-ns-shadowing-pos-001-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-002-0
@@ -351,6 +445,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-002-0
   file: tests/corpus/shadowing-pos-002.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-002-0: application
+    shadow-ns-shadowing-pos-002-1: application
+    shadow-ns-shadowing-pos-002-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-003-0
@@ -360,6 +459,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-003-0
   file: tests/corpus/shadowing-pos-003.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-003-0: application
+    shadow-ns-shadowing-pos-003-1: application
+    shadow-ns-shadowing-pos-003-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-004-0
@@ -369,6 +473,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-004-0
   file: tests/corpus/shadowing-pos-004.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-004-0: application
+    shadow-ns-shadowing-pos-004-1: application
+    shadow-ns-shadowing-pos-004-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-005-0
@@ -378,6 +487,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-005-0
   file: tests/corpus/shadowing-pos-005.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-005-0: application
+    shadow-ns-shadowing-pos-005-1: application
+    shadow-ns-shadowing-pos-005-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-006-0
@@ -387,6 +501,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-006-0
   file: tests/corpus/shadowing-pos-006.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-006-0: application
+    shadow-ns-shadowing-pos-006-1: application
+    shadow-ns-shadowing-pos-006-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-007-0
@@ -396,6 +515,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-007-0
   file: tests/corpus/shadowing-pos-007.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-007-0: application
+    shadow-ns-shadowing-pos-007-1: application
+    shadow-ns-shadowing-pos-007-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-008-0
@@ -405,6 +529,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-008-0
   file: tests/corpus/shadowing-pos-008.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-008-0: application
+    shadow-ns-shadowing-pos-008-1: application
+    shadow-ns-shadowing-pos-008-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-009-0
@@ -414,6 +543,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-009-0
   file: tests/corpus/shadowing-pos-009.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-009-0: application
+    shadow-ns-shadowing-pos-009-1: application
+    shadow-ns-shadowing-pos-009-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-010-0
@@ -423,6 +557,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-010-0
   file: tests/corpus/shadowing-pos-010.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-010-0: application
+    shadow-ns-shadowing-pos-010-1: application
+    shadow-ns-shadowing-pos-010-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-011-0
@@ -432,6 +571,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-011-0
   file: tests/corpus/shadowing-pos-011.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-011-0: application
+    shadow-ns-shadowing-pos-011-1: application
+    shadow-ns-shadowing-pos-011-2: application
+  subtype: gap
   type: shadowing
 - all_namespaces:
   - shadow-ns-shadowing-pos-012-0
@@ -441,6 +585,11 @@ positive:
   covered:
   - shadow-ns-shadowing-pos-012-0
   file: tests/corpus/shadowing-pos-012.yaml
+  ns_classes:
+    shadow-ns-shadowing-pos-012-0: application
+    shadow-ns-shadowing-pos-012-1: application
+    shadow-ns-shadowing-pos-012-2: application
+  subtype: gap
   type: shadowing
 - case_id: crossdomain-pos-000
   file: tests/corpus/crossdomain-pos-000.yaml
