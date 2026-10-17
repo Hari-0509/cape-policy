@@ -30,7 +30,7 @@ kind: Pod
 metadata:
   labels:
     cape-test-case: contradiction-pos-002
-    owner-team: team-alpha
+    owner-team: team-gamma
   name: workload-contradiction-pos-002
   namespace: contra-ns-contradiction-pos-002
 spec:
@@ -38,7 +38,7 @@ spec:
   - command:
     - sh
     - -c
-    - echo test > /tmp/scratch/file.txt && sleep 3600
+    - echo test > /tmp/file.txt && sleep 3600
     image: docker.io/busybox:latest
     name: app
     securityContext:

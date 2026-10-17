@@ -38,13 +38,13 @@ spec:
   - command:
     - sh
     - -c
-    - echo test > /tmp/scratch/file.txt && sleep 3600
+    - echo test > /tmp/file.txt && sleep 3600
     image: docker.io/busybox:latest
     name: app
     securityContext:
       readOnlyRootFilesystem: true
     volumeMounts:
-    - mountPath: /tmp/scratch
+    - mountPath: /tmp
       name: scratch
   volumes:
   - emptyDir: {}

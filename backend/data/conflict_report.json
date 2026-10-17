@@ -51,17 +51,6 @@
     }
   },
   {
-    "conflict_type": "contradiction",
-    "policy_name": "require-readonly-rootfs",
-    "policy_owner": "security-team",
-    "affected_namespace": "team-data",
-    "affected_pod": "data-app-test",
-    "workload_owner": "data-team",
-    "explanation": "Team 'security-team' enforces 'require-readonly-rootfs' (readOnlyRootFilesystem) in namespace 'team-data', but team 'data-team''s pod 'data-app-test' attempts to write to a path with no declared writable volume mount. The pod passes admission control but fails at runtime, and neither team can tell from their own policy alone that the other's requirement is the root cause.",
-    "at_fault_team": "both \u2014 policy and workload spec are individually valid but incompatible together",
-    "severity": "medium"
-  },
-  {
     "conflict_type": "cross_domain_misalignment",
     "rbac_grant": "trigger-data-jobs",
     "rbac_owner": "backend-team",

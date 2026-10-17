@@ -1,33 +1,30 @@
 """
-CAPE-Policy: Contradiction/Lockout Detector
-Detects when a security policy (e.g., readOnlyRootFilesystem requirement)
-combines with a workload's actual runtime needs to make legitimate
-deployments fail — even though each policy/spec is individually valid.
+CAPE-Policy: Contradiction Detector (causal version)
+A pod failure counts as a policy-induced contradiction only when ALL hold:
+  1. a Kyverno policy requiring readOnlyRootFilesystem targets the namespace
+  2. the container itself sets readOnlyRootFilesystem: true
+  3. the container has crashed or restarted
+  4. the container's logs contain a 'Read-only file system' error
+Unrelated crashes (missing paths, bad commands) are not reported.
 """
 
 import json
 from kubernetes import client, config
 
+READONLY_MARKER = "read-only file system"
+
 
 def get_restrictive_fs_policies():
-    """
-    Pull Kyverno ClusterPolicies that enforce readOnlyRootFilesystem,
-    and which namespaces they target.
-    """
     config.load_kube_config()
     custom_api = client.CustomObjectsApi()
-
     policies = custom_api.list_cluster_custom_object(
         group="kyverno.io", version="v1", plural="clusterpolicies"
     )
-
     restrictive = []
     for item in policies.get("items", []):
         metadata = item.get("metadata", {})
         labels = metadata.get("labels", {})
-        rules = item.get("spec", {}).get("rules", [])
-
-        for rule in rules:
+        for rule in item.get("spec", {}).get("rules", []):
             pattern = str(rule.get("validate", {}).get("pattern", {}))
             if "readOnlyRootFilesystem" in pattern:
                 match = rule.get("match", {}).get("any", [{}])[0]
@@ -40,77 +37,79 @@ def get_restrictive_fs_policies():
     return restrictive
 
 
-def get_crashing_pods_writing_without_volume(namespaces):
-    """
-    Check pods in the given namespaces for CrashLoopBackOff/Error status
-    combined with commands that write to a path not covered by a
-    declared volumeMount — a strong signal of the lockout pattern.
-    """
+def _container_logs(core_api, ns, pod_name, container):
+    """Current and previous container logs, lowercased, for error matching."""
+    texts = []
+    for previous in (False, True):
+        try:
+            raw = core_api.read_namespaced_pod_log(
+                pod_name, ns, container=container, previous=previous,
+                tail_lines=50, _preload_content=False)
+            texts.append(raw.data.decode("utf-8", errors="replace"))
+        except client.exceptions.ApiException:
+            pass  # no previous container yet, or logs not available
+    return "\n".join(texts).lower()
+
+
+def find_policy_induced_failures(namespaces):
     core_api = client.CoreV1Api()
-    conflicts_found = []
-
+    findings = []
     for ns in namespaces:
-        pods = core_api.list_namespaced_pod(ns)
-        for pod in pods.items:
-            statuses = pod.status.container_statuses or []
-            is_failing = any(
-                (s.state.waiting and s.state.waiting.reason == "CrashLoopBackOff")
-                or (s.state.terminated and s.state.terminated.reason == "Error")
-                for s in statuses
-            )
+        for pod in core_api.list_namespaced_pod(ns).items:
+            for cs in (pod.status.container_statuses or []):
+                state = cs.state
+                failed = (
+                    cs.restart_count > 0
+                    or (state.terminated and state.terminated.exit_code not in (0, None))
+                    or (state.waiting and state.waiting.reason == "CrashLoopBackOff")
+                )
+                if not failed:
+                    continue
+                spec = next((c for c in pod.spec.containers if c.name == cs.name), None)
+                sets_ro = bool(spec and spec.security_context
+                               and spec.security_context.read_only_root_filesystem)
+                if not sets_ro:
+                    continue
+                logs = _container_logs(core_api, ns, pod.metadata.name, cs.name)
+                if READONLY_MARKER in logs:
+                    evidence = next((l for l in logs.splitlines() if READONLY_MARKER in l), "")
+                    findings.append({
+                        "namespace": ns,
+                        "pod": pod.metadata.name,
+                        "container": cs.name,
+                        "owner": (pod.metadata.labels or {}).get("owner-team", "unknown"),
+                        "evidence": evidence.strip(),
+                    })
+    return findings
 
-            if not is_failing:
-                continue
 
-            for container in pod.spec.containers:
-                command = " ".join(container.command or []) + " " + " ".join(container.args or [])
-                mounted_paths = [vm.mount_path for vm in (container.volume_mounts or [])]
-
-                # crude heuristic: does the command try to write somewhere
-                # not covered by any declared mount?
-                if "echo" in command or ">" in command or "write" in command.lower():
-                    covered = any(path in command for path in mounted_paths)
-                    if not covered:
-                        conflicts_found.append({
-                            "namespace": ns,
-                            "pod": pod.metadata.name,
-                            "container": container.name,
-                            "owner": (pod.metadata.labels or {}).get("owner-team", "unknown"),
-                            "command": command.strip(),
-                            "declared_mounts": mounted_paths,
-                        })
-    return conflicts_found
+# Alias so existing runner code keeps working
+get_crashing_pods_writing_without_volume = find_policy_induced_failures
 
 
 def detect_contradiction():
-    restrictive_policies = get_restrictive_fs_policies()
     conflicts = []
-
-    for policy in restrictive_policies:
-        failing_pods = get_crashing_pods_writing_without_volume(policy["namespaces"])
-
-        for fp in failing_pods:
+    for policy in get_restrictive_fs_policies():
+        for fp in find_policy_induced_failures(policy["namespaces"]):
             if fp["owner"] == policy["owner"]:
-                continue  # same team wrote both, not a cross-team conflict
-
+                continue
             conflicts.append({
                 "conflict_type": "contradiction",
+                "finding_status": "confirmed (log evidence)",
                 "policy_name": policy["policy_name"],
                 "policy_owner": policy["owner"],
                 "affected_namespace": fp["namespace"],
                 "affected_pod": fp["pod"],
                 "workload_owner": fp["owner"],
+                "evidence": fp["evidence"],
                 "explanation": (
                     f"Team '{policy['owner']}' enforces '{policy['policy_name']}' "
-                    f"(readOnlyRootFilesystem) in namespace '{fp['namespace']}', but "
-                    f"team '{fp['owner']}''s pod '{fp['pod']}' attempts to write to a "
-                    f"path with no declared writable volume mount. The pod passes "
-                    f"admission control but fails at runtime, and neither team can "
-                    f"tell from their own policy alone that the other's requirement "
-                    f"is the root cause."
+                    f"(readOnlyRootFilesystem) in namespace '{fp['namespace']}'. "
+                    f"Pod '{fp['pod']}' from team '{fp['owner']}' sets the flag, so it "
+                    f"passes admission, but it then fails with a read-only filesystem "
+                    f"error at runtime: \"{fp['evidence']}\"."
                 ),
-                "at_fault_team": "both — policy and workload spec are individually "
-                                  "valid but incompatible together",
+                "at_fault_team": "both: constraint and workload are individually valid but incompatible",
                 "severity": "medium",
             })
     return conflicts
@@ -120,9 +119,5 @@ if __name__ == "__main__":
     conflicts = detect_contradiction()
     print(f"Contradiction conflicts found: {len(conflicts)}\n")
     for c in conflicts:
-        print(f"--- CONFLICT: {c['conflict_type'].upper()} ---")
-        print(f"Policy: {c['policy_name']} (owner: {c['policy_owner']})")
-        print(f"Affected pod: {c['affected_pod']} in {c['affected_namespace']} (owner: {c['workload_owner']})")
-        print(f"At fault: {c['at_fault_team']}")
-        print(f"Explanation: {c['explanation']}")
-        print()
+        print(f"[{c['finding_status']}] {c['affected_pod']} in {c['affected_namespace']}")
+        print(f"  evidence: {c['evidence']}\n")

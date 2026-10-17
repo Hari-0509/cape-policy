@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   labels:
     cape-test-case: contradiction-neg-000
-    owner-team: team-alpha
+    owner-team: team-delta
   name: readonly-fs-clean-contradiction-neg-000
 spec:
   background: false
@@ -30,7 +30,7 @@ kind: Pod
 metadata:
   labels:
     cape-test-case: contradiction-neg-000
-    owner-team: team-beta
+    owner-team: team-epsilon
   name: workload-clean-contradiction-neg-000
   namespace: contra-ns-contradiction-neg-000
 spec:
@@ -38,13 +38,13 @@ spec:
   - command:
     - sh
     - -c
-    - echo test > /tmp/scratch/file.txt && sleep 3600
+    - echo test > /tmp/file.txt && sleep 3600
     image: docker.io/busybox:latest
     name: app
     securityContext:
       readOnlyRootFilesystem: true
     volumeMounts:
-    - mountPath: /tmp/scratch
+    - mountPath: /tmp
       name: scratch
   volumes:
   - emptyDir: {}

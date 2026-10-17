@@ -34,7 +34,7 @@
       "expected": true,
       "detected": true,
       "correct": true,
-      "poll_time_seconds": 10
+      "poll_time_seconds": 5
     },
     {
       "case_id": "contradiction-pos-001",
@@ -98,7 +98,7 @@
       "expected": true,
       "detected": true,
       "correct": true,
-      "poll_time_seconds": 10
+      "poll_time_seconds": 5
     },
     {
       "case_id": "contradiction-pos-009",

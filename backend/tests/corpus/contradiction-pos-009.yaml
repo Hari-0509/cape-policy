@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   labels:
     cape-test-case: contradiction-pos-009
-    owner-team: team-delta
+    owner-team: team-beta
   name: readonly-fs-contradiction-pos-009
 spec:
   background: false
@@ -30,7 +30,7 @@ kind: Pod
 metadata:
   labels:
     cape-test-case: contradiction-pos-009
-    owner-team: team-epsilon
+    owner-team: team-alpha
   name: workload-contradiction-pos-009
   namespace: contra-ns-contradiction-pos-009
 spec:
@@ -38,7 +38,7 @@ spec:
   - command:
     - sh
     - -c
-    - echo test > /tmp/scratch/file.txt && sleep 3600
+    - echo test > /tmp/file.txt && sleep 3600
     image: docker.io/busybox:latest
     name: app
     securityContext:
