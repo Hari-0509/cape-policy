@@ -1,0 +1,21 @@
+
+== subsumption: n=24, positives=4
+full                       acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+no_wildcard_expansion      acc 20/24 [0.64-0.93]  prec n/a  rec 0.00  (TP0 FP0 TN20 FN4)
+no_class_filter            acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+crossdomain_any_netpol     acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+b1_same_subject            acc 23/24 [0.80-0.99]  prec 0.80  rec 1.00  (TP4 FP1 TN19 FN0)
+
+== shadowing: n=24, positives=4
+full                       acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+no_wildcard_expansion      acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+no_class_filter            acc 21/24 [0.69-0.96]  prec 0.57  rec 1.00  (TP4 FP3 TN17 FN0)
+crossdomain_any_netpol     acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+b2_any_explicit_ns         acc 22/24 [0.74-0.98]  prec 0.67  rec 1.00  (TP4 FP2 TN18 FN0)
+
+== cross_domain_misalignment: n=24, positives=4
+full                       acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+no_wildcard_expansion      acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+no_class_filter            acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+crossdomain_any_netpol     acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)
+b3_any_cross_ns_grant      acc 24/24 [0.86-1.00]  prec 1.00  rec 1.00  (TP4 FP0 TN20 FN0)

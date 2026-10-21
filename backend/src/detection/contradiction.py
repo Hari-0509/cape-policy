@@ -10,30 +10,50 @@ Unrelated crashes (missing paths, bad commands) are not reported.
 
 import json
 from kubernetes import client, config
+import sys
+sys.path.insert(0, 'src')
+from ingestion.scope import effective_namespaces, selector_matches
 
 READONLY_MARKER = "read-only file system"
 
 
+def _kyverno_scope(block):
+    names, selectors, entries = set(), [], []
+    if not block:
+        return names, selectors
+    entries += (block.get("any") or []) + (block.get("all") or [])
+    if block.get("resources"):
+        entries.append({"resources": block["resources"]})
+    for e in entries:
+        res = e.get("resources") or {}
+        names.update(res.get("namespaces") or [])
+        if res.get("namespaceSelector"):
+            selectors.append(res["namespaceSelector"])
+    return names, selectors
+
+
 def get_restrictive_fs_policies():
     config.load_kube_config()
+    nss = [{"name": n.metadata.name, "labels": n.metadata.labels or {}}
+           for n in client.CoreV1Api().list_namespace().items]
     custom_api = client.CustomObjectsApi()
-    policies = custom_api.list_cluster_custom_object(
-        group="kyverno.io", version="v1", plural="clusterpolicies"
-    )
+    policies = custom_api.list_cluster_custom_object(group="kyverno.io", version="v1", plural="clusterpolicies")
     restrictive = []
     for item in policies.get("items", []):
         metadata = item.get("metadata", {})
         labels = metadata.get("labels", {})
         for rule in item.get("spec", {}).get("rules", []):
-            pattern = str(rule.get("validate", {}).get("pattern", {}))
-            if "readOnlyRootFilesystem" in pattern:
-                match = rule.get("match", {}).get("any", [{}])[0]
-                namespaces = match.get("resources", {}).get("namespaces", [])
-                restrictive.append({
-                    "policy_name": metadata.get("name"),
-                    "owner": labels.get("owner-team", "unknown"),
-                    "namespaces": namespaces,
-                })
+            if "readOnlyRootFilesystem" not in str(rule.get("validate", {}).get("pattern", {})):
+                continue
+            inc, inc_sel = _kyverno_scope(rule.get("match"))
+            exc, exc_sel = _kyverno_scope(rule.get("exclude"))
+            covered = effective_namespaces(sorted(inc), inc_sel[0] if inc_sel else None, None, nss)
+            excluded = set(exc)
+            for sel in exc_sel:
+                excluded |= {n["name"] for n in nss if selector_matches(sel, n["labels"])}
+            restrictive.append({"policy_name": metadata.get("name"),
+                                "owner": labels.get("owner-team", "unknown"),
+                                "namespaces": sorted(covered - excluded)})
     return restrictive
 
 

@@ -1,0 +1,21 @@
+
+== subsumption: n=26, positives=13
+full                       acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+no_wildcard_expansion      acc 13/26 [0.32-0.68]  prec n/a  rec 0.00  (TP0 FP0 TN13 FN13)
+no_class_filter            acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+crossdomain_any_netpol     acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+b1_same_subject            acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+
+== shadowing: n=26, positives=13
+full                       acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+no_wildcard_expansion      acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+no_class_filter            acc 20/26 [0.58-0.89]  prec 0.68  rec 1.00  (TP13 FP6 TN7 FN0)
+crossdomain_any_netpol     acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+b2_any_explicit_ns         acc 20/26 [0.58-0.89]  prec 0.68  rec 1.00  (TP13 FP6 TN7 FN0)
+
+== cross_domain_misalignment: n=26, positives=13
+full                       acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+no_wildcard_expansion      acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+no_class_filter            acc 26/26 [0.87-1.00]  prec 1.00  rec 1.00  (TP13 FP0 TN13 FN0)
+crossdomain_any_netpol     acc 13/26 [0.32-0.68]  prec 0.50  rec 1.00  (TP13 FP13 TN0 FN0)
+b3_any_cross_ns_grant      acc 13/26 [0.32-0.68]  prec 0.50  rec 1.00  (TP13 FP13 TN0 FN0)

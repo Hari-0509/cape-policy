@@ -15,33 +15,43 @@ TYPES = ["subsumption", "shadowing", "cross_domain_misalignment"]
 
 
 def docs_to_scan(docs):
-    scan = {"rbac_roles": [], "rbac_bindings": [], "gatekeeper_constraints": [], "network_policies": []}
+    keys = ("rbac_roles", "rbac_bindings", "cluster_roles", "cluster_role_bindings",
+            "gatekeeper_constraints", "network_policies", "namespaces")
+    scan = {k: [] for k in keys}
     team_ns, all_ns = [], []
     for d in docs:
-        kind, md = d.get("kind"), d.get("metadata", {})
-        labels = md.get("labels") or {}
-        owner = labels.get("owner-team", "unknown")
+        kind, md = d.get("kind"), d.get("metadata", {}) or {}
+        labels, ann = md.get("labels") or {}, md.get("annotations") or {}
+        base = {"name": md.get("name"), "namespace": md.get("namespace"),
+                "owner": labels.get("owner-team", "unknown"), "created_at": None, "last_update": None,
+                "accepted_reason": ann.get("cape-policy/accepted")}
+        rules = [{"resources": r.get("resources"), "verbs": r.get("verbs"), "apiGroups": r.get("apiGroups")}
+                 for r in d.get("rules", []) or []]
+        subj = [{"kind": s.get("kind"), "name": s.get("name"), "namespace": s.get("namespace")}
+                for s in d.get("subjects", []) or []]
         if kind == "Namespace":
             all_ns.append(md["name"])
+            scan["namespaces"].append({"name": md["name"], "labels": labels})
             if labels.get(CLASS_LABEL) == "application":
                 team_ns.append(md["name"])
         elif kind == "Role":
-            scan["rbac_roles"].append({"name": md["name"], "namespace": md.get("namespace"), "owner": owner,
-                "created_at": None, "rules": [{"resources": r.get("resources"), "verbs": r.get("verbs"),
-                "apiGroups": r.get("apiGroups")} for r in d.get("rules", [])]})
-        elif kind == "RoleBinding":
-            scan["rbac_bindings"].append({"name": md["name"], "namespace": md.get("namespace"), "owner": owner,
-                "created_at": None, "role_ref": d["roleRef"]["name"],
-                "subjects": [{"kind": s["kind"], "name": s["name"], "namespace": s.get("namespace")}
-                             for s in d.get("subjects", [])]})
-        elif kind == "K8sAllowedRepos":
-            sp = d.get("spec", {})
-            scan["gatekeeper_constraints"].append({"name": md["name"], "owner": owner, "created_at": None,
-                "match_namespaces": sp.get("match", {}).get("namespaces", []),
-                "allowed_repos": sp.get("parameters", {}).get("repos", [])})
+            scan["rbac_roles"].append({**base, "rules": rules})
+        elif kind == "ClusterRole":
+            scan["cluster_roles"].append({**base, "rules": rules})
+        elif kind in ("RoleBinding", "ClusterRoleBinding"):
+            rec = {**base, "role_ref": d["roleRef"]["name"], "role_ref_kind": d["roleRef"].get("kind", "Role"),
+                   "subjects": subj}
+            scan["rbac_bindings" if kind == "RoleBinding" else "cluster_role_bindings"].append(rec)
+        elif str(d.get("apiVersion", "")).startswith("constraints.gatekeeper.sh"):
+            sp = d.get("spec", {}) or {}
+            m = sp.get("match", {}) or {}
+            scan["gatekeeper_constraints"].append({**base, "match_namespaces": m.get("namespaces", []) or [],
+                "excluded_namespaces": m.get("excludedNamespaces", []) or [],
+                "namespace_selector": m.get("namespaceSelector"),
+                "allowed_repos": (sp.get("parameters") or {}).get("repos", [])})
         elif kind == "NetworkPolicy":
-            sp = d.get("spec", {})
-            scan["network_policies"].append({"name": md["name"], "namespace": md.get("namespace"), "owner": owner,
+            sp = d.get("spec", {}) or {}
+            scan["network_policies"].append({**base,
                 "is_default_deny": "Ingress" in sp.get("policyTypes", []) and not sp.get("ingress")})
     return scan, team_ns, all_ns
 
@@ -69,7 +79,7 @@ def _crossdomain(scan, need_deny=True):
 def cfg_full(scan, tns, ans, expand=True, cls=True, deny=True):
     f = set()
     if _subsumption(scan, expand): f.add("subsumption")
-    if detect_shadowing(scan["gatekeeper_constraints"], tns if cls else ans): f.add("shadowing")
+    if detect_shadowing(scan["gatekeeper_constraints"], tns if cls else ans, scan.get("namespaces")): f.add("shadowing")
     if _crossdomain(scan, deny): f.add("cross_domain_misalignment")
     return f
 

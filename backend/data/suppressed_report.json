@@ -1,0 +1,33 @@
+[
+  {
+    "conflict_type": "subsumption",
+    "finding_status": "potential anomaly (review needed)",
+    "decision_point": "team-backend:pods:get",
+    "subject": "team-backend/backend-app-sa",
+    "narrow_policy": {
+      "role": "pod-reader",
+      "binding": "pod-reader-binding",
+      "owner": "security-team"
+    },
+    "overriding_policy": {
+      "role": "backend-full-access",
+      "binding": "backend-full-access-binding",
+      "owner": "backend-team"
+    },
+    "explanation": "Subject 'team-backend/backend-app-sa' holds a wildcard grant from team 'backend-team' (role 'backend-full-access') and a narrower grant from team 'security-team' (role 'pod-reader'). RBAC permissions only add up, so the narrower grant adds no restriction and the subject's effective access is the wildcard's. Review whether the broader grant was intended.",
+    "at_fault_team": "backend-team",
+    "severity": "high",
+    "accepted_reason": "demo: approved",
+    "formal_attribution": {
+      "at_fault_owner": "backend-team",
+      "confidence_label": "Medium",
+      "evidence": "fallback rule",
+      "reasoning": "Creation times are equal or missing; the broader grant is named by rule.",
+      "internal_score": 0.6
+    },
+    "affected_decision_points": [
+      "team-backend:pods:get",
+      "team-backend:pods:list"
+    ]
+  }
+]
