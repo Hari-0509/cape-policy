@@ -9,6 +9,8 @@ import yaml
 import random
 import os
 
+random.seed(20261018)  # fixed seed: corpus is reproducible
+
 TEAMS = ["team-alpha", "team-beta", "team-gamma", "team-delta", "team-epsilon"]
 RESOURCES = ["pods", "deployments", "services", "configmaps", "secrets"]
 VERBS_NARROW = ["get", "list"]

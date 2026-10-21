@@ -4,7 +4,7 @@ const CONFLICT_TYPES = [
   "all",
   "subsumption",
   "shadowing",
-  "contradiction",
+  "policy_induced_failure",
   "cross_domain_misalignment",
 ];
 

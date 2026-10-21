@@ -4,6 +4,7 @@ const COLORS = {
   subsumption: "#ef4444",
   shadowing: "#f97316",
   contradiction: "#f59e0b",
+  policy_induced_failure: "#f59e0b",
   cross_domain_misalignment: "#8b5cf6",
 };
 

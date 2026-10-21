@@ -17,13 +17,13 @@
     "explanation": "Subject 'backend-app-sa' holds a wildcard grant from team 'backend-team' (role 'backend-full-access') and a narrower grant from team 'security-team' (role 'pod-reader'). RBAC permissions only add up, so the narrower grant adds no restriction and the subject's effective access is the wildcard's. Review whether the broader grant was intended.",
     "at_fault_team": "backend-team",
     "severity": "high",
+    "accepted_reason": null,
     "formal_attribution": {
       "at_fault_owner": "backend-team",
-      "confidence_score": 0.6,
       "confidence_label": "Medium",
-      "reasoning": "Timestamps are identical or unavailable. Falling back to policy scope: 'backend-team''s policy is broader (is_wildcard_grant=True) and is treated as the more likely source of the conflict.",
-      "policy_a_timestamp": "2026-08-22T07:26:54+00:00",
-      "policy_b_timestamp": "2026-08-22T07:26:54+00:00"
+      "evidence": "fallback rule",
+      "reasoning": "Creation times are equal or missing; the broader grant is named by rule.",
+      "internal_score": 0.6
     },
     "affected_decision_points": [
       "team-backend:pods:get",
@@ -42,13 +42,13 @@
       "team-backend",
       "team-data"
     ],
-    "explanation": "Team 'security-team' scoped constraint 'allowed-image-repos' to ['team-security']. Namespaces ['team-backend', 'team-data'] carry the same class label (cape-policy/class=application) but have no equivalent constraint. Review whether the gap is intended.",
+    "explanation": "Team 'security-team' scoped constraint 'allowed-image-repos' to ['team-security']. Namespaces ['team-backend', 'team-data'] carry the same class label but have no equivalent constraint. Review whether the gap is intended.",
     "at_fault_team": "security-team",
     "severity": "high",
+    "accepted_reason": null,
     "formal_attribution": {
       "at_fault_owner": "security-team",
-      "confidence_score": 0.85,
-      "confidence_label": "Medium-High",
+      "review_priority": "High",
       "reasoning": "Coverage 1/3 (33%): policy covers a small minority of same-class namespaces."
     }
   },
@@ -61,14 +61,15 @@
     "netpol_owner": "data-team",
     "affected_namespace": "team-data",
     "affected_subject": "team-backend/backend-app-sa",
-    "explanation": "Team 'backend-team' granted RBAC access (role 'trigger-data-jobs') in namespace 'team-data' to 'team-backend/backend-app-sa'. Team 'data-team' applies default-deny ingress ('default-deny-ingress') in the same namespace. RBAC governs Kubernetes API calls and NetworkPolicy governs pod-to-pod traffic, so these are different properties and not a direct contradiction. If this subject also needs network access to pods in 'team-data', the default-deny policy may block it. Review.",
+    "explanation": "Team 'backend-team' granted RBAC access (role 'trigger-data-jobs') in namespace 'team-data' to 'team-backend/backend-app-sa'. Team 'data-team' applies default-deny ingress ('default-deny-ingress') in the same namespace. RBAC governs Kubernetes API calls and NetworkPolicy governs pod traffic, so this is not a direct contradiction. If the subject also needs network access to pods in 'team-data', the policy may block it. Review.",
     "at_fault_team": "shared: backend-team and data-team",
     "severity": "low",
+    "accepted_reason": null,
     "formal_attribution": {
       "at_fault_owner": "joint: backend-team + data-team",
-      "confidence_score": 0.55,
-      "confidence_label": "Medium",
-      "reasoning": "Two independently evaluated mechanisms written by different teams; neither policy is wrong alone, so no single owner is named."
+      "confidence_label": "Shared",
+      "evidence": "none",
+      "reasoning": "Two independently evaluated mechanisms written by different teams; no single owner is named."
     }
   }
 ]

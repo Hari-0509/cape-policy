@@ -1,5 +1,5 @@
 import csv, yaml, os, collections
-OK_KINDS = {"Namespace", "Role", "RoleBinding", "K8sAllowedRepos", "NetworkPolicy"}
+OK_KINDS = {"Namespace", "Role", "RoleBinding", "ServiceAccount", "K8sAllowedRepos", "NetworkPolicy"}
 OK_EXP = {"subsumption", "shadowing", "cross_domain_misalignment", "none"}
 rows = list(csv.DictReader(open("tests/independent/labels.csv")))
 problems, count = [], collections.Counter()

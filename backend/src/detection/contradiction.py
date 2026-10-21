@@ -93,7 +93,7 @@ def detect_contradiction():
             if fp["owner"] == policy["owner"]:
                 continue
             conflicts.append({
-                "conflict_type": "contradiction",
+                "conflict_type": "policy_induced_failure",
                 "finding_status": "confirmed (log evidence)",
                 "policy_name": policy["policy_name"],
                 "policy_owner": policy["owner"],
