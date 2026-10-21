@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: analytics
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: reports
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingestion
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube-tools
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: analytics-repo-policy
+  labels:
+    owner-team: compliance
+spec:
+  match:
+    namespaces: ["analytics"]
+  parameters:
+    repos:
+    - registry.corp.example/

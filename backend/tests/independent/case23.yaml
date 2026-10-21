@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: audit-app
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: audit-system
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: skip-system
+  labels:
+    owner-team: audit
+spec:
+  match:
+    excludedNamespaces: ["audit-system"]
+  parameters:
+    repos:
+    - registry.example.com/

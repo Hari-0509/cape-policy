@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cron
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: internal-api
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cron-runner
+  namespace: cron
+  labels:
+    owner-team: eta
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: api-pod-reader
+  namespace: internal-api
+  labels:
+    owner-team: eta
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cron-api-bind
+  namespace: internal-api
+  labels:
+    owner-team: eta
+subjects:
+- kind: ServiceAccount
+  name: cron-runner
+  namespace: cron
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: api-pod-reader
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-default-deny
+  namespace: internal-api
+  labels:
+    owner-team: theta
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]

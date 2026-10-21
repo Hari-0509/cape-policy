@@ -1,0 +1,1177 @@
+### case01.yaml expected=subsumption
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-a
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: api-sa
+  namespace: app-a
+  labels:
+    owner-team: alpha
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader
+  namespace: app-a
+  labels:
+    owner-team: alpha
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-admin
+  namespace: app-a
+  labels:
+    owner-team: beta
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: reader-binding
+  namespace: app-a
+  labels:
+    owner-team: alpha
+subjects:
+- kind: ServiceAccount
+  name: api-sa
+  namespace: app-a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-reader
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: admin-binding
+  namespace: app-a
+  labels:
+    owner-team: beta
+subjects:
+- kind: ServiceAccount
+  name: api-sa
+  namespace: app-a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-admin
+
+### case02.yaml expected=subsumption
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-b
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: worker
+  namespace: app-b
+  labels:
+    owner-team: gamma
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-view
+  namespace: app-b
+  labels:
+    owner-team: gamma
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-any
+  namespace: app-b
+  labels:
+    owner-team: delta
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: view-worker
+  namespace: app-b
+  labels:
+    owner-team: gamma
+subjects:
+- kind: ServiceAccount
+  name: worker
+  namespace: app-b
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-view
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: any-worker
+  namespace: app-b
+  labels:
+    owner-team: delta
+subjects:
+- kind: ServiceAccount
+  name: worker
+  namespace: app-b
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-any
+
+### case03.yaml expected=subsumption
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-c
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: report-sa
+  namespace: app-c
+  labels:
+    owner-team: epsilon
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: report-reader
+  namespace: app-c
+  labels:
+    owner-team: epsilon
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: report-wildcard
+  namespace: app-c
+  labels:
+    owner-team: zeta
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: report-read-bind
+  namespace: app-c
+  labels:
+    owner-team: epsilon
+subjects:
+- kind: ServiceAccount
+  name: report-sa
+  namespace: app-c
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: report-reader
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: report-wild-bind
+  namespace: app-c
+  labels:
+    owner-team: zeta
+subjects:
+- kind: ServiceAccount
+  name: report-sa
+  namespace: app-c
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: report-wildcard
+
+### case04.yaml expected=subsumption
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-d
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: batch-sa
+  namespace: app-d
+  labels:
+    owner-team: eta
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: batch-pod-read
+  namespace: app-d
+  labels:
+    owner-team: eta
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: batch-pod-all
+  namespace: app-d
+  labels:
+    owner-team: theta
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: batch-read-bind
+  namespace: app-d
+  labels:
+    owner-team: eta
+subjects:
+- kind: ServiceAccount
+  name: batch-sa
+  namespace: app-d
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: batch-pod-read
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: batch-all-bind
+  namespace: app-d
+  labels:
+    owner-team: theta
+subjects:
+- kind: ServiceAccount
+  name: batch-sa
+  namespace: app-d
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: batch-pod-all
+
+### case05.yaml expected=shadowing
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-one
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-two
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-three
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: allowed-repos
+  labels:
+    owner-team: security
+spec:
+  match:
+    namespaces: ["app-one", "app-two"]
+  parameters:
+    repos:
+    - registry.example.com/
+
+### case06.yaml expected=shadowing
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: payments
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: orders
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: catalog
+  labels:
+    cape-policy/class: application
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: payments-repo-policy
+  labels:
+    owner-team: governance
+spec:
+  match:
+    namespaces: ["payments", "orders"]
+  parameters:
+    repos:
+    - ghcr.io/example/
+
+### case07.yaml expected=shadowing
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: frontend
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: backend
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jobs
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: image-source-policy
+  labels:
+    owner-team: platform
+spec:
+  match:
+    namespaces: ["frontend", "jobs"]
+  parameters:
+    repos:
+    - docker.io/library/
+
+### case08.yaml expected=shadowing
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: analytics
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: reports
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingestion
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube-tools
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: analytics-repo-policy
+  labels:
+    owner-team: compliance
+spec:
+  match:
+    namespaces: ["analytics"]
+  parameters:
+    repos:
+    - registry.corp.example/
+
+### case09.yaml expected=cross_domain_misalignment
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: identity
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: protected
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: external-worker
+  namespace: identity
+  labels:
+    owner-team: alpha
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: protected-reader
+  namespace: protected
+  labels:
+    owner-team: alpha
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: external-worker-bind
+  namespace: protected
+  labels:
+    owner-team: alpha
+subjects:
+- kind: ServiceAccount
+  name: external-worker
+  namespace: identity
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: protected-reader
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: protected
+  labels:
+    owner-team: beta
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+
+### case10.yaml expected=cross_domain_misalignment
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: build
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: secrets
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: builder
+  namespace: build
+  labels:
+    owner-team: gamma
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: secret-reader
+  namespace: secrets
+  labels:
+    owner-team: gamma
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: builder-secret-bind
+  namespace: secrets
+  labels:
+    owner-team: gamma
+subjects:
+- kind: ServiceAccount
+  name: builder
+  namespace: build
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: secret-reader
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: secrets-deny-ingress
+  namespace: secrets
+  labels:
+    owner-team: delta
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+
+### case11.yaml expected=cross_domain_misalignment
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: automation
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: database
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: migration-job
+  namespace: automation
+  labels:
+    owner-team: epsilon
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: db-config-reader
+  namespace: database
+  labels:
+    owner-team: epsilon
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: migration-config-bind
+  namespace: database
+  labels:
+    owner-team: epsilon
+subjects:
+- kind: ServiceAccount
+  name: migration-job
+  namespace: automation
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: db-config-reader
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: database-ingress-deny
+  namespace: database
+  labels:
+    owner-team: zeta
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+
+### case12.yaml expected=cross_domain_misalignment
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cron
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: internal-api
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cron-runner
+  namespace: cron
+  labels:
+    owner-team: eta
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: api-pod-reader
+  namespace: internal-api
+  labels:
+    owner-team: eta
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cron-api-bind
+  namespace: internal-api
+  labels:
+    owner-team: eta
+subjects:
+- kind: ServiceAccount
+  name: cron-runner
+  namespace: cron
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: api-pod-reader
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-default-deny
+  namespace: internal-api
+  labels:
+    owner-team: theta
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+
+### case13.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: shared-app
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: shared-sa
+  namespace: shared-app
+  labels:
+    owner-team: alpha
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: shared-pod-reader
+  namespace: shared-app
+  labels:
+    owner-team: alpha
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: shared-pod-editor
+  namespace: shared-app
+  labels:
+    owner-team: alpha
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch", "update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: shared-read-bind
+  namespace: shared-app
+  labels:
+    owner-team: alpha
+subjects:
+- kind: ServiceAccount
+  name: shared-sa
+  namespace: shared-app
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: shared-pod-reader
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: shared-edit-bind
+  namespace: shared-app
+  labels:
+    owner-team: alpha
+subjects:
+- kind: ServiceAccount
+  name: shared-sa
+  namespace: shared-app
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: shared-pod-editor
+
+### case14.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: resource-split
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: resource-sa
+  namespace: resource-split
+  labels:
+    owner-team: beta
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader
+  namespace: resource-split
+  labels:
+    owner-team: beta
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: secret-wildcard
+  namespace: resource-split
+  labels:
+    owner-team: gamma
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-reader-bind
+  namespace: resource-split
+  labels:
+    owner-team: beta
+subjects:
+- kind: ServiceAccount
+  name: resource-sa
+  namespace: resource-split
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-reader
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: secret-wildcard-bind
+  namespace: resource-split
+  labels:
+    owner-team: gamma
+subjects:
+- kind: ServiceAccount
+  name: resource-sa
+  namespace: resource-split
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: secret-wildcard
+
+### case15.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-blue
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-green
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-red
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ops-system
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: all-app-repos
+  labels:
+    owner-team: security
+spec:
+  match:
+    namespaces: ["app-blue", "app-green", "app-red"]
+  parameters:
+    repos:
+    - registry.example.com/
+
+### case16.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: checkout
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: billing
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform-system
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: application-repos
+  labels:
+    owner-team: governance
+spec:
+  match:
+    namespaces: ["checkout", "billing"]
+  parameters:
+    repos:
+    - ghcr.io/acme/
+
+### case17.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: all-namespaces-app
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: all-namespaces-system
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: global-repo-policy
+  labels:
+    owner-team: compliance
+spec:
+  match:
+    kinds:
+    - apiGroups: [""]
+      kinds: ["Pod"]
+  parameters:
+    repos:
+    - registry.corp.example/
+
+### case18.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: web-app
+  labels:
+    cape-policy/class: application
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-frontend
+  namespace: web-app
+  labels:
+    owner-team: frontend
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+
+### case19.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: api-app
+  labels:
+    cape-policy/class: application
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-api
+  namespace: api-app
+  labels:
+    owner-team: backend
+spec:
+  podSelector:
+    matchLabels:
+      app: api
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          cape-policy/class: application
+
+### case20.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team-app
+  labels:
+    cape-policy/class: application
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-internal
+  namespace: team-app
+  labels:
+    owner-team: platform
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 10.20.0.0/16
+
+### case21.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: unified-app
+  labels:
+    cape-policy/class: application
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: unified-deny
+  namespace: unified-app
+  labels:
+    owner-team: unified
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: unified-pod-reader
+  namespace: unified-app
+  labels:
+    owner-team: unified
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: unified-sa
+  namespace: unified-app
+  labels:
+    owner-team: unified
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: unified-reader-bind
+  namespace: unified-app
+  labels:
+    owner-team: unified
+subjects:
+- kind: ServiceAccount
+  name: unified-sa
+  namespace: unified-app
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: unified-pod-reader
+
+### case22.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: same-scope
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: same-scope-sa
+  namespace: same-scope
+  labels:
+    owner-team: ops
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: same-scope-role
+  namespace: same-scope
+  labels:
+    owner-team: ops
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: same-scope-binding
+  namespace: same-scope
+  labels:
+    owner-team: ops
+subjects:
+- kind: ServiceAccount
+  name: same-scope-sa
+  namespace: same-scope
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: same-scope-role
+
+### case23.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: audit-app
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: audit-system
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: skip-system
+  labels:
+    owner-team: audit
+spec:
+  match:
+    excludedNamespaces: ["audit-system"]
+  parameters:
+    repos:
+    - registry.example.com/
+
+### case24.yaml expected=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-final
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: system-final
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: no-namespace-filter
+  labels:
+    owner-team: platform
+spec:
+  match:
+    kinds:
+    - apiGroups: [""]
+      kinds: ["Pod"]
+  parameters:
+    repos:
+    - docker.io/

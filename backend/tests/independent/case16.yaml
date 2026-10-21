@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: checkout
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: billing
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform-system
+  labels:
+    cape-policy/class: system
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: application-repos
+  labels:
+    owner-team: governance
+spec:
+  match:
+    namespaces: ["checkout", "billing"]
+  parameters:
+    repos:
+    - ghcr.io/acme/

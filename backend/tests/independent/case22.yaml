@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: same-scope
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: same-scope-sa
+  namespace: same-scope
+  labels:
+    owner-team: ops
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: same-scope-role
+  namespace: same-scope
+  labels:
+    owner-team: ops
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: same-scope-binding
+  namespace: same-scope
+  labels:
+    owner-team: ops
+subjects:
+- kind: ServiceAccount
+  name: same-scope-sa
+  namespace: same-scope
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: same-scope-role

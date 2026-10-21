@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: payments
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: orders
+  labels:
+    cape-policy/class: application
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: catalog
+  labels:
+    cape-policy/class: application
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: payments-repo-policy
+  labels:
+    owner-team: governance
+spec:
+  match:
+    namespaces: ["payments", "orders"]
+  parameters:
+    repos:
+    - ghcr.io/example/

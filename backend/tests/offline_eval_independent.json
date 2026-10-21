@@ -1,0 +1,44 @@
+{
+  "full": {
+    "independent": [
+      24,
+      24
+    ]
+  },
+  "no_wildcard_expansion": {
+    "independent": [
+      20,
+      24
+    ]
+  },
+  "no_class_filter": {
+    "independent": [
+      22,
+      24
+    ]
+  },
+  "crossdomain_any_netpol": {
+    "independent": [
+      24,
+      24
+    ]
+  },
+  "b1_same_subject": {
+    "independent": [
+      15,
+      24
+    ]
+  },
+  "b2_any_explicit_ns": {
+    "independent": [
+      14,
+      24
+    ]
+  },
+  "b3_any_cross_ns_grant": {
+    "independent": [
+      16,
+      24
+    ]
+  }
+}
