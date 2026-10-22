@@ -1,0 +1,61 @@
+[
+ [
+  "ingress-nginx",
+  "8 objects",
+  0
+ ],
+ [
+  "cert-manager",
+  "31 objects",
+  0
+ ],
+ [
+  "metrics-server",
+  "5 objects",
+  0
+ ],
+ [
+  "kps",
+  "12 objects",
+  0
+ ],
+ [
+  "grafana",
+  "SKIPPED",
+  [
+   "Error: Get \"https://release-assets.githubusercontent.com/github-production-release-asset/289034413/bdbd9a65-9503-4177-ad8a-b769973b55e4?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-22T13%3A44%3A02Z&rscd=attachment%3B+filename%3Dgrafana-10.5.15.tgz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-22T12%3A43%3A03Z&ske=2026-10-22T13%3A44%3A02Z&sks=b&skv=2018-11-09&sig=X8aUnGilyKKZrtbT4n2Uca0zKajmu2LPbLxxmUXgGXg%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjY3MzY1NSwibmJmIjoxNzkyNjczMzU1LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.ntq0qwO_4InJc5wUUbywUl_ir8WHNhR0o8XE0x3gTVM&response-content-disposition=attachment%3B%20filename%3Dgrafana-10.5.15.tgz&response-content-type=application%2Foctet-stream\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"
+  ]
+ ],
+ [
+  "argo-cd",
+  "26 objects",
+  0
+ ],
+ [
+  "external-secrets",
+  "9 objects",
+  0
+ ],
+ [
+  "vault",
+  "3 objects",
+  0
+ ],
+ [
+  "traefik",
+  "2 objects",
+  0
+ ],
+ [
+  "dashboard",
+  "SKIPPED",
+  [
+   "Error: repo kubernetes-dashboard not found"
+  ]
+ ],
+ [
+  "jaeger",
+  "0 objects",
+  1
+ ]
+]
