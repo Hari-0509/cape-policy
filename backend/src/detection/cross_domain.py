@@ -40,10 +40,19 @@ def get_default_deny_netpols(target_namespaces):
     return deny
 
 
+def _deny_from_scan(scan_data, targets):
+    deny = {}
+    for p in scan_data.get("network_policies", []):
+        if p.get("namespace") in targets and p.get("is_default_deny"):
+            deny[p["namespace"]] = {"policy_name": p["name"], "owner": p["owner"],
+                                    "accepted_reason": p.get("accepted_reason")}
+    return deny
+
+
 def detect_cross_domain(scan_data):
     grants = get_cross_namespace_rbac_grants(scan_data["rbac_roles"], scan_data["rbac_bindings"],
                                              scan_data.get("cluster_roles"))
-    deny_by_ns = get_default_deny_netpols(list({g["target_namespace"] for g in grants}))
+    deny_by_ns = _deny_from_scan(scan_data, {g["target_namespace"] for g in grants}) if "network_policies" in scan_data else get_default_deny_netpols(list({g["target_namespace"] for g in grants}))
     found = []
     for g in grants:
         ns = g["target_namespace"]

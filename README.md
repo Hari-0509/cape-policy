@@ -1,17 +1,28 @@
 # CAPE-Policy
+Detects cross-team policy findings in Kubernetes clusters (RBAC, Gatekeeper, Kyverno, NetworkPolicy).
 
-**Ownership-Aware Cross-Policy Conflict Analysis for Multi-Team Kubernetes Clusters**
+## What it is and is not
+A research prototype. Findings are potential anomalies for human review, plus one confirmed category
+(policy-induced runtime failure). It is not a production security tool and its attribution is heuristic.
 
-A tool that detects security policy conflicts between independently-authored
-policies from different teams sharing a Kubernetes cluster (RBAC, OPA/Gatekeeper,
-Kyverno, NetworkPolicy), and attributes each conflict to the responsible team.
+## Requirements
+Tested versions: see backend/ENVIRONMENT.md. Python packages: backend/requirements.lock.
 
-## Status: In Development (Capstone Project)
+## Quick start
+1. kind cluster, Gatekeeper, Kyverno (commands in docs/SETUP.md)
+2. kubectl label namespace <team-ns> cape-policy/class=application
+3. cd backend && python src/ingestion/collector.py > data/latest_scan.json && python src/detection/engine.py
 
-## Structure
-- `test-policies/` — seeded multi-team policy sets, including deliberate conflicts, used for testing
-- `src/ingestion/` — Kubernetes API client, pulls policies from the cluster
-- `src/graph/` — policy graph builder (NetworkX)
-- `src/detection/` — conflict detection engine
-- `src/attribution/` — ownership attribution logic
-- `src/reporting/` — dashboard, JSON, CLI output
+## Reproducing the paper's tables
+Run ./reproduce.sh <target> from backend/. Targets are listed by running it with no argument.
+
+## Data
+- backend/tests/corpus: 104 generated cases, manifest, results (generator seed 20261018)
+- backend/tests/independent: 24 separately written cases and labels.csv
+- backend/tests/*.json, backend/realworld: raw results
+
+## Limitations
+See Section VII of the paper. The demo dashboard uses a hard-coded login, for demonstration only.
+
+## License and citation
+LICENSE (add one; MIT or Apache-2.0 are common). CITATION.cff.  DOI: [TODO after release]

@@ -1,0 +1,41 @@
+{
+  "hardware_of_analyzer": {
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu": "11th Gen Intel(R) Core(TM) i5-11260H @ 2.60GHz",
+    "logical_cpus": 12,
+    "ram_gb_visible": 3.7,
+    "python": "3.12.3"
+  },
+  "kube_context": "kind-cape-policy-cluster",
+  "runs": 30,
+  "scales": [
+    {
+      "n_pairs": 25,
+      "objects_in_cluster": 319,
+      "median_ms": 241.1,
+      "q1_ms": 227.0,
+      "q3_ms": 263.8
+    },
+    {
+      "n_pairs": 50,
+      "objects_in_cluster": 418,
+      "median_ms": 254.1,
+      "q1_ms": 234.2,
+      "q3_ms": 271.6
+    },
+    {
+      "n_pairs": 100,
+      "objects_in_cluster": 618,
+      "median_ms": 279.1,
+      "q1_ms": 263.8,
+      "q3_ms": 303.3
+    },
+    {
+      "n_pairs": 200,
+      "objects_in_cluster": 1018,
+      "median_ms": 337.1,
+      "q1_ms": 325.2,
+      "q3_ms": 365.6
+    }
+  ]
+}
